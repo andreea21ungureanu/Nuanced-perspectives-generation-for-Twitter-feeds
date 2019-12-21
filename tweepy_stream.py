@@ -69,6 +69,7 @@ emotions_file = open("emotions.json","a+")
 #emotions_file = open("emotions.txt","a+")
 
 print( "\nStarting detecting emotion for the collected tweets:" )
+emotions_file.write('[')
 for tweet_text in collected_tweets:
     # Convert the emotion data to a python dictonary to get consistency in the emotion doc
     emotion_dictionary = paralleldots.emotion(tweet_text)
@@ -76,5 +77,8 @@ for tweet_text in collected_tweets:
                                     "emotions": emotion_dictionary["emotion"], 
                                     "sarcasm": paralleldots.sarcasm(tweet_text)
                                     }))
+    emotions_file.write(',')
+emotions_file.write('{}')
+emotions_file.write(']')
 print( "\nTweets just got emotional. Checkout the file!" )
 paralleldots.usage()

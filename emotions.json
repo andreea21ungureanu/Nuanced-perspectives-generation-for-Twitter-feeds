@@ -1,617 +1,318 @@
-{
-    "tweet": "Ten\u00eda que pasar.\n#Balconing #Brexit\n\nhttps://t.co/Ol81kaWYqM",
-    "emotions": {
-        "Bored": 0.0378283047,
-        "Sad": 0.1369802962,
-        "Happy": 0.1915627521,
-        "Angry": 0.2619614239,
-        "Excited": 0.2334336444,
-        "Fear": 0.1382335786
+[
+    {
+        "tweet": "At our hustings @S_Hammond said I was lying when I said he\u2019d signed up to both @BorisJohnson\u2019s bill and timetable. \n\nA week after being elected \u2066\u2066@S_Hammond\u2069 votes for both the bill &amp; the timetable.\n\nHow do you sleep at night Stephen?  https://t.co/gFjNSLTCDW",
+        "emotions": {
+            "Excited": 0.1796285296,
+            "Angry": 0.1729408859,
+            "Sad": 0.1516590456,
+            "Happy": 0.1436203484,
+            "Bored": 0.1240393092,
+            "Fear": 0.2281118813
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.5780683602,
+            "Sarcastic": 0.4219316398
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5664337897,
-        "Sarcastic": 0.4335662103
-    }
-}{
-    "tweet": "Astonishing gap in fundraising \ud83d\udc47\ud83c\udffc https://t.co/pRb1SxdtNs",
-    "emotions": {
-        "Bored": 0.0,
-        "Sad": 0.1650028244,
-        "Happy": 0.2321152946,
-        "Angry": 0.1190735171,
-        "Excited": 0.2908154363,
-        "Fear": 0.1929929277
+    {
+        "tweet": "A queda da centro-esquerda em elei\u00e7\u00f5es europeias \ud83d\udc47\n\nNo Brasil, parece que boa parte da esquerda s\u00f3 quer ver o circo pegar fogo pra ent\u00e3o voltar ao poder, n\u00e3o como a melhor op\u00e7\u00e3o, mas como a menos pior. Isso parece atender parcela muito pequena, de militantes, mas n\u00e3o \u00e0 popula\u00e7\u00e3o https://t.co/WZrBA3O0yV",
+        "emotions": {
+            "Excited": 0.1707809349,
+            "Angry": 0.2876580606,
+            "Sad": 0.1435411306,
+            "Happy": 0.2294351379,
+            "Bored": 0.0519467184,
+            "Fear": 0.1166380177
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.647201613,
+            "Sarcastic": 0.352798387
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6518504177,
-        "Sarcastic": 0.3481495823
-    }
-}{
-    "tweet": "WHAT MONEY CAN BE MAGICKED UP FOR:\n\u00a3100m on Brexit ads\n\u00a311m on Brexit 50p\u2019s\n\u00a38bn on No Deal prep\n\u00a313.8m to ferry company with no ships\n\u00a32.2bn on Chris Grayling fuck-ups\n\u00a370bn lost due to Brexit already\n\nWHAT MONEY CAN'T BE MAGICKED UP FOR:\nWaspi women worried about their pension https://t.co/rAFicNkWnE",
-    "emotions": {
-        "Bored": 0.063551428,
-        "Sad": 0.1321278949,
-        "Happy": 0.146083485,
-        "Angry": 0.2528653219,
-        "Excited": 0.2607651169,
-        "Fear": 0.1446067534
+    {
+        "tweet": "Great British working class victories;\n\nTrafalgar 1805\nWaterloo 1815\nWW1 1914-18\nWW2 1939-45\nFalklands 1982\nBrexit 2016-2019\n\nWhen you need to get shit done, you know where we are, you're welcome.",
+        "emotions": {
+            "Excited": 0.3708219898,
+            "Angry": 0.1294970553,
+            "Sad": 0.0678848567,
+            "Happy": 0.3166249036,
+            "Bored": 0.0299207084,
+            "Fear": 0.0852504863
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.7148903544,
+            "Sarcastic": 0.2851096456
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6019696869,
-        "Sarcastic": 0.3980303131
-    }
-}{
-    "tweet": "@williamnhutton Basically the Conservatives are just like the brexit party now so I don't think the \"end of farage\" is accurate or much to be celebrated unfortunately.",
-    "emotions": {
-        "Bored": 0.039917272,
-        "Sad": 0.4272733777,
-        "Happy": 0.0647494533,
-        "Angry": 0.1065202191,
-        "Excited": 0.089776023,
-        "Fear": 0.2717636549
+    {
+        "tweet": "Brexit is happening. Just a fast forward now to Irish unity. The brits won't be missed.",
+        "emotions": {
+            "Excited": 0.221411353,
+            "Angry": 0.1049071054,
+            "Sad": 0.2196359127,
+            "Happy": 0.1656183169,
+            "Bored": 0.0549621979,
+            "Fear": 0.2334651141
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.6116017131,
+            "Sarcastic": 0.3883982869
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.3610195422,
-        "Sarcastic": 0.6389804578
-    }
-}{
-    "tweet": "Of course when security chiefs were arguing a no deal Brexit would be a security disaster, their views were casually dismissed. And now... https://t.co/SucO1mLk3v",
-    "emotions": {
-        "Bored": 0.0647789818,
-        "Sad": 0.2588086029,
-        "Happy": 0.0459952713,
-        "Angry": 0.3848136441,
-        "Excited": 0.0610834122,
-        "Fear": 0.1845200876
+    {
+        "tweet": "@HopcroftColin @WesternIslander @rational_sane Calm down man. Enjoy Brexit. I couldn't give two och aye the noo hoots if Scotland gets Independence eventually or not. It's just sweet juices to see fatboy Blackford and wee Burney all red-faced and spitting bile if Boris don't give em what they want. You Remoaners eh?",
+        "emotions": {
+            "Excited": 0.1828676346,
+            "Angry": 0.1905815538,
+            "Sad": 0.0951337064,
+            "Happy": 0.3314836796,
+            "Bored": 0.0381335363,
+            "Fear": 0.1617998892
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.73152116,
+            "Sarcastic": 0.26847884
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.2369117888,
-        "Sarcastic": 0.7630882112
-    }
-}{
-    "tweet": "@clarescastle @allisonpearson And finally here's the famous '#Brexit Billy', he's been on #bbcqt 5 times - always gone to for a question, and here he is socialising with the production staff beforehand. https://t.co/U2cFKlpjLj",
-    "emotions": {
-        "Bored": 0.0597187878,
-        "Sad": 0.1082586648,
-        "Happy": 0.2899722292,
-        "Angry": 0.1548019653,
-        "Excited": 0.2238408403,
-        "Fear": 0.1634075127
+    {
+        "tweet": "Brilliant Brexit gets better by the day as Boris maximises our negotiating leverage. EU nations now on back foot, knowing that we will surge ahead as more competitive economy. Bring it on! \ud83d\udc4f\u27a1\ufe0f https://t.co/kLkAZl85ud",
+        "emotions": {
+            "Excited": 0.2257725274,
+            "Angry": 0.279288535,
+            "Sad": 0.0557415308,
+            "Happy": 0.2597707864,
+            "Bored": 0.0519004012,
+            "Fear": 0.1275262191
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.7530266124,
+            "Sarcastic": 0.2469733876
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6439062517,
-        "Sarcastic": 0.3560937483
-    }
-}{
-    "tweet": "I\u2019m not a flag-waving, sign-making, beret-wearing, EU superfan.\n\nI\u2019m someone from a council estate who, because of freedom of movement, ended up opening a record shop in Ibiza, at 23, which changed my life.\n\nI\u2019m against Brexit because I want others to have the same opportunities.",
-    "emotions": {
-        "Bored": 0.0385174615,
-        "Sad": 0.1187847566,
-        "Happy": 0.2697190856,
-        "Angry": 0.215347505,
-        "Excited": 0.2344132002,
-        "Fear": 0.1232179911
+    {
+        "tweet": "@freethinker967 @DanHillier @ggmoats @georgegalloway @RTUKnews @RT_com @SputnikInt @GoodwinMJ FYI in Scotland we educate our children so they\u2019re perfectly able to make informed decision thats why they vote d in OUR referendum &amp; local election. Only the people of NI voted in the brexit referendum and they like scotland wanted fuck all to do with your racist EU exit",
+        "emotions": {
+            "Excited": 0.1768023748,
+            "Angry": 0.2113872035,
+            "Sad": 0.0611434986,
+            "Happy": 0.3819527596,
+            "Bored": 0.0644096305,
+            "Fear": 0.1043045329
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.8183455192,
+            "Sarcastic": 0.1816544808
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6399108253,
-        "Sarcastic": 0.3600891747
-    }
-}{
-    "tweet": "Corbyns a chicken. https://t.co/IEyIzwgxVn",
-    "emotions": {
-        "Bored": 0.0,
-        "Sad": 0.1556344885,
-        "Happy": 0.2836708867,
-        "Angry": 0.1833174542,
-        "Excited": 0.1996726306,
-        "Fear": 0.1777045399
+    {
+        "tweet": "I am getting really pissed off with all the organisations, from CBI to Liberty, who have sat on the fence over Brexit and are now starting to panic. We warned you!",
+        "emotions": {
+            "Excited": 0.0100468049,
+            "Angry": 0.7039754525,
+            "Sad": 0.1270535187,
+            "Happy": 0.0071137764,
+            "Bored": 0.0368774477,
+            "Fear": 0.1149329997
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.659988544,
+            "Sarcastic": 0.340011456
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.435565549,
-        "Sarcastic": 0.564434451
-    }
-}{
-    "tweet": "Brexit stitch-up? SNP's Ian Blackford hints at secret alliance with Labour https://t.co/ieoYjbMxxK",
-    "emotions": {
-        "Bored": 0.0497463135,
-        "Sad": 0.203468347,
-        "Happy": 0.1481693995,
-        "Angry": 0.1838115264,
-        "Excited": 0.1534125704,
-        "Fear": 0.2613918433
+    {
+        "tweet": "@AlbertoBagnai @borghi_claudio @NinoGalloni @LucianoBarraCar @pbecchi https://t.co/pznVODYpJa",
+        "emotions": {
+            "Excited": 0.2167544412,
+            "Angry": 0.142648748,
+            "Sad": 0.1521451452,
+            "Happy": 0.2548353086,
+            "Bored": 0.0738991055,
+            "Fear": 0.1597172515
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.6562597965,
+            "Sarcastic": 0.3437402035
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.479492945,
-        "Sarcastic": 0.520507055
-    }
-}{
-    "tweet": "If you insist on being led by an anti-Semitic, pro-Brexit, anti-NATO Bennite dinosaur you will lose. The electorate told Labour members for two years that Corbyn is unelectable. Labour members didn\u2019t care. And on 13th December they\u2019ll blame everyone but themselves. https://t.co/6PLeQVBqHH",
-    "emotions": {
-        "Bored": 0.1636471854,
-        "Sad": 0.1454156391,
-        "Happy": 0.1270933426,
-        "Angry": 0.2406363598,
-        "Excited": 0.1488280656,
-        "Fear": 0.1743794074
+    {
+        "tweet": "@relwofs54 @uk_domain_names @thesecretdooruk @JamesCleverly @Conservatives Yes they will deliver brexit.. but not the one that was promised. They are already changing things from what they promised in this election. The oven ready deal it turns out wasn't quite ready and needed some promises taking out.",
+        "emotions": {
+            "Excited": 0.0695349819,
+            "Angry": 0.3491030222,
+            "Sad": 0.3542057863,
+            "Happy": 0.095400753,
+            "Bored": 0.0250441121,
+            "Fear": 0.1067113444
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.7303700224,
+            "Sarcastic": 0.2696299776
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.4705170848,
-        "Sarcastic": 0.5294829152
-    }
-}{
-    "tweet": "If you\u2019re voting for the Lib Dems in a Labour-Tory marginal now, you might as well vote for Boris Johnson, Hard Brexit and the Tories - because that\u2019s what you are going to get.",
-    "emotions": {
-        "Bored": 0.0380721813,
-        "Sad": 0.0708941353,
-        "Happy": 0.2101451855,
-        "Angry": 0.2467362935,
-        "Excited": 0.2493453748,
-        "Fear": 0.1848068295
+    {
+        "tweet": "#DonatetheCoin",
+        "emotions": {
+            "Excited": 0.1901275134,
+            "Angry": 0.1536208867,
+            "Sad": 0.1370943568,
+            "Happy": 0.2289203247,
+            "Bored": 0.1694542421,
+            "Fear": 0.1207826763
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.6569210872,
+            "Sarcastic": 0.3430789128
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.722262663,
-        "Sarcastic": 0.277737337
-    }
-}{
-    "tweet": "@MadeleinaKay @jeffk33 Mine is better https://t.co/9RDx47C3YS https://t.co/m4XvAEWZOO",
-    "emotions": {
-        "Bored": 0.0519496415,
-        "Sad": 0.065995256,
-        "Happy": 0.2891354246,
-        "Angry": 0.2326378178,
-        "Excited": 0.2291844535,
-        "Fear": 0.1310974066
+    {
+        "tweet": "Excellent piece on the swathes of pointless regulation we have to deal with.\n\nNow Boris has his majority let's have a total overhaul which will massively help foster enterprise.\n\nDealing with EU red tape bad enough - one of the key reasons for Brexit! \n\nhttps://t.co/az5d9EpHye",
+        "emotions": {
+            "Excited": 0.1088574133,
+            "Angry": 0.3116150721,
+            "Sad": 0.1449604352,
+            "Happy": 0.1954971212,
+            "Bored": 0.0877593713,
+            "Fear": 0.1513105869
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.595771417,
+            "Sarcastic": 0.404228583
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.3576147703,
-        "Sarcastic": 0.6423852297
-    }
-}{
-    "tweet": "Brexit catastrofuck \nLied about new hospitals\nSuppressed Russia report\nNHS in meltdown\nWorst A&amp;E waits ever\n4m kids in poverty\nHomelessness up 165%\nSocial care in crisis\nFood banks in schools\n130k deaths through austerity \n\nVoters: \n\u201cMore of that, please\u201d https://t.co/eLdXZF55CP",
-    "emotions": {
-        "Bored": 0.030221502,
-        "Sad": 0.2003239883,
-        "Happy": 0.0199772758,
-        "Angry": 0.5585603832,
-        "Excited": 0.0638826054,
-        "Fear": 0.1270342453
+    {
+        "tweet": "Australia kicked out the dolphin-killing supertrawlers, the UK should do the same. https://t.co/drnuezqiXz",
+        "emotions": {
+            "Excited": 0.1559232401,
+            "Angry": 0.2279393276,
+            "Sad": 0.1514241346,
+            "Happy": 0.1267779571,
+            "Bored": 0.1512009286,
+            "Fear": 0.1867344119
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.5574486816,
+            "Sarcastic": 0.4425513184
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5747524826,
-        "Sarcastic": 0.4252475174
-    }
-}{
-    "tweet": "I cannot account for this. I simply can\u2019t make sense of it. The most incompetent, truly diabolically awful government in my lifetime and probably in British history. Why am I so far out of sync with voters? What is wrong with people? https://t.co/KluH6FdBYF",
-    "emotions": {
-        "Bored": 0.0312833061,
-        "Sad": 0.1390343342,
-        "Happy": 0.0189326512,
-        "Angry": 0.7004558701,
-        "Excited": 0.0301684188,
-        "Fear": 0.0801254197
+    {
+        "tweet": "GUARDIAN: Fears of \u2018extreme Brexit\u2019 in PM\u2019s blueprint for Britain #TomorrowsPapersToday https://t.co/1ZrsnXyoxK",
+        "emotions": {
+            "Excited": 0.2326896709,
+            "Angry": 0.1316466359,
+            "Sad": 0.1876365618,
+            "Happy": 0.1315933619,
+            "Bored": 0.0354509409,
+            "Fear": 0.2809828286
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.6743431953,
+            "Sarcastic": 0.3256568047
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6104390394,
-        "Sarcastic": 0.3895609606
-    }
-}{
-    "tweet": "I am BEGGING you Labour, there are around 60 seats across SE where the only contenders are the LDs. \n\nPLEASE urge your supporters to tactical vote. Because if they do, we stop the Tory Majority.\n\nI AM BEGGING YOU. https://t.co/zg56rThNuS",
-    "emotions": {
-        "Bored": 0.110710301,
-        "Sad": 0.217820218,
-        "Happy": 0.185552854,
-        "Angry": 0.2204034146,
-        "Excited": 0.0930240932,
-        "Fear": 0.1724891191
+    {
+        "tweet": "@Skybluerick1 @Aldousmarx @IanLaveryMP I agree Labour\u2019s Brexit position was a mistake but, personally, I can\u2019t forgive anyone using that as a reason for using that to deviate and vote Tory!",
+        "emotions": {
+            "Excited": 0.1127499658,
+            "Angry": 0.2952545062,
+            "Sad": 0.1023303277,
+            "Happy": 0.3219643529,
+            "Bored": 0.0280024235,
+            "Fear": 0.1396984239
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.7609949406,
+            "Sarcastic": 0.2390050594
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6765964006,
-        "Sarcastic": 0.3234035994
-    }
-}{
-    "tweet": "Do you want to be complicit in this?\n\nIf not, #VoteTactically to #StopBrexit and #GTTO in #GE2019 .\n\nThis isn't conspiracy theory - it's an obvious foreign policy consensus.\n\nAlso, #ReleaseTheRussiaReport so we can follow the money. Although, we already know where it leads. https://t.co/ovaMmaRRDe",
-    "emotions": {
-        "Bored": 0.1186871467,
-        "Sad": 0.1579462838,
-        "Happy": 0.1669210354,
-        "Angry": 0.1886561106,
-        "Excited": 0.1694536874,
-        "Fear": 0.198335736
+    {
+        "tweet": "Just the same as you have gone down in history as one of Britains worst MP's. https://t.co/5tSxaCGOC2",
+        "emotions": {
+            "Excited": 0.053038949,
+            "Angry": 0.3768169432,
+            "Sad": 0.2314069737,
+            "Happy": 0.0642585651,
+            "Bored": 0.1349061867,
+            "Fear": 0.1395723823
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.4880084774,
+            "Sarcastic": 0.5119915226
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5796229681,
-        "Sarcastic": 0.4203770319
-    }
-}{
-    "tweet": "Unseat Johnson and Corbyn. \nNeither are fit to hold office.",
-    "emotions": {
-        "Bored": 0.0670298539,
-        "Sad": 0.2832283837,
-        "Happy": 0.075161954,
-        "Angry": 0.2422101096,
-        "Excited": 0.1309368258,
-        "Fear": 0.201432873
+    {
+        "tweet": "Why did a rundown mining town become a safe Tory seat?\n\nBefore the Brexit vote I visited Rugeley in the West Midlands, a land of badly-paid jobs, poverty... and Tory voters: https://t.co/kUV9G7hqi7",
+        "emotions": {
+            "Excited": 0.0803282597,
+            "Angry": 0.3326787308,
+            "Sad": 0.2142951409,
+            "Happy": 0.0591425724,
+            "Bored": 0.0942961711,
+            "Fear": 0.219259125
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.5203069759,
+            "Sarcastic": 0.4796930241
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.4193528735,
-        "Sarcastic": 0.5806471265
-    }
-}{
-    "tweet": "Watch in isolation and it\u2019s game over for the Lib Dem\u2019s.\nIf voters want a democratic route to end Brexit they can only vote Labour  \n\nElection 2019: Jo Swinson defends ambition to revoke Article 50 https://t.co/6mnoHGjCQe",
-    "emotions": {
-        "Bored": 0.168207848,
-        "Sad": 0.1574880318,
-        "Happy": 0.0866369948,
-        "Angry": 0.3138718665,
-        "Excited": 0.0992379482,
-        "Fear": 0.1745573107
+    {
+        "tweet": "My God, the turkeys voted for Christmas and you're blaming Corbyn.",
+        "emotions": {
+            "Excited": 0.1257703454,
+            "Angry": 0.2250090142,
+            "Sad": 0.2440507725,
+            "Happy": 0.0512591015,
+            "Bored": 0.0646067793,
+            "Fear": 0.289303987
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.3381584524,
+            "Sarcastic": 0.6618415476
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5541228742,
-        "Sarcastic": 0.4458771258
-    }
-}{
-    "tweet": "Polls still suggest Britain is on course for a conservative majority. Which would see the biggest change in UK in decades, away from EU, towards US. Striking how little discussion there is about what Britain\u2019s future will likely look like during #GE2019 https://t.co/7bN1pdfHgb",
-    "emotions": {
-        "Bored": 0.0913628196,
-        "Sad": 0.2904080536,
-        "Happy": 0.0779870614,
-        "Angry": 0.3236647102,
-        "Excited": 0.0509626569,
-        "Fear": 0.1656146983
+    {
+        "tweet": "My @Telegraph piece today showing why of course @BorisJohnson can do a trade deal in a year - based on my 10 years experience actually doing EU Free Trade Agreements. Here\u2019s why: https://t.co/rWIUwhKL7z @Conservatives",
+        "emotions": {
+            "Excited": 0.312973391,
+            "Angry": 0.1924798756,
+            "Sad": 0.0365530857,
+            "Happy": 0.3046965048,
+            "Bored": 0.0,
+            "Fear": 0.1532971428
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.6741051997,
+            "Sarcastic": 0.3258948003
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.4941218757,
-        "Sarcastic": 0.5058781243
-    }
-}{
-    "tweet": "@jonlis1 Corbyn is a racist, toxic, economically illiterate Marxist who loves the terrorists &amp; hates anything the uk stands for.  He\u2019s a serial liar on brexit. He\u2019s been found out...he\u2019s backed the metro luvvies over the traditional labour supporter and they are leaving in droves.",
-    "emotions": {
-        "Bored": 0.0653263638,
-        "Sad": 0.1560887416,
-        "Happy": 0.074504379,
-        "Angry": 0.3772293763,
-        "Excited": 0.1471160593,
-        "Fear": 0.17973508
+    {
+        "tweet": "GREAT NEWS: \n\nUK Prime Minister @BorisJohnson, the \u201cBritish Trump\u201d has kept his promise by getting #BREXIT passed! \ud83c\uddec\ud83c\udde7\n\nTruly amazing for the people of the United Kingdom. It\u2019s now time to make the UK GREAT AGAIN! \ud83d\udc4d\ud83c\udffc https://t.co/HIsq5tELeE",
+        "emotions": {
+            "Excited": 0.3281165656,
+            "Angry": 0.0987236649,
+            "Sad": 0.026696072,
+            "Happy": 0.4716770347,
+            "Bored": 0.0126003342,
+            "Fear": 0.0621863286
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.9224258393,
+            "Sarcastic": 0.0775741607
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5720381746,
-        "Sarcastic": 0.4279618254
-    }
-}{
-    "tweet": "@richie_1994wale @billpostmus Labor + LibDems + Greens = 48\nThat\u2019s terrible.\nWhy do you have Brexit at 4%?\nThat sounds very low.",
-    "emotions": {
-        "Bored": 0.0485441243,
-        "Sad": 0.2033376611,
-        "Happy": 0.0431993242,
-        "Angry": 0.4281590927,
-        "Excited": 0.0584039514,
-        "Fear": 0.2183558464
+    {
+        "tweet": "No. I won\u2019t be \u2018uniting behind Brexit\u2019. Ever. That\u2019s like asking me to unite behind xenophobia, injustice, ignorance, evil....\nAnd why? To make life easier for Johnson and his Tories? To salve their consciences? Fuck that. They can own it all. And be permanently reminded.",
+        "emotions": {
+            "Excited": 0.0910576085,
+            "Angry": 0.5654936902,
+            "Sad": 0.1516887022,
+            "Happy": 0.0478262589,
+            "Bored": 0.0453062413,
+            "Fear": 0.0986274989
+        },
+        "sarcasm": {
+            "Non-Sarcastic": 0.4605413486,
+            "Sarcastic": 0.5394586514
+        }
     },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5700605439,
-        "Sarcastic": 0.4299394561
-    }
-}{
-    "tweet": "@SamMaayan @n0s0upf0y0u @keewa @MattLeighton1 @AaronBastani @ShippersUnbound @PerthshireMags 2018 he gained in locals and this year he had the exact same proportional losses as the tories because there was a massive protest vote against both major parties with regards to unclear brexit policies https://t.co/vaeGbbjvvQ",
-    "emotions": {
-        "Bored": 0.0713592236,
-        "Sad": 0.2575491207,
-        "Happy": 0.0648149883,
-        "Angry": 0.3257964197,
-        "Excited": 0.0852635357,
-        "Fear": 0.1952167119
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.7402198076,
-        "Sarcastic": 0.2597801924
-    }
-}{
-    "tweet": "It is clear that the only political party within this election is the #Conservative and #Unionist Party, calling to 'get #Brexit done.' As such, this is a party implementing the #democratic will of the people. #VOTE #TORY and act on democracy! \n#GeneralElection2019",
-    "emotions": {
-        "Bored": 0.1688849282,
-        "Sad": 0.1787651829,
-        "Happy": 0.1184837054,
-        "Angry": 0.200890071,
-        "Excited": 0.1320270331,
-        "Fear": 0.2009490794
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.4814646261,
-        "Sarcastic": 0.5185353739
-    }
-}{
-    "tweet": "Corbyn: Saya Akan Tetap Netral pada Referendum Brexit Kedua https://t.co/2MewztHeb3",
-    "emotions": {
-        "Bored": 0.0409745412,
-        "Sad": 0.1494678684,
-        "Happy": 0.1889696623,
-        "Angry": 0.1715914786,
-        "Excited": 0.2681509816,
-        "Fear": 0.1808454678
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5891459258,
-        "Sarcastic": 0.4108540742
-    }
-}{
-    "tweet": "Interviewed by Masanori Hattori from The Mainichi, one of the leading daily papers in Japan.\n\nThere is considerable international interest in the North Belfast election &amp; in the disaster of Brexit.\n\nOn December 12 we can send a pro-remain message right across Europe &amp; the world. https://t.co/QSjvA9EOXv",
-    "emotions": {
-        "Bored": 0.0771441116,
-        "Sad": 0.1790095624,
-        "Happy": 0.1941103893,
-        "Angry": 0.1234819515,
-        "Excited": 0.2090174258,
-        "Fear": 0.2172365593
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5698320058,
-        "Sarcastic": 0.4301679942
-    }
-}{
-    "tweet": "Boris Johnson:\n\n\"There's magic money for bribing the DUP.\n\n\"There's magic money for a crash out Brexit.\n\n\"There's no magic money to compensate women robbed of their pensions\"\n\nWomen born in the 1950s take note:\nThis is how much Boris Johnson cares about you and your vote.\n#WASPI https://t.co/k1i6LhJIMf",
-    "emotions": {
-        "Bored": 0.037440938,
-        "Sad": 0.2235859324,
-        "Happy": 0.129436256,
-        "Angry": 0.1305097941,
-        "Excited": 0.2026829997,
-        "Fear": 0.2763440798
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.333200595,
-        "Sarcastic": 0.666799405
-    }
-}{
-    "tweet": "9 years of decline...\n\nThe economic fabric of society corroded by austerity.\n\nThe intellectual fabric of this country corroded by Brexit. \n\nThe moral fabric of this country corroded utterly by this Johnson government.\n\nI think we need a New Britain. I want my country back.",
-    "emotions": {
-        "Bored": 0.0240232491,
-        "Sad": 0.1381207504,
-        "Happy": 0.1052972609,
-        "Angry": 0.1740982854,
-        "Excited": 0.4510148902,
-        "Fear": 0.107445564
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6239929234,
-        "Sarcastic": 0.3760070766
-    }
-}{
-    "tweet": "WHAT MONEY CAN BE MAGICKED UP FOR:\n\u00a3100m on Brexit ads\n\u00a311m on Brexit 50p\u2019s\n\u00a38bn on No Deal prep\n\u00a313.8m to ferry company with no ships\n\u00a32.2bn on Chris Grayling fuck-ups\n\u00a370bn lost due to Brexit already\n\nWHAT MONEY CAN'T BE MAGICKED UP FOR:\nWaspi women worried about their pension https://t.co/rAFicNkWnE",
-    "emotions": {
-        "Bored": 0.063551428,
-        "Sad": 0.1321278949,
-        "Happy": 0.146083485,
-        "Angry": 0.2528653219,
-        "Excited": 0.2607651169,
-        "Fear": 0.1446067534
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6019696869,
-        "Sarcastic": 0.3980303131
-    }
-}{
-    "tweet": "@BrexitBattalion Hopefully the leave labour supporters are voting Brexit Party",
-    "emotions": {
-        "Bored": 0.0621689462,
-        "Sad": 0.1219335614,
-        "Happy": 0.2513905978,
-        "Angry": 0.135980389,
-        "Excited": 0.1338526507,
-        "Fear": 0.2946738548
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.7096072632,
-        "Sarcastic": 0.2903927368
-    }
-}{
-    "tweet": "From the UK\nFor BREXIT I would be reading One Nation",
-    "emotions": {
-        "Bored": 0.0821226661,
-        "Sad": 0.1665043189,
-        "Happy": 0.1643896182,
-        "Angry": 0.1163325269,
-        "Excited": 0.2413049948,
-        "Fear": 0.2293458753
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6059766378,
-        "Sarcastic": 0.3940233622
-    }
-}{
-    "tweet": "@sirpetethefirst @BernPPDoyle @UKLabour Jeremy Bash of the CIA says Putin wants Brexit as part of his hybrid war, and BJ wants to deliver it on a plate! If you ain't worried, then I'm worried about you",
-    "emotions": {
-        "Bored": 0.0561240772,
-        "Sad": 0.0999017073,
-        "Happy": 0.1369926251,
-        "Angry": 0.4064871768,
-        "Excited": 0.1086301741,
-        "Fear": 0.1918642394
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6944352616,
-        "Sarcastic": 0.3055647384
-    }
-}{
-    "tweet": "Leavers, don't waste your vote! Only The Brexit Party can beat Corbyn's Labour in Ashfield. https://t.co/HJyqkXcgeF",
-    "emotions": {
-        "Bored": 0.0755636494,
-        "Sad": 0.0740836673,
-        "Happy": 0.233209419,
-        "Angry": 0.2644563574,
-        "Excited": 0.2176135185,
-        "Fear": 0.1350733883
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.660726906,
-        "Sarcastic": 0.339273094
-    }
-}{
-    "tweet": "Yesterday\u2019s leaders debate on BBCQT had one of the most biased audiences I have seen.  I can\u2019t imagine there was more than 5% Tory support.\n\n5 people prefaced their question saying \u2018I voted remain\u2019 (not 1 brexit!) and it was in Sheffield - a Leave constituency.\n\n#ScrapBBCLicence",
-    "emotions": {
-        "Bored": 0.0750969396,
-        "Sad": 0.2142699469,
-        "Happy": 0.0614749557,
-        "Angry": 0.2745636437,
-        "Excited": 0.0969613873,
-        "Fear": 0.2776331269
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.4585237205,
-        "Sarcastic": 0.5414762795
-    }
-}{
-    "tweet": "More Labour lies, all to avoid taking a position on Brexit. The NHS is not for sale and never will be. https://t.co/iC5dCTpaqM",
-    "emotions": {
-        "Bored": 0.0909127981,
-        "Sad": 0.1462544433,
-        "Happy": 0.0912504896,
-        "Angry": 0.4798777988,
-        "Excited": 0.0827391246,
-        "Fear": 0.1089653457
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.535442982,
-        "Sarcastic": 0.464557018
-    }
-}{
-    "tweet": "@AEHALL1983 @jeremycorbyn #tories 'magic up' circa \u00a3100billion tax concessions\nthey 'magic up' billions for brexit\nthey 'magic up' for garden bridges etc etc think it could be referred to as 'spaffing' money up the wall\n'magic up' for bombing a country or two\n\nHELL gov can magic up my pension - capiche",
-    "emotions": {
-        "Bored": 0.0221407768,
-        "Sad": 0.0441006848,
-        "Happy": 0.2573635469,
-        "Angry": 0.0869830993,
-        "Excited": 0.4713406075,
-        "Fear": 0.1180712848
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.7675003128,
-        "Sarcastic": 0.2324996872
-    }
-}{
-    "tweet": "@britainelects @SavantaComRes Labour need to take 5%(1/3rd) of Lib Dems 15% to get a hung parliament.\n\nSurely remainers will realise that this is only way of getting 2nd ref and remain option and stopping a hard brexit.",
-    "emotions": {
-        "Bored": 0.0873374452,
-        "Sad": 0.1249351995,
-        "Happy": 0.1838867853,
-        "Angry": 0.2455805642,
-        "Excited": 0.1731985766,
-        "Fear": 0.1850614292
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.7389020299,
-        "Sarcastic": 0.2610979701
-    }
-}{
-    "tweet": "#GetTheToriesOut #VoteLabour #JC4PM \u270a https://t.co/mGkOee6yoJ",
-    "emotions": {
-        "Bored": 0.0675440113,
-        "Sad": 0.1637497155,
-        "Happy": 0.1837553744,
-        "Angry": 0.2176792306,
-        "Excited": 0.2093552627,
-        "Fear": 0.1579164055
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6276917506,
-        "Sarcastic": 0.3723082494
-    }
-}{
-    "tweet": "Great editing; get ready for another 5 years of healthy tasty delicious Capitalism; it\u2019s coming to a town near you on 12th December.  It\u2019s starting to look a lot like Christmas,  and it\u2019s starting to look a lot like LABOUR should have respected the democratic Brexit vote \ud83d\ude0a https://t.co/pHQqKk7Ks3",
-    "emotions": {
-        "Bored": 0.0200429547,
-        "Sad": 0.0180965965,
-        "Happy": 0.3917669268,
-        "Angry": 0.088945336,
-        "Excited": 0.4055428138,
-        "Fear": 0.0756053722
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5393942194,
-        "Sarcastic": 0.4606057806
-    }
-}{
-    "tweet": "Brexit catastrofuck \nLied about new hospitals\nSuppressed Russia report\nNHS in meltdown\nWorst A&amp;E waits ever\n4m kids in poverty\nHomelessness up 165%\nSocial care in crisis\nFood banks in schools\n130k deaths through austerity \n\nVoters: \n\u201cMore of that, please\u201d https://t.co/eLdXZF55CP",
-    "emotions": {
-        "Bored": 0.030221502,
-        "Sad": 0.2003239883,
-        "Happy": 0.0199772758,
-        "Angry": 0.5585603832,
-        "Excited": 0.0638826054,
-        "Fear": 0.1270342453
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.5747524826,
-        "Sarcastic": 0.4252475174
-    }
-}{
-    "tweet": "@perth4europe There's been a deliberate suppression of Scottish supporters of Brexit since the referendum in 2016.",
-    "emotions": {
-        "Bored": 0.0574194627,
-        "Sad": 0.1594940689,
-        "Happy": 0.1854005646,
-        "Angry": 0.2384651817,
-        "Excited": 0.133602072,
-        "Fear": 0.22561865
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6285433905,
-        "Sarcastic": 0.3714566095
-    }
-}{
-    "tweet": "This should be shown in schools https://t.co/WmOns06sWC",
-    "emotions": {
-        "Bored": 0.2093652323,
-        "Sad": 0.1768140715,
-        "Happy": 0.0649266671,
-        "Angry": 0.3374313942,
-        "Excited": 0.0714841525,
-        "Fear": 0.1399784824
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.3821986816,
-        "Sarcastic": 0.6178013184
-    }
-}{
-    "tweet": "Please share relentlessly. https://t.co/m7j56IDlIX",
-    "emotions": {
-        "Bored": 0.0,
-        "Sad": 0.3002814493,
-        "Happy": 0.2783192687,
-        "Angry": 0.1018645078,
-        "Excited": 0.1385806815,
-        "Fear": 0.1809540927
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6892458334,
-        "Sarcastic": 0.3107541666
-    }
-}{
-    "tweet": "@HuckRG @DrTeckKhong It's not a solid Tory seat and the Lib Dems are not standing. \n\nThe Tory candidate is a remainer\n\nDr Khong is the only candidate who can deliver the Brexit we deserve.\n\n#votedrteckkhong",
-    "emotions": {
-        "Bored": 0.0345651911,
-        "Sad": 0.0862853184,
-        "Happy": 0.1331040924,
-        "Angry": 0.4286922469,
-        "Excited": 0.1935083743,
-        "Fear": 0.1238447769
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.6613964882,
-        "Sarcastic": 0.3386035118
-    }
-}{
-    "tweet": "Polling suggests Boris Johnson is set to win a 64 seat majority as Brexit Party support 'squeezed' https://t.co/OLIFzQ1fYN via @Telegraph",
-    "emotions": {
-        "Bored": 0.0358138948,
-        "Sad": 0.0452390345,
-        "Happy": 0.297774656,
-        "Angry": 0.1428239012,
-        "Excited": 0.3330354494,
-        "Fear": 0.1453130642
-    },
-    "sarcasm": {
-        "Non-Sarcastic": 0.7197715019,
-        "Sarcastic": 0.2802284981
-    }
-}
+    {}
+]
