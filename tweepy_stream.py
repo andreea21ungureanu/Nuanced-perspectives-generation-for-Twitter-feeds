@@ -1,6 +1,9 @@
 import tweepy
 import paralleldots 
 import json
+import csv
+import re
+
 
 class TopicListener(tweepy.StreamListener):
     def __init__(self, max_tweets, file_name=""):
@@ -48,7 +51,7 @@ auth.set_access_token("1027862472705945600-cBaQtkTpiPaEf6JNsnGMzO0X69R4dN", "8Du
 api = tweepy.API(auth)
 
 # Configure the stream
-topicListener = TopicListener(20, "tweets.json")
+topicListener = TopicListener(10, "tweets.json")
 stream = tweepy.Stream(auth=api.auth, listener=topicListener)
 
 # Run the stream
@@ -58,27 +61,44 @@ stream.filter(track=["brexit"])
 # Look at the tweets we've collected
 collected_tweets = topicListener.get_tweets();
 print("\nThe streaming ended. The following tweets were collected: ")
-# print(collected_tweets)
 
 # API key for Parallel Dots
 parallel_dots_api_key = "tcIdTixALiJhUj5rZmWF8KziS8w442Fq2zzq1QptEP0"
 paralleldots.set_api_key( parallel_dots_api_key )
 
 # Create file to save the emotions from tweets
-emotions_file = open("emotions.json","a+")
-#emotions_file = open("emotions.txt","a+")
+# emotions_file = open("emotions.json","a+")
 
-print( "\nStarting detecting emotion for the collected tweets:" )
-emotions_file.write('[')
-for tweet_text in collected_tweets:
-    # Convert the emotion data to a python dictonary to get consistency in the emotion doc
-    emotion_dictionary = paralleldots.emotion(tweet_text)
-    emotions_file.write(json.dumps({"tweet": tweet_text, 
-                                    "emotions": emotion_dictionary["emotion"], 
-                                    "sarcasm": paralleldots.sarcasm(tweet_text)
-                                    }))
-    emotions_file.write(',')
-emotions_file.write('{}')
-emotions_file.write(']')
+print( "\nCreate a CSV file to add the data ..." )
+
+with open('emotions.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Tweet_ID", "Tweet_Text", "Excited", "Angry", "Sad", "Happy", "Bored", "Fear"])
+
+    print( "\nStarting detecting emotion for the collected tweets:" )
+    counter = 0
+    for tweet_text in collected_tweets:
+        # Create an id for every tweet
+        counter += 1
+
+        # Convert the emotion data to a python dictonary to get consistency in the emotion doc
+        emotion_dictionary = paralleldots.emotion(tweet_text)
+        individual_emotions = emotion_dictionary["emotion"]
+        
+        # Format the tweets text so that it's all on one line
+        re.sub(' +', ' ', tweet_text)
+        tweet_text = tweet_text.replace('\n','')
+        tweet_text = tweet_text.replace('\t','')
+
+        # Create a CSV table with the retieved information abou the tweet and its emotions
+        writer.writerow([counter, 
+                        tweet_text,
+                        individual_emotions["Excited"], 
+                        individual_emotions["Angry"], 
+                        individual_emotions["Sad"],
+                        individual_emotions["Happy"],
+                        individual_emotions["Bored"],
+                        individual_emotions["Fear"]])
+
 print( "\nTweets just got emotional. Checkout the file!" )
 paralleldots.usage()
