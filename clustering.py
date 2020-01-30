@@ -2,39 +2,51 @@ import json
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 
-tweets = []
-with open('emotions.json', 'r') as f:
-    tweets = json.load(f)
+def load_tweets(file=''):
+    tweets = []
+    with open(file, 'r') as f:
+        tweets = json.load(f)
 
-# Initialize to correct dimensions
-vectors = np.empty((0, 6))
+    return tweets
 
-# Add all the vectors to our matrix
-for tweet in tweets:
-    emotions = tweet['emotions']
-    vector = np.array([[emotions['Excited'],
-                        emotions['Angry'],
-                        emotions['Sad'],
-                        emotions['Happy'],
-                        emotions['Bored'],
-                        emotions['Fear']]])
-    
-    vectors = np.append(vectors, vector, axis=0)
+def divisive_hierarhical_clustering(tweets, nr_of_clusters=3):
+    # Initialize to correct dimensions
+    vectors = np.empty((0, 6))
 
-# Cluster the vectors
-clusters = AgglomerativeClustering(n_clusters=5).fit_predict(vectors)
+    # Add all the vectors to our matrix
+    for tweet in tweets:
+        emotions = tweet['emotions']
+        vector = np.array([[emotions['Excited'],
+                            emotions['Angry'],
+                            emotions['Sad'],
+                            emotions['Happy'],
+                            emotions['Bored'],
+                            emotions['Fear']]])
+        
+        vectors = np.append(vectors, vector, axis=0)
 
-# Annotate each tweet with the cluster id
-result = []
-for i in range(len(tweets)):
-    clustered_tweet = tweets[i]
-    clustered_tweet['cluster'] = int(clusters[i])
+    # Cluster the vectors
+    clusters = AgglomerativeClustering(n_clusters=nr_of_clusters).fit_predict(vectors)
 
-    result.append(clustered_tweet)
+    # Annotate each tweet with the cluster id
+    result = []
+    for i in range(len(tweets)):
+        clustered_tweet = tweets[i]
+        clustered_tweet['cluster'] = int(clusters[i])
 
-# Sort by cluster id
-result = sorted(result, key=lambda tweet: tweet['cluster'])
+        result.append(clustered_tweet)
 
-# Dump to a file
-with open("clustered_tweets.json","w") as file:
-    file.write(json.dumps(result))
+    # Sort by cluster id
+    result = sorted(result, key=lambda tweet: tweet['cluster'])
+
+    return result
+
+def clustered_file_creation(tweets, file=''):
+    # Dump to a file
+    with open(file,"w") as file:
+        file.write(json.dumps(tweets))
+
+if __name__ == '__main__':
+    tweets = load_tweets("emotions.json")
+    clustered_tweets = divisive_hierarhical_clustering(tweets)
+    clustered_file_creation(clustered_tweets, "clustered_tweets.json")
