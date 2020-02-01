@@ -34,11 +34,12 @@ class EmotionsAnnotator:
         return annotated_tweets
 
     def __save_annotations(self, annotated_tweets):
-        with open(self.file_name, 'a+') as infile, open(self.file_name, 'w') as outfile:
+        with open(self.file_name, 'r') as infile:
             try:
                 current_annotated_tweets = json.load(infile)
-                tweets = current_annotated_tweets + annotated_tweets
-                json.dump(tweets, outfile)
             except JSONDecodeError:
-                json.dump(annotated_tweets, outfile)
+                current_annotated_tweets = []
+
+        with open(self.file_name, 'w') as outfile:
+            json.dump(current_annotated_tweets + annotated_tweets, outfile)
 

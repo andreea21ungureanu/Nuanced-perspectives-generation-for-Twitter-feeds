@@ -1,4 +1,5 @@
 import json
+from json.decoder import JSONDecodeError
 import tweepy
 
 class TopicListener(tweepy.StreamListener):
@@ -35,9 +36,22 @@ class TopicListener(tweepy.StreamListener):
             except AttributeError:
                 return status.text
 
+    # def save_to_file(self):
+    #     if self.file_name != "":
+    #         file = open(self.file_name, "a")
+    #         file.write(json.dumps(self.tweets))
+    #         file.write("\n")
+    #         file.close()
+    
     def save_to_file(self):
-        if self.file_name != "":
-            file = open(self.file_name, "a")
-            file.write(json.dumps(self.tweets))
-            file.write("\n")
-            file.close()
+        if self.file_name == "":
+            return
+        
+        with open(self.file_name, 'r') as infile:
+            try:
+                current_tweets = json.load(infile)
+            except JSONDecodeError:
+                current_tweets = []
+
+        with open(self.file_name, 'w') as outfile:
+            json.dump(current_tweets + self.tweets, outfile)
