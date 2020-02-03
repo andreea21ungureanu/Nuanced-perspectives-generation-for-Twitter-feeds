@@ -13,8 +13,9 @@ SECOND_TYPE_EMOTIONS = {("Happy", "Fear"): "Guilt",
 
 def load_clusters(file=''):
     clusters = []
-    with open(file, 'r') as f:
-        clusters = json.load(f)
+    # with open(file, 'r') as f:
+    with open(os.path.join('./resources/',file), "r") as file:
+        clusters = json.load(file)
 
     return clusters
 

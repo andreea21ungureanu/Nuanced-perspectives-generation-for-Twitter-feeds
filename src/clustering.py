@@ -4,8 +4,9 @@ from sklearn.cluster import AgglomerativeClustering
 
 def load_tweets(file=''):
     tweets = []
-    with open(file, 'r') as f:
-        tweets = json.load(f)
+    # with open(file, 'r') as f:
+    with open(os.path.join('./resources/',file), "r") as file:
+        tweets = json.load(file)
 
     return tweets
 
@@ -71,7 +72,8 @@ def create_centroids(tweets):
 
 def clustered_file_creation(tweets, file=''):
     # Dump to a filec
-    with open(file,"w") as file:
+    # with open(file,"w") as file:
+    with open(os.path.join('./resources/',file), "w") as file:
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
