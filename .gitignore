@@ -1,0 +1,6 @@
+.DS_Store
+.vscode/
+src/__pycache__/
+view/__pycache__/
+__pycache__/
+*.pyc
