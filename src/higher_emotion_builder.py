@@ -1,4 +1,5 @@
 import json
+import os
 
 # TODO: Add not bored
 SECOND_TYPE_EMOTIONS = {("Happy", "Fear"): "Guilt",
@@ -14,7 +15,7 @@ SECOND_TYPE_EMOTIONS = {("Happy", "Fear"): "Guilt",
 def load_clusters(file=''):
     clusters = []
     # with open(file, 'r') as f:
-    with open(os.path.join('./resources/',file), "r") as file:
+    with open(file, "r") as file:
         clusters = json.load(file)
 
     return clusters
@@ -41,10 +42,33 @@ def interpret_centroids(clusters):
         for emotions, higher_emotion in SECOND_TYPE_EMOTIONS.items():
             if (emotions[0] == emotions_to_add[0] and emotions[1] == emotions_to_add[1]) or (emotions[0] == emotions_to_add[1] and emotions[1] == emotions_to_add[0]):
                 higher_emotions_dict[cluster_number] = higher_emotion
-    print(higher_emotions_dict)
+   
     return higher_emotions_dict
 
+def higher_emotion_centroids(clusters):
+    higher_emotions_clusters_dict = {}
+
+    for cluster_number, centroid_normal_emotions in clusters.items():
+        temp_higher_emotion_dict = {}
+        for normal_pair_emotions, higher_emotion in SECOND_TYPE_EMOTIONS.items():
+            temp_higher_emotion_dict[higher_emotion] = centroid_normal_emotions[normal_pair_emotions[0]] + centroid_normal_emotions[normal_pair_emotions[1]]
+        
+        higher_emotions_clusters_dict[cluster_number] = temp_higher_emotion_dict
+
+    return higher_emotions_clusters_dict
+
+
+def clusters_file_creation(tweets, file=''):
+    # Dump to a file
+    # with open(file,"w") as file:
+    with open(file, "w") as file:
+        file.write(json.dumps(tweets))
+
+
 if __name__ == '__main__':
-    centroids_of_tweets = load_clusters("centroids_of_tweets.json")
+    centroids_of_tweets = load_clusters("../resources/centroids_of_tweets.json")
     clustered_tweets = interpret_centroids(centroids_of_tweets)
+    higher_emotion_clustered_tweets = higher_emotion_centroids(centroids_of_tweets)
+    clusters_file_creation(higher_emotion_clustered_tweets, "../resources/higher_emotions_centroids_of_tweets.json")
+    clusters_file_creation(clustered_tweets, "../resources/higher_emotions.json")
 

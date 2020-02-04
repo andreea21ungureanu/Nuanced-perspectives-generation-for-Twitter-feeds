@@ -41,11 +41,11 @@ class TopicListener(tweepy.StreamListener):
         if self.file_name == "":
             return
         
-        with open(os.path.join('./resources/',self.file_name), "r") as infile:
+        with open(self.file_name, "r") as infile:
             try:
                 current_tweets = json.load(infile)
             except JSONDecodeError:
                 current_tweets = []
 
-        with open(os.path.join('./resources/',self.file_name), "w") as outfile:
+        with open(self.file_name, "w") as outfile:
             json.dump(current_tweets + self.tweets, outfile)

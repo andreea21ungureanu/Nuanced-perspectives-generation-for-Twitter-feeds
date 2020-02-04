@@ -1,11 +1,12 @@
 import json
 import numpy as np
+import os
 from sklearn.cluster import AgglomerativeClustering
 
 def load_tweets(file=''):
     tweets = []
     # with open(file, 'r') as f:
-    with open(os.path.join('./resources/',file), "r") as file:
+    with open(file, "r") as file:
         tweets = json.load(file)
 
     return tweets
@@ -71,14 +72,14 @@ def create_centroids(tweets):
     return centroids_dict
 
 def clustered_file_creation(tweets, file=''):
-    # Dump to a filec
+    # Dump to a file
     # with open(file,"w") as file:
-    with open(os.path.join('./resources/',file), "w") as file:
+    with open(file, "w") as file:
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("emotions.json")
+    tweets = load_tweets("../resources/emotions.json")
     clustered_tweets = divisive_hierarhical_clustering(tweets)
     centroids = create_centroids(clustered_tweets)
-    clustered_file_creation(clustered_tweets, "clustered_tweets.json")
-    clustered_file_creation(centroids, "centroids_of_tweets.json")
+    clustered_file_creation(clustered_tweets, "../resources/clustered_tweets.json")
+    clustered_file_creation(centroids, "../resources/centroids_of_tweets.json")

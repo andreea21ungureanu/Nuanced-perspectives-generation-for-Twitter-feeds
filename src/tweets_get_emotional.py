@@ -42,7 +42,7 @@ def sanitise_tweets(tweets):
 
 def annotate_tweets(tweets):
     print( "\nStarting detecting emotion for the collected tweets:" )
-    annotator = EmotionsAnnotator(file_name="emotions.json")
+    annotator = EmotionsAnnotator(file_name="../resources/emotions.json")
     
     print( "\nTweets just got emotional. Checkout the file!" )
     return annotator.annotate(tweets)
@@ -50,7 +50,7 @@ def annotate_tweets(tweets):
 
 if __name__ == '__main__':
     api = initialise_twitter_api()
-    tweets = collect_tweets(api, 2, "tweets.json")
+    tweets = collect_tweets(api, 2, "../resources/tweets.json")
     sanitised_tweets = sanitise_tweets(tweets)
     annotate_tweets(sanitised_tweets)
 
