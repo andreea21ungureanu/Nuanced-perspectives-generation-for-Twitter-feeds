@@ -2,6 +2,7 @@ import json
 import numpy as np
 import os
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import KMeans
 
 def load_tweets(file=''):
     tweets = []
@@ -11,8 +12,7 @@ def load_tweets(file=''):
 
     return tweets
 
-def divisive_hierarhical_clustering(tweets, nr_of_clusters=3):
-    # Initialize to correct dimensions
+def create_np_emotions_array(tweets):
     vectors = np.empty((0, 6))
 
     # Add all the vectors to our matrix
@@ -27,9 +27,9 @@ def divisive_hierarhical_clustering(tweets, nr_of_clusters=3):
         
         vectors = np.append(vectors, vector, axis=0)
 
-    # Cluster the vectors
-    clusters = AgglomerativeClustering(n_clusters=nr_of_clusters).fit_predict(vectors)
+    return vectors
 
+def create_clustering_result_vector(tweets, clusters):
     # Annotate each tweet with the cluster id
     result = []
     for i in range(len(tweets)):
@@ -43,11 +43,27 @@ def divisive_hierarhical_clustering(tweets, nr_of_clusters=3):
 
     return result
 
+def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
+    vectors = create_np_emotions_array(tweets)
+
+    # Cluster the vectors using Agglomerative clustering
+    divisive_hierarhical_clusters = AgglomerativeClustering(n_clusters=nr_of_clusters).fit_predict(vectors)
+
+    return divisive_hierarhical_clusters
+
+def kmeans_clustering(tweets, nr_of_clusters=5):
+    vectors = create_np_emotions_array(tweets)
+
+    # Cluster using Kmeans
+    kmeans_clusters = KMeans(n_clusters=nr_of_clusters, random_state=0).fit_predict(vectors)
+
+    return kmeans_clusters
+
 def create_centroids(tweets):
     centroids_dict = {}
     cluster_memeber_count = {}
 
-    #Create dictionary of dictionary of the summed emotions for a cluster
+    # Create dictionary of dictionary of the summed emotions for a cluster
     for tweet in tweets:
         emotions_dict = tweet['emotions']
         current_centroid = centroids_dict.get(tweet['cluster'], {})
@@ -78,8 +94,19 @@ def clustered_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("../resources/emotions.json")
-    clustered_tweets = divisive_hierarhical_clustering(tweets)
-    centroids = create_centroids(clustered_tweets)
-    clustered_file_creation(clustered_tweets, "../resources/clustered_tweets.json")
-    clustered_file_creation(centroids, "../resources/centroids_of_tweets.json")
+    tweets = load_tweets("./resources/emotions.json")
+
+    divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
+    divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)
+    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./resources/clustered_tweets.json")
+
+    divisive_hierarhical_centroids = create_centroids(divisive_hierarhical_clustered_tweets)
+    clustered_file_creation(divisive_hierarhical_centroids, "./resources/centroids_of_tweets.json")
+
+    kmeans_clusters = kmeans_clustering(tweets)
+    kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
+    clustered_file_creation(kmeans_clustered_tweets, "./resources/kmeans_clustered_tweets.json")
+
+
+    
+    

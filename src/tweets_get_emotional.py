@@ -50,7 +50,7 @@ def annotate_tweets(tweets):
 
 if __name__ == '__main__':
     api = initialise_twitter_api()
-    tweets = collect_tweets(api, 2, "../resources/tweets.json")
+    tweets = collect_tweets(api, 30, "../resources/tweets.json")
     sanitised_tweets = sanitise_tweets(tweets)
     annotate_tweets(sanitised_tweets)
 
