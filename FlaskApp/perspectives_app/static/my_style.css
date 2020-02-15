@@ -1,0 +1,17 @@
+.btn {
+  margin: 10px;
+}
+
+.rowButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+}
+
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
