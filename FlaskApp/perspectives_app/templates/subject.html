@@ -11,19 +11,44 @@
     <link rel="stylesheet" href="static/owl.carousel.min.css">
     <link rel="stylesheet" href="static/jquery.fancybox.min.css">
     <link rel="stylesheet" href="static/style.css">
-    {% comment %} <script src="templates/subject.js"> {% endcomment %}
+    <link rel="stylesheet" href="static/subject.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='subject.js') }}"></script>
+    
 
     <title>Choose a subject, any subject, not that subject</title>
 
   </head>
   <body>
-    {% if subject %}
-        <h1> {{ subject }} </h1>
-    {% else %}
-        <h1> We will make sure to analyse this subject soon! </h1>
-    
-    
 
+    <h1 class="subject-header">#Brexit</h1>
+  
+    <div class="persp-container">
+      <div id="persp-0" class="persp">
+        <h1 class="persp-header"></h1>
+        <h2 class="persp-sub-header"></h2>
+        <img src="static/plot_0.png" class="radar-chart"></img>
+        <p class="persp-prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non ex ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam varius ut mi ut fringilla</p>
+        <div class="tweet-list">
+        </div>
+      </div>
+      <div id="persp-1" class="persp">
+        <h1 class="persp-header"></h1>
+        <h2 class="persp-sub-header"></h2>
+        <img src="static/plot_1.png" class="radar-chart"></img>
+        <p class="persp-prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non ex ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam varius ut mi ut fringilla</p>
+        <div class="tweet-list">
+        </div>
+      </div>
+      <div id="persp-2" class="persp">
+        <h1 class="persp-header"></h1>
+        <h2 class="persp-sub-header"></h2>
+        <img src="static/plot_2.png" class="radar-chart"></img>
+        <p class="persp-prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non ex ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam varius ut mi ut fringilla</p>
+        <div class="tweet-list">
+        </div>
+      </div>
+    </div>
+    
 
   <!-- Footer start -->
     <footer class="footer">
@@ -51,4 +76,6 @@
     </footer>
     <!-- Footer end -->
   </body>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='subject.js') }}"></script>
 </html>
