@@ -8,7 +8,7 @@ function allDataLoaded() {
 }
 
 function addPerspectivesHTML() {
-    fetch("static/perspective.html").then((response) => response.text())
+    fetch("static/html/perspective.html").then((response) => response.text())
         .then((text) => {
 
             // Find the perspective div by id
@@ -38,7 +38,7 @@ function addPerspectivesHTML() {
 
                 // Find the img element and set it to the radar chart
                 const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
-                clusterImg.src = "static/plot_" + clusterIdx + ".png";
+                clusterImg.src = "static/images/plot_" + clusterIdx + ".png";
 
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
@@ -55,7 +55,7 @@ function addPerspectivesHTML() {
 }
 
 
-fetch("static/tweets.html").then((resp) => resp.text())
+fetch("static/html/tweets.html").then((response) => response.text())
 .then((text) => {
     tweetHtml = text;
 });
