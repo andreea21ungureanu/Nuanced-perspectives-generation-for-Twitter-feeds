@@ -1,9 +1,10 @@
 const clusterToHigherEmotion = new Map();
 const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
+let tweetHtml;
 
 function allDataLoaded() {
-    return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0;
+    return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
 }
 
 function addPerspectivesHTML() {
@@ -13,9 +14,10 @@ function addPerspectivesHTML() {
             // Find the perspective div by id
             const perspective_html = text;
             const persp_container = document.getElementById("perspectives");
-
+                
             // Iterate over the clusters (keys in one of the maps)
             for (clusterIdx of clusterToHigherEmotion.keys()) {
+                console.log(clusterIdx);
                 
                 // Creating an element and adding the html string to it to parse into a html
                 // object. This lets us query to find the specific elements such as the header.
@@ -37,10 +39,26 @@ function addPerspectivesHTML() {
                 // Find the img element and set it to the radar chart
                 const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
                 clusterImg.src = "static/plot_" + clusterIdx + ".png";
+
+                // Find the p element and set it to the tweets text
+                const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
+                for (const tweet of clusterToTweets.get(clusterIdx)) {
+                    const tweetContainer = document.createElement("div");
+                    tweet_list.appendChild(tweetContainer);
+                    tweetContainer.innerHTML += tweetHtml;
+                    tweetObject = tweetContainer.getElementsByClassName("tweeto")[0];
+                    tweetObject.innerText = tweet.tweet
+                }
+                
             }
-            
         });
 }
+
+
+fetch("static/tweets.html").then((resp) => resp.text())
+.then((text) => {
+    tweetHtml = text;
+});
 
 fetch("static/higher_emotions.json").then((response) => response.json())
     .then((json) => {
@@ -70,14 +88,15 @@ fetch("static/clustered_tweets.json").then((response) => response.json())
     .then((json) => {
 
         for (tweet of json) {     
-            if (!clusterToTweets.has(tweet.cluster)) {
-                clusterToTweets.set(tweet.cluster, []);
+            const tweetCluster = "" + tweet.cluster;
+            if (!clusterToTweets.has(tweetCluster)) {
+                clusterToTweets.set(tweetCluster, []);
             }
-            clusterToTweets.get(tweet.cluster).push(tweet);
+            clusterToTweets.get(tweetCluster).push(tweet);
         }
         
         if (allDataLoaded()) {
             addPerspectivesHTML();
         }
     });
-
+  
