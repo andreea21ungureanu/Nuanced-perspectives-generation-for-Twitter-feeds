@@ -1,3 +1,8 @@
+.subject-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .subject-header {
     text-align: center;
     font-size: 25px;
@@ -16,9 +21,10 @@
     max-width: 400px;
     margin: 0px 30px;
     flex-direction: column;
-    justify-content: center;
+    height: 100%;
     text-align: center;
     align-items: center;
+    overflow: auto;
 }
 
 .persp-prose {
@@ -33,3 +39,10 @@
     width: 300px;
     height: 300px;
 }
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }

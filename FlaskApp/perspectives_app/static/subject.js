@@ -17,8 +17,7 @@ function addPerspectivesHTML() {
                 
             // Iterate over the clusters (keys in one of the maps)
             for (clusterIdx of clusterToHigherEmotion.keys()) {
-                console.log(clusterIdx);
-                
+    
                 // Creating an element and adding the html string to it to parse into a html
                 // object. This lets us query to find the specific elements such as the header.
                 const clusterHtml = document.createElement("div");
@@ -43,15 +42,23 @@ function addPerspectivesHTML() {
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
                 for (const tweet of clusterToTweets.get(clusterIdx)) {
-                    const tweetContainer = document.createElement("div");
+                    const tweetContainer = document.createElement("li");
                     tweet_list.appendChild(tweetContainer);
                     tweetContainer.innerHTML += tweetHtml;
-                    tweetObject = tweetContainer.getElementsByClassName("tweeto")[0];
+                    tweetObject = tweetContainer.getElementsByClassName("tweet-body")[0];
                     tweetObject.innerText = tweet.tweet
-                }
-                
+                }                
             }
         });
+
+}
+
+window.addEventListener("resize", setContainerHeight);
+document.addEventListener("DOMContentLoaded", setContainerHeight);
+
+function setContainerHeight() {
+    const subjectContainer = document.getElementsByClassName("subject-container")[0];
+    subjectContainer.style.height = window.innerHeight + "px";
 }
 
 
