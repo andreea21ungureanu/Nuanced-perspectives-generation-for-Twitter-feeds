@@ -3,6 +3,8 @@ const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
 let tweetHtml;
 
+const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
 function allDataLoaded() {
     return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
 }
@@ -10,7 +12,6 @@ function allDataLoaded() {
 function addPerspectivesHTML() {
     fetch("static/html/perspective.html").then((response) => response.text())
         .then((text) => {
-
             // Find the perspective div by id
             const perspective_html = text;
             const persp_container = document.getElementById("perspectives");
@@ -45,8 +46,8 @@ function addPerspectivesHTML() {
                     const tweetContainer = document.createElement("li");
                     tweet_list.appendChild(tweetContainer);
                     tweetContainer.innerHTML += tweetHtml;
-                    tweetObject = tweetContainer.getElementsByClassName("tweet-body")[0];
-                    tweetObject.innerText = tweet.tweet
+                    tweetText = tweetContainer.getElementsByClassName("tweet-text")[0];
+                    tweetText.innerText = tweet.tweet.replace(urlRegex, "");
                 }                
             }
         });
@@ -61,6 +62,11 @@ function setContainerHeight() {
     subjectContainer.style.height = window.innerHeight + "px";
 }
 
+function imagify(text) {
+    return text.replace(urlRegex, (url) => {
+        return '<img src="' + url + '"></img>';
+    });
+}
 
 fetch("static/html/tweets.html").then((response) => response.text())
 .then((text) => {
