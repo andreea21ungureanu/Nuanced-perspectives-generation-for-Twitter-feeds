@@ -81,7 +81,7 @@ if __name__ == '__main__':
     # Loop to plot
     for row in range(0, len(plot_data.index)):
         make_spider(plot_data, row=row, title="", color=my_palette(row))
-        plt.savefig('plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
+        plt.savefig('./FlaskApp/perspectives_app/static/images/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
         plt.clf()
     plt.show()
     
