@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/my_style.css">
 
+    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+
     <title>Choose a subject, any subject, not that subject</title>
 
   </head>
@@ -22,11 +24,6 @@
     <header class="header abs-header">
       <div class="container">
         <div class="row align-items-end">
-          <div class="col-md-3">
-            <a href="index.html" class="logo">
-              <img src="images/logo.png" alt="">
-            </a>
-          </div>
           <div class="col-md-9">
             <nav class="primary-menu">
               <a href="javascript:void(0);" class="mobile-menu"><i class="ti-menu"></i></a>
@@ -52,12 +49,12 @@
             <div class="banner-content">
               <span>Nuanced Perspectives For Tweets</span>
               <h2>Choose a subject</h2>
-              <div class="rowButtons">
-                <a href="templates/subject.html" class="btn">Brexit</a>
-                <a href="#" class="btn">Subject2</a>
-                <a href="#" class="btn">Subject3</a>
-                <a href="#" class="btn">Subject4</a>
-              </div>
+              <form id="subjectForm" autocomplete="off" action="#">
+                <div class="autocomplete" style="width:300px;">
+                  <input id="subjectFill" type="text" placeholder="Search for a subject...">
+                </div>
+                <input type="submit">
+              </form>
             </div>
           </div>
         </div>
@@ -86,6 +83,6 @@
     <!-- Footer end -->
 
     <!-- JS -->
-   
+  <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
   </body>
 </html>

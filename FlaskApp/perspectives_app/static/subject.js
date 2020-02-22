@@ -10,7 +10,7 @@ function allDataLoaded() {
 }
 
 function addPerspectivesHTML() {
-    fetch("static/html/perspective.html").then((response) => response.text())
+    fetch("/static/html/perspective.html").then((response) => response.text())
         .then((text) => {
             // Find the perspective div by id
             const perspective_html = text;
@@ -38,7 +38,7 @@ function addPerspectivesHTML() {
 
                 // Find the img element and set it to the radar chart
                 const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
-                clusterImg.src = "static/images/plot_" + clusterIdx + ".png";
+                clusterImg.src = "/static/images/plot_" + clusterIdx + ".png";
 
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
@@ -68,12 +68,12 @@ function imagify(text) {
     });
 }
 
-fetch("static/html/tweets.html").then((response) => response.text())
+fetch("/static/html/tweets.html").then((response) => response.text())
 .then((text) => {
     tweetHtml = text;
 });
 
-fetch("static/higher_emotions.json").then((response) => response.json())
+fetch("/static/higher_emotions.json").then((response) => response.json())
     .then((json) => {
 
         for ([clusterIdx, dominantEmotion] of Object.entries(json)) {    
@@ -85,7 +85,7 @@ fetch("static/higher_emotions.json").then((response) => response.json())
         }
     });
 
-fetch("static/centroids_of_tweets.json").then((response) => response.json())
+fetch("/static/centroids_of_tweets.json").then((response) => response.json())
     .then((json) => {
 
         for ([clusterIdx, emotionScores] of Object.entries(json)) {     
@@ -97,7 +97,7 @@ fetch("static/centroids_of_tweets.json").then((response) => response.json())
         } 
     });
 
-fetch("static/clustered_tweets.json").then((response) => response.json())
+fetch("/static/clustered_tweets.json").then((response) => response.json())
     .then((json) => {
 
         for (tweet of json) {     

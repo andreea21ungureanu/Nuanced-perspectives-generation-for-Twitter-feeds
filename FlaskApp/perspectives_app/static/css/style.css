@@ -46,7 +46,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 img {
-  display: block;
   width: 100%;
   height: auto;
 }
@@ -1025,4 +1024,68 @@ section {
 
 .footer .copyright a {
   color: #ff817e;
+}
+
+/* Style the search box inside the navigation bar */
+.search  {
+  float: center;
+  padding: 6px;
+  width: 400px;
+  height: 50px;
+  border-color: #ff817e;
+  font-size: 17px;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: #ff817e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #ffc8c7 !important; 
+  color: #ffffff; 
 }
