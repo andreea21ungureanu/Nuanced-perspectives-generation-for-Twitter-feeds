@@ -7,9 +7,8 @@ from . import app
 def home():
     return render_template("home.html")
 
-@app.route("/subject/")
 @app.route("/subject/<subject>")
-def hello_there(subject = None):
+def subject(subject=None):
     return render_template(
         "subject.html",
         subject=subject

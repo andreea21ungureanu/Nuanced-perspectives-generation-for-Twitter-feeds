@@ -73,7 +73,7 @@ fetch("/static/html/tweets.html").then((response) => response.text())
     tweetHtml = text;
 });
 
-fetch("/static/higher_emotions.json").then((response) => response.json())
+fetch("/static/json/higher_emotions.json").then((response) => response.json())
     .then((json) => {
 
         for ([clusterIdx, dominantEmotion] of Object.entries(json)) {    
@@ -85,7 +85,7 @@ fetch("/static/higher_emotions.json").then((response) => response.json())
         }
     });
 
-fetch("/static/centroids_of_tweets.json").then((response) => response.json())
+fetch("/static/json/centroids_of_tweets.json").then((response) => response.json())
     .then((json) => {
 
         for ([clusterIdx, emotionScores] of Object.entries(json)) {     
@@ -97,7 +97,7 @@ fetch("/static/centroids_of_tweets.json").then((response) => response.json())
         } 
     });
 
-fetch("/static/clustered_tweets.json").then((response) => response.json())
+fetch("/static/json/clustered_tweets.json").then((response) => response.json())
     .then((json) => {
 
         for (tweet of json) {     

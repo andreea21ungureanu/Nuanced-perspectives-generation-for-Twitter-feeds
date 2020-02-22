@@ -98,14 +98,14 @@ if __name__ == '__main__':
 
     divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
     divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)
-    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./resources/clustered_tweets.json")
+    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/clustered_tweets.json")
 
     divisive_hierarhical_centroids = create_centroids(divisive_hierarhical_clustered_tweets)
-    clustered_file_creation(divisive_hierarhical_centroids, "./resources/centroids_of_tweets.json")
+    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/centroids_of_tweets.json")
 
     kmeans_clusters = kmeans_clustering(tweets)
     kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
-    clustered_file_creation(kmeans_clustered_tweets, "./resources/kmeans_clustered_tweets.json")
+    clustered_file_creation(kmeans_clustered_tweets, "./FlaskApp/perspectives_app/static/json/kmeans_clustered_tweets.json")
 
 
     
