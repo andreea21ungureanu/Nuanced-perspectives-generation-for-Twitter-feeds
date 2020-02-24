@@ -2,11 +2,52 @@ const clusterToHigherEmotion = new Map();
 const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
 let tweetHtml;
+let jsonDirectory;
+let imagesDirectory;
+
 
 const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 
 function allDataLoaded() {
     return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
+}
+
+// Parse the URL parameter replated to the topic
+function getParameterByName(name, url) {
+    // Retrieve the URL
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+
+    // Retrieve just the query string and remove additional information
+    var regex = new RegExp(name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    results[2] = results[2].replace("?", "");
+
+    // Return the query string or null
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// Choose information that should be displayed on the page given the query string of the URL
+function chooseSubject() {
+    let topic = getParameterByName("topic");
+    const subject_header = document.getElementsByClassName("subject-header")[0];
+
+    subject_header.innerText = "#" + topic;
+    jsonDirectory = "/static/json/" + topic;
+    imagesDirectory = "/static/images/" + topic + "/plot_";
+}
+
+function setContainerHeight() {
+    const subjectContainer = document.getElementsByClassName("subject-container")[0];
+    subjectContainer.style.height = window.innerHeight + "px";
+}
+
+function imagify(text) {
+    return text.replace(urlRegex, (url) => {
+        return '<img src="' + url + '"></img>';
+    });
 }
 
 function addPerspectivesHTML() {
@@ -50,23 +91,14 @@ function addPerspectivesHTML() {
                     tweetText.innerText = tweet.tweet.replace(urlRegex, "");
                 }                
             }
+            // Change the subject name depending on the chosen subject on the home page
+            chooseSubject();
         });
 
 }
 
 window.addEventListener("resize", setContainerHeight);
 document.addEventListener("DOMContentLoaded", setContainerHeight);
-
-function setContainerHeight() {
-    const subjectContainer = document.getElementsByClassName("subject-container")[0];
-    subjectContainer.style.height = window.innerHeight + "px";
-}
-
-function imagify(text) {
-    return text.replace(urlRegex, (url) => {
-        return '<img src="' + url + '"></img>';
-    });
-}
 
 fetch("/static/html/tweets.html").then((response) => response.text())
 .then((text) => {

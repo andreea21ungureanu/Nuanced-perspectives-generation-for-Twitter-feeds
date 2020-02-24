@@ -93,7 +93,7 @@ function autocomplete(inp, arr) {
 
 function constructURL() {
     const subjectTitle = document.getElementById('subjectFill').value;
-    return 'subject/' + subjectTitle;
+    return 'subject/topic=' + subjectTitle;
 }
 
 var subjects = ["Brexit", "Sub11", "Sub2"];
