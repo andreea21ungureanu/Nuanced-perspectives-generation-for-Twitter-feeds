@@ -1,4 +1,5 @@
 import enchant
+import json
 from nltk.tokenize import RegexpTokenizer
 import tweepy
 
@@ -10,6 +11,14 @@ def initialise_twitter_api():
     auth.set_access_token("1027862472705945600-cBaQtkTpiPaEf6JNsnGMzO0X69R4dN", "8DuxmQg0cphVsroWQdCxSN5pNQez2QncjCU7F5w6L8EXO")
     
     return tweepy.API(auth)
+
+def load_tweets(file=''):
+    tweets = []
+    # with open(file, 'r') as f:
+    with open(file, "r") as file:
+        tweets = json.load(file)
+
+    return tweets
 
 def collect_tweets(api, nr_of_tweets, file_to_save=''):
     # Configure the stream
@@ -42,15 +51,16 @@ def sanitise_tweets(tweets):
 
 def annotate_tweets(tweets):
     print( "\nStarting detecting emotion for the collected tweets:" )
-    annotator = EmotionsAnnotator(file_name="../resources/emotions.json")
+    annotator = EmotionsAnnotator(file_name="./resources/emotions_brexit.json")
     
     print( "\nTweets just got emotional. Checkout the file!" )
     return annotator.annotate(tweets)
 
 
 if __name__ == '__main__':
-    api = initialise_twitter_api()
-    tweets = collect_tweets(api, 30, "../resources/tweets.json")
+    # api = initialise_twitter_api()
+    # tweets = collect_tweets(api, 30, "../resources/brexit_tweets.json")
+    tweets = load_tweets("./resources/brexit_tweets.json")
     sanitised_tweets = sanitise_tweets(tweets)
     annotate_tweets(sanitised_tweets)
 

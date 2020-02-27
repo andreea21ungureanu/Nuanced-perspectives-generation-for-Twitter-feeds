@@ -2,6 +2,7 @@ import json
 from json.decoder import JSONDecodeError
 import os
 import paralleldots 
+import time
 
 class EmotionsAnnotator:
     PARALLEL_DOTS_API_KEY = "tcIdTixALiJhUj5rZmWF8KziS8w442Fq2zzq1QptEP0"
@@ -14,23 +15,33 @@ class EmotionsAnnotator:
 
     def annotate(self, tweets):
         annotated_tweets = []
+        counter = 0
 
         for tweet_text in tweets:
             # Convert the emotion data to a python dictonary to get consistency in the emotion doc
+            if counter >= 60:
+                counter = 0
+                time.sleep(60)
+            
             emotion_dictionary = paralleldots.emotion(tweet_text)
+            counter += 1
             
             annotated_tweet = {"tweet": tweet_text, 
                                 "emotions": emotion_dictionary["emotion"], 
                                 }
+           
 
             if self.sarcasm == True:
                 sarcasm_dictionary = paralleldots.sarcasm(tweet_text)
                 annotated_tweet["sarcasm"] = sarcasm_dictionary
-
+        
             annotated_tweets.append(annotated_tweet)
             
-        if self.file_name != "":
             self.__save_annotations(annotated_tweets)
+            annotated_tweets = []
+            
+        # if self.file_name != "":
+        #     self.__save_annotations(annotated_tweets)
     
         return annotated_tweets
 

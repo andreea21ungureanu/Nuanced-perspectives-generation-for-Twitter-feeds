@@ -67,9 +67,9 @@ def clusters_file_creation(tweets, file=''):
 
 
 if __name__ == '__main__':
-    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/centroids_of_tweets.json")
+    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/brexit/centroids_of_tweets.json")
     clustered_tweets = interpret_centroids(centroids_of_tweets)
     higher_emotion_clustered_tweets = higher_emotion_centroids(centroids_of_tweets)
-    clusters_file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/higher_emotions_centroids_of_tweets.json")
-    clusters_file_creation(clustered_tweets, "./FlaskApp/perspectives_app/static/json/higher_emotions.json")
+    clusters_file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/higher_emotions_centroids_of_tweets.json")
+    clusters_file_creation(clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/higher_emotions.json")
 
