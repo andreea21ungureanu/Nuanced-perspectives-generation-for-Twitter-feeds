@@ -55,14 +55,7 @@ function autocomplete(inp, arr) {
           currentFocus--;
           /*and and make the current item more visible:*/
           addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
+        } 
         
         document.getElementById("subjectForm").action = constructURL();
     });
@@ -100,7 +93,7 @@ function autocomplete(inp, arr) {
 
 function constructURL() {
     const subjectTitle = document.getElementById('subjectFill').value;
-    return 'subject/' + subjectTitle;
+    return 'subject/topic=' + subjectTitle;
 }
 
 var subjects = ["Brexit", "Sub11", "Sub2"];

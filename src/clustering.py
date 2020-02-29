@@ -4,13 +4,18 @@ import os
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 
+def make_unique(original_list):
+    unique_list = []
+    [unique_list.append(obj) for obj in original_list if obj not in unique_list]
+    return unique_list
+
 def load_tweets(file=''):
     tweets = []
     # with open(file, 'r') as f:
     with open(file, "r") as file:
         tweets = json.load(file)
 
-    return tweets
+    return make_unique(tweets)
 
 def create_np_emotions_array(tweets):
     vectors = np.empty((0, 6))
@@ -94,18 +99,18 @@ def clustered_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("./resources/emotions.json")
+    tweets = load_tweets("./resources/emotions_brexit.json")
 
     divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
     divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)
-    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/clustered_tweets.json")
+    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/clustered_tweets.json")
 
     divisive_hierarhical_centroids = create_centroids(divisive_hierarhical_clustered_tweets)
-    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/centroids_of_tweets.json")
+    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/brexit/centroids_of_tweets.json")
 
-    kmeans_clusters = kmeans_clustering(tweets)
-    kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
-    clustered_file_creation(kmeans_clustered_tweets, "./FlaskApp/perspectives_app/static/json/kmeans_clustered_tweets.json")
+    # kmeans_clusters = kmeans_clustering(tweets)
+    # kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
+    # clustered_file_creation(kmeans_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/kmeans_clustered_tweets.json")
 
 
     

@@ -3,15 +3,63 @@ const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
 let tweetHtml;
 
+let jsonDirectory = "";
+let imagesDirectory = "";
+let clustered_tweets_file = "";
+
+
 const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 
 function allDataLoaded() {
     return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
 }
 
+// Parse the URL parameter replated to the topic
+function getParameterByName(name, url) {
+    // Retrieve the URL
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+
+    // Retrieve just the query string and remove additional information
+    var regex = new RegExp(name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    results[2] = results[2].replace("?", "");
+
+    // Return the query string or null
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// Choose information that should be displayed on the page given the query string of the URL
+function chooseSubject() {
+    let topic = getParameterByName("topic");
+    const subject_header = document.getElementsByClassName("subject-header")[0];
+
+    subject_header.innerText = "#" + topic;
+    jsonDirectory = "/static/json/" + topic;
+    imagesDirectory = "/static/images/" + topic + "/plot_";
+    clustered_tweets_file = jsonDirectory + "/clustered_tweets.json";
+    centroids_of_tweets_file = jsonDirectory + "/centroids_of_tweets.json";
+    higher_emotions_file = jsonDirectory + "/higher_emotions.json";
+}
+
+function setContainerHeight() {
+    const subjectContainer = document.getElementsByClassName("subject-container")[0];
+    subjectContainer.style.height = window.innerHeight + "px";
+}
+
+function imagify(text) {
+    return text.replace(urlRegex, (url) => {
+        return '<img src="' + url + '"></img>';
+    });
+}
+
 function addPerspectivesHTML() {
     fetch("/static/html/perspective.html").then((response) => response.text())
         .then((text) => {
+            // Change the subject name depending on the chosen subject on the home page
+
             // Find the perspective div by id
             const perspective_html = text;
             const persp_container = document.getElementById("perspectives");
@@ -38,7 +86,7 @@ function addPerspectivesHTML() {
 
                 // Find the img element and set it to the radar chart
                 const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
-                clusterImg.src = "/static/images/plot_" + clusterIdx + ".png";
+                clusterImg.src = imagesDirectory + clusterIdx + ".png";
 
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
@@ -54,62 +102,56 @@ function addPerspectivesHTML() {
 
 }
 
+function loadJsonResources() {
+    chooseSubject();
+
+    fetch("/static/html/tweets.html").then((response) => response.text())
+    .then((text) => {
+        tweetHtml = text;
+    });
+
+    fetch(higher_emotions_file).then((response) => response.json())
+        .then((json) => {
+
+            for ([clusterIdx, dominantEmotion] of Object.entries(json)) {    
+                clusterToHigherEmotion.set(clusterIdx, dominantEmotion);
+            }
+
+            if (allDataLoaded()) {
+                addPerspectivesHTML();
+            }
+        });
+
+    fetch(centroids_of_tweets_file).then((response) => response.json())
+        .then((json) => {
+
+            for ([clusterIdx, emotionScores] of Object.entries(json)) {     
+                clusterToRawEmotions.set(clusterIdx, Object.entries(emotionScores).sort((entry1, entry2) => entry2[1] - entry1[1]));
+            }
+            
+            if (allDataLoaded()) {
+                addPerspectivesHTML();
+            } 
+        });
+
+    fetch(clustered_tweets_file).then((response) => response.json())
+        .then((json) => {
+
+            for (tweet of json) {     
+                const tweetCluster = "" + tweet.cluster;
+                if (!clusterToTweets.has(tweetCluster)) {
+                    clusterToTweets.set(tweetCluster, []);
+                }
+                clusterToTweets.get(tweetCluster).push(tweet);
+            }
+            
+            if (allDataLoaded()) {
+                addPerspectivesHTML();
+            }
+        });
+}
+
+
 window.addEventListener("resize", setContainerHeight);
 document.addEventListener("DOMContentLoaded", setContainerHeight);
-
-function setContainerHeight() {
-    const subjectContainer = document.getElementsByClassName("subject-container")[0];
-    subjectContainer.style.height = window.innerHeight + "px";
-}
-
-function imagify(text) {
-    return text.replace(urlRegex, (url) => {
-        return '<img src="' + url + '"></img>';
-    });
-}
-
-fetch("/static/html/tweets.html").then((response) => response.text())
-.then((text) => {
-    tweetHtml = text;
-});
-
-fetch("/static/json/higher_emotions.json").then((response) => response.json())
-    .then((json) => {
-
-        for ([clusterIdx, dominantEmotion] of Object.entries(json)) {    
-            clusterToHigherEmotion.set(clusterIdx, dominantEmotion);
-        }
-
-        if (allDataLoaded()) {
-            addPerspectivesHTML();
-        }
-    });
-
-fetch("/static/json/centroids_of_tweets.json").then((response) => response.json())
-    .then((json) => {
-
-        for ([clusterIdx, emotionScores] of Object.entries(json)) {     
-            clusterToRawEmotions.set(clusterIdx, Object.entries(emotionScores).sort((entry1, entry2) => entry2[1] - entry1[1]));
-        }
-        
-        if (allDataLoaded()) {
-            addPerspectivesHTML();
-        } 
-    });
-
-fetch("/static/json/clustered_tweets.json").then((response) => response.json())
-    .then((json) => {
-
-        for (tweet of json) {     
-            const tweetCluster = "" + tweet.cluster;
-            if (!clusterToTweets.has(tweetCluster)) {
-                clusterToTweets.set(tweetCluster, []);
-            }
-            clusterToTweets.get(tweetCluster).push(tweet);
-        }
-        
-        if (allDataLoaded()) {
-            addPerspectivesHTML();
-        }
-    });
-  
+window.addEventListener('DOMContentLoaded', loadJsonResources);

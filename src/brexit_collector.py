@@ -18,7 +18,7 @@ def collect_tweets(api, nr_of_tweets, file_to_save=''):
 
     # Run the stream
     print("Starting the stream ...")
-    stream.filter(track=["brexit"])
+    stream.filter(track=["DemDebate"])
 
     return topicListener.get_tweets()
 
@@ -26,5 +26,5 @@ if __name__ == '__main__':
     api = initialise_twitter_api()
     counter  = 0
     while (counter <= 49):
-        tweets = collect_tweets(api, 5, "resources/brexit_tweets_test.json")
+        tweets = collect_tweets(api, 100, "resources/dem_debate_tweets.json")
         counter += 1

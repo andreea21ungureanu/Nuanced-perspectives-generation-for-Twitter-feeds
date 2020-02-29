@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="static/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/my_style.css">
-
-    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
 
     <title>Choose a subject, any subject, not that subject</title>
 
@@ -26,12 +23,10 @@
         <div class="row align-items-end">
           <div class="col-md-9">
             <nav class="primary-menu">
-              <a href="javascript:void(0);" class="mobile-menu"><i class="ti-menu"></i></a>
               <ul> 
-                <li><a href="">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Suggest Subject</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
               </ul>
             </nav>
           </div>
@@ -51,7 +46,12 @@
               <h2>Choose a subject</h2>
               <form id="subjectForm" autocomplete="off" action="#">
                 <div class="autocomplete" style="width:300px;">
-                  <input id="subjectFill" type="text" placeholder="Search for a subject...">
+                  <input id="subjectFill" type="text" list="subjectList" placeholder="Search for a subject...">
+                  <datalist id="subjectList">
+                    <option value="Brexit">
+                    <option value="Subject 2">
+                    <option value="Subject 3">
+                  </datalist>
                 </div>
                 <input type="submit">
               </form>
@@ -67,22 +67,12 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <nav class="foo-nav">
-              <ul> 
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Suggest Subject</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </nav>
             <p class="copyright">&copy; COPYRIGHT 2019 <a href="https://themeies.com">themeies.com.</a> ALL RIGHTS RESERVED.</p>
           </div>
         </div>
       </div>
     </footer>
     <!-- Footer end -->
-
-    <!-- JS -->
   <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
   </body>
 </html>
