@@ -67,7 +67,7 @@ def make_spider(radar_data, row, title, color):
 
     
 if __name__ == '__main__':
-    higher_emotion_centroids = load_higher_emotion_centroids("../resources/higher_emotions_centroids_of_tweets.json")
+    higher_emotion_centroids = load_higher_emotion_centroids("./resources/higher_emotions_centroids_of_tweets.json")
     plot_data = set_data(higher_emotion_centroids)
     
     # ------- PART 2: Apply to all individuals
@@ -80,6 +80,8 @@ if __name__ == '__main__':
     
     # Loop to plot
     for row in range(0, len(plot_data.index)):
-        make_spider(plot_data, row=row, title='group '+plot_data['group'][row], color=my_palette(row))
+        make_spider(plot_data, row=row, title="", color=my_palette(row))
+        plt.savefig('./FlaskApp/perspectives_app/static/images/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
+        plt.clf()
     plt.show()
     
