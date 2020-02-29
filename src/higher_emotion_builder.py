@@ -17,7 +17,6 @@ def load_clusters(file=''):
     # with open(file, 'r') as f:
     with open(file, "r") as file:
         clusters = json.load(file)
-
     return clusters
 
 def max_two_emotions(cluster_dict):
@@ -39,7 +38,6 @@ def interpret_centroids(clusters):
     
     for cluster_number, centroid in clusters.items():
         emotions_to_add = max_two_emotions(centroid)
-        print(centroid)
         for emotions, higher_emotion in SECOND_TYPE_EMOTIONS.items():
             if (emotions[0] == emotions_to_add[0] and emotions[1] == emotions_to_add[1]) or (emotions[0] == emotions_to_add[1] and emotions[1] == emotions_to_add[0]):
                 higher_emotions_dict[cluster_number] = higher_emotion

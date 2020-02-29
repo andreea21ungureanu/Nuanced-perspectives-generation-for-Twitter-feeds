@@ -4,13 +4,18 @@ import os
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 
+def make_unique(original_list):
+    unique_list = []
+    [unique_list.append(obj) for obj in original_list if obj not in unique_list]
+    return unique_list
+
 def load_tweets(file=''):
     tweets = []
     # with open(file, 'r') as f:
     with open(file, "r") as file:
         tweets = json.load(file)
 
-    return tweets
+    return make_unique(tweets)
 
 def create_np_emotions_array(tweets):
     vectors = np.empty((0, 6))

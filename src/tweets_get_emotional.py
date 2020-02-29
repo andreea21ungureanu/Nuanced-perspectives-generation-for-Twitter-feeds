@@ -12,13 +12,18 @@ def initialise_twitter_api():
     
     return tweepy.API(auth)
 
+def make_unique(original_list):
+    unique_list = []
+    [unique_list.append(obj) for obj in original_list if obj not in unique_list]
+    return unique_list
+
 def load_tweets(file=''):
     tweets = []
     # with open(file, 'r') as f:
     with open(file, "r") as file:
         tweets = json.load(file)
 
-    return tweets
+    return make_unique(tweets)
 
 def collect_tweets(api, nr_of_tweets, file_to_save=''):
     # Configure the stream

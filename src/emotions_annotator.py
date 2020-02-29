@@ -12,6 +12,11 @@ class EmotionsAnnotator:
         self.file_name = file_name
 
         paralleldots.set_api_key(self.PARALLEL_DOTS_API_KEY)
+    
+    def make_unique(self, original_list):
+        unique_list = []
+        [unique_list.append(obj) for obj in original_list if obj not in unique_list]
+        return unique_list
 
     def annotate(self, tweets):
         annotated_tweets = []
@@ -43,17 +48,15 @@ class EmotionsAnnotator:
         # if self.file_name != "":
         #     self.__save_annotations(annotated_tweets)
     
-        return annotated_tweets
+        return make_unique(annotated_tweets)
 
     def __save_annotations(self, annotated_tweets):
-        # with open(self.file_name, 'r') as infile:
         with open(self.file_name, "r") as infile:
             try:
                 current_annotated_tweets = json.load(infile)
             except JSONDecodeError:
                 current_annotated_tweets = []
 
-        # with open(self.file_name, 'w') as outfile:
         with open(self.file_name, "w") as outfile:
             json.dump(current_annotated_tweets + annotated_tweets, outfile)
 
