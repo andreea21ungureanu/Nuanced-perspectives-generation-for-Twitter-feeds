@@ -95,13 +95,13 @@ def create_basic_template(higher_emotions):
     for cluster_number, higher_emotion in higher_emotions.items():
         humaine_value = HUMAINE_EARL_MAP[higher_emotion]
         kind_value = KIND_MAP[higher_emotion]
-
-        if HUMAINE_EARL_MAP[higher_emotion][0] == "":
-            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1];
-        elif HUMAINE_EARL_MAP[higher_emotion][1] == "":
-            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", especially the " + KIND_INTERPRETATION[kind_value] + " part.";
+        
+        if HUMAINE_INTERPRETATION[humaine_value][0] == "":
+            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1]
+        elif HUMAINE_INTERPRETATION[humaine_value][1] == "":
+            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + " part."
         else:
-            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", especially the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1];
+            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1]
 
     return perspective_initial_explanation_dict
 
