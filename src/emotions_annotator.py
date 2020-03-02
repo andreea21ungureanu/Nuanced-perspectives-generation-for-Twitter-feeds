@@ -29,6 +29,7 @@ class EmotionsAnnotator:
                 time.sleep(60)
             
             emotion_dictionary = paralleldots.emotion(tweet_text)
+            #emotion_dictionary['emotion']['abc'] = 1 - emotion_dictionary['emotion']['def']
             counter += 1
             
             annotated_tweet = {"tweet": tweet_text, 

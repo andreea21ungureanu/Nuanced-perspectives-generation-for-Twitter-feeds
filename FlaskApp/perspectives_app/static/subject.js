@@ -1,11 +1,11 @@
 const clusterToHigherEmotion = new Map();
 const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
+const clusterToPerspective = new Map();
 let tweetHtml;
 
 let jsonDirectory = "";
 let imagesDirectory = "";
-let clustered_tweets_file = "";
 
 
 const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -39,9 +39,11 @@ function chooseSubject() {
     subject_header.innerText = "#" + topic;
     jsonDirectory = "/static/json/" + topic;
     imagesDirectory = "/static/images/" + topic + "/plot_";
+
     clustered_tweets_file = jsonDirectory + "/clustered_tweets.json";
     centroids_of_tweets_file = jsonDirectory + "/centroids_of_tweets.json";
     higher_emotions_file = jsonDirectory + "/higher_emotions.json";
+    initial_perpective_file = jsonDirectory + "/initial_perspective.json";
 }
 
 function setContainerHeight() {
@@ -87,6 +89,10 @@ function addPerspectivesHTML() {
                 // Find the img element and set it to the radar chart
                 const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
                 clusterImg.src = imagesDirectory + clusterIdx + ".png";
+
+                // Find the p element and fill in the initial perspective text
+                const clusterIntialPerspective = clusterHtml.getElementsByClassName("persp-prose")[0];
+                clusterIntialPerspective.innerText = clusterToPerspective.get(clusterIdx);
 
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
@@ -149,6 +155,18 @@ function loadJsonResources() {
                 addPerspectivesHTML();
             }
         });
+
+    fetch(initial_perpective_file).then((response) => response.json())
+    .then((json) => {
+
+        for ([clusterIdx, perspective] of Object.entries(json)) {    
+            clusterToPerspective.set(clusterIdx, perspective);
+        }
+
+        if (allDataLoaded()) {
+            addPerspectivesHTML();
+        }
+    });
 }
 
 

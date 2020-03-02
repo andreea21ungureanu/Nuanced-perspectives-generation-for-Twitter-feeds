@@ -18,17 +18,20 @@ def load_tweets(file=''):
     return make_unique(tweets)
 
 def create_np_emotions_array(tweets):
-    vectors = np.empty((0, 6))
+    vectors = np.empty((0, 7))
 
     # Add all the vectors to our matrix
     for tweet in tweets:
         emotions = tweet['emotions']
+        emotions["Surprise"] = 1 - emotions['Bored']
+
         vector = np.array([[emotions['Excited'],
                             emotions['Angry'],
                             emotions['Sad'],
                             emotions['Happy'],
                             emotions['Bored'],
-                            emotions['Fear']]])
+                            emotions['Fear'],
+                            emotions['Surprise']]])
         
         vectors = np.append(vectors, vector, axis=0)
 

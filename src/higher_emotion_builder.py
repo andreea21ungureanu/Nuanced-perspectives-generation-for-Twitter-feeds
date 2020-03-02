@@ -1,15 +1,21 @@
 import json
 import os
 
-# TODO: Add not bored
-SECOND_TYPE_EMOTIONS = {("Happy", "Fear"): "Guilt",
-                        ("Happy", "Excited"): "Delight",
-                        ("Happy", "Angry"): "Pride",
+SECOND_TYPE_EMOTIONS = {("Excited", "Angry"): "Aggressiveness",
+                        ("Excited", "Sad"): "Pessimism",
+                        ("Excited", "Happy"): "Optimism",
+                        ("Excited", "Surprise"): "Confusion",
+                        ("Excited", "Fear"): "Anxiety",
+                        ("Angry", "Sad"): "Envy",
+                        ("Angry", "Happy"): "Pride",
+                        ("Angry", "Surprise"): "Outrage",
+                        ("Angry", "Fear"): "Frozenness",
+                        ("Sad", "Happy"): "Bittersweetness",
+                        ("Sad", "Surprise"): "Disapproval",
                         ("Sad", "Fear"): "Despair",
-                        ("Sad", "Excited"): "Disappointment",
-                        ("Sad", "Angry"): "Envy",
-                        ("Fear", "Excited"): "Alarm",
-                        ("Angry", "Excited"): "Outrage",
+                        ("Happy", "Surprise"): "Delight",
+                        ("Happy", "Fear"): "Guilt",
+                        ("Surprise", "Fear"): "Awe"
                         }
 
 def load_clusters(file=''):
@@ -35,6 +41,7 @@ def max_two_emotions(cluster_dict):
 
 def interpret_centroids(clusters):
     higher_emotions_dict = {}
+    basic_and_higher_emotions_dict = {}
     
     for cluster_number, centroid in clusters.items():
         emotions_to_add = max_two_emotions(centroid)
