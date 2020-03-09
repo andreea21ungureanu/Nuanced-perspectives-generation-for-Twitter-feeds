@@ -20,7 +20,7 @@ SECOND_TYPE_EMOTIONS = {("Excited", "Angry"): "Aggressiveness",
 
 def load_clusters(file=''):
     clusters = []
-    # with open(file, 'r') as f:
+
     with open(file, "r") as file:
         clusters = json.load(file)
     return clusters
@@ -28,9 +28,14 @@ def load_clusters(file=''):
 def max_two_emotions(cluster_dict):
     first_max = 0
     second_max = 0
+    first_emotion = ""
+    second_emotion = ""
 
     for emotion, value in cluster_dict.items():
+        # Change value and name of the emotion based on it's value
         if value > first_max:
+            second_max = first_max
+            second_emotion = first_emotion
             first_max = value
             first_emotion = emotion
         elif value <= first_max and value > second_max:
@@ -48,6 +53,7 @@ def interpret_centroids(clusters):
         for emotions, higher_emotion in SECOND_TYPE_EMOTIONS.items():
             if (emotions[0] == emotions_to_add[0] and emotions[1] == emotions_to_add[1]) or (emotions[0] == emotions_to_add[1] and emotions[1] == emotions_to_add[0]):
                 higher_emotions_dict[cluster_number] = higher_emotion
+                break;
    
     return higher_emotions_dict
 
@@ -65,16 +71,15 @@ def higher_emotion_centroids(clusters):
 
 
 def clusters_file_creation(tweets, file=''):
-    # Dump to a file
-    # with open(file,"w") as file:
     with open(file, "w") as file:
         file.write(json.dumps(tweets))
 
 
 if __name__ == '__main__':
-    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/coronavirus/centroids_of_tweets.json")
+    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/demdebate/centroids_of_tweets.json")
     clustered_tweets = interpret_centroids(centroids_of_tweets)
     higher_emotion_clustered_tweets = higher_emotion_centroids(centroids_of_tweets)
-    clusters_file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/coronavirus/higher_emotions_centroids_of_tweets.json")
-    clusters_file_creation(clustered_tweets, "./FlaskApp/perspectives_app/static/json/coronavirus/higher_emotions.json")
+    
+    clusters_file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/demdebate/higher_emotions_centroids_of_tweets.json")
+    clusters_file_creation(clustered_tweets, "./FlaskApp/perspectives_app/static/json/demdebate/higher_emotions.json")
 
