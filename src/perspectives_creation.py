@@ -29,6 +29,7 @@ KIND_MAP = {
 "Happy": "Event-related",
 "Bored": "Related to object properties",
 "Fear": "Future appraisal",
+"Surprise": "Related to object properties",
 "Aggressiveness": "Event-related",
 "Pessimism": "Future appraisal",
 "Optimism": "Future appraisal",
@@ -57,6 +58,7 @@ HUMAINE_EARL_MAP = {"Excited": "Positive and lively",
 "Happy": "Positive and lively",
 "Bored": "Negative and passive",
 "Fear": "Negative and not in control",
+"Surprise": "Reactive",
 "Aggressiveness": "Negative and forceful",
 "Pessimism": "Negative thoughts",
 "Optimism": "Positive thoughts",
@@ -80,6 +82,28 @@ HUMAINE_INTERPRETATION = {
 "Negative and not in control": ("lack of support  for the subject", "incapable of taking action"),
 "Negative thoughts": ("lack of support  for the subject", ""),
 "Reactive": ("","willing to get involved")
+}
+
+KIND_MAP = {
+"Excited": "Future appraisal",
+"Angry": "Event-related",
+"Sad": "Event-related",
+"Happy": "Event-related",
+"Bored": "Related to object properties",
+"Fear": "Future appraisal",
+"Aggressiveness": "Event-related",
+"Pessimism": "Future appraisal",
+"Optimism": "Future appraisal",
+"Anxiety": "Future appraisal",
+"Envy": "Social",
+"Pride": "Self appraisal",
+"Outrage": "Event-related",
+"Despair": "Related to object properties",
+"Delight": "Event-related",
+"Guilt": "Event-related",
+"Awe": "Event-related",
+"Disapproval": "Event-related",
+"Confusion": "Event-related"
 }
 
 def load_higher_emotions(file=''):
@@ -112,6 +136,6 @@ def perspective_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/coronavirus/higher_emotions.json")
+    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/demdebate/higher_emotions.json")
     initial_text = create_basic_template(higher_emotions)
-    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/coronavirus/initial_perspective.json")
+    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/demdebate/initial_perspective.json")
