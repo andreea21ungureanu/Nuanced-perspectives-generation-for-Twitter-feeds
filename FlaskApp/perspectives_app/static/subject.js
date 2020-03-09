@@ -11,7 +11,11 @@ let imagesDirectory = "";
 const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 
 function allDataLoaded() {
-    return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
+    return clusterToHigherEmotion.size > 0 && 
+        clusterToRawEmotions.size > 0 && 
+        clusterToTweets.size > 0 && 
+        tweetHtml != null &&
+        clusterToPerspective.size > 0;
 }
 
 // Parse the URL parameter replated to the topic
@@ -36,6 +40,11 @@ function chooseSubject() {
     let topic = getParameterByName("topic");
     const subject_header = document.getElementsByClassName("subject-header")[0];
 
+    if (topic == "US Democratic debate")
+        topic = "demdebate";
+    else if (topic == "Corona Virus")
+        topic = "coronavirus";
+
     subject_header.innerText = "#" + topic;
     jsonDirectory = "/static/json/" + topic;
     imagesDirectory = "/static/images/" + topic + "/plot_";
@@ -53,7 +62,7 @@ function setContainerHeight() {
 
 function imagify(text) {
     return text.replace(urlRegex, (url) => {
-        return '<img src="' + url + '"></img>';
+        return '<meta name="twitter:url" content="' + url + '">';
     });
 }
 
@@ -101,7 +110,8 @@ function addPerspectivesHTML() {
                     tweet_list.appendChild(tweetContainer);
                     tweetContainer.innerHTML += tweetHtml;
                     tweetText = tweetContainer.getElementsByClassName("tweet-text")[0];
-                    tweetText.innerText = tweet.tweet.replace(urlRegex, "");
+                    tweetText.innerText = tweet.tweet;
+                    //.replace(urlRegex, "");
                 }                
             }
         });

@@ -7,7 +7,7 @@ from emotions_annotator import EmotionsAnnotator
 from topic_listener import TopicListener
 
 def initialise_twitter_api():
-    auth = tweepy.OAuthHandler("1ZFHYjytKK4Nb3bFqMKkPfh4V", "3yeGXrB2GkPc6zoACILhKKvh0Jh3E1tdfdEqZwlKbOupCmX1hl")
+    auth = tweepy.OAuthHandler("zH15Zp6FvdKKqHFrtwNlFDuga", "qt44eT3R54iFG8szB61e0X1cQe2BKf9L39trtKpbOIfNygC2l6")
     auth.set_access_token("1027862472705945600-cBaQtkTpiPaEf6JNsnGMzO0X69R4dN", "8DuxmQg0cphVsroWQdCxSN5pNQez2QncjCU7F5w6L8EXO")
     
     return tweepy.API(auth)
@@ -19,7 +19,7 @@ def make_unique(original_list):
 
 def load_tweets(file=''):
     tweets = []
-    # with open(file, 'r') as f:
+    
     with open(file, "r") as file:
         tweets = json.load(file)
 
@@ -65,7 +65,7 @@ def annotate_tweets(tweets):
 if __name__ == '__main__':
     # api = initialise_twitter_api()
     # tweets = collect_tweets(api, 30, "../resources/brexit_tweets.json")
-    tweets = load_tweets("./resources/dem_debate_tweets.json")
+    tweets = load_tweets("./resources/collected_subjects/coronavirus_tweets.json")
     sanitised_tweets = sanitise_tweets(tweets)
     annotate_tweets(sanitised_tweets)
 

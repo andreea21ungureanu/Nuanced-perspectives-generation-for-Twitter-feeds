@@ -44,10 +44,10 @@ KIND_MAP = {
 "Confusion": "Event-related"
 }
 KIND_INTERPRETATION = {
-"Future appraisal": "Future appraisal",
-"Self appraisal": "Personal implications in the subject",
-"Event-related": "Event-related",
-"Related to object properties": "Instances composing the subject",
+"Future appraisal": "appraisal of the future impact of the subject",
+"Self appraisal": "appraisal of the each invdividual's impact in the group on the subject",
+"Event-related": "events taking place as part of this subject",
+"Related to object properties": "instances composing the subject",
 "Social": "Social aspects of the subject"
 }
 
@@ -73,13 +73,13 @@ HUMAINE_EARL_MAP = {"Excited": "Positive and lively",
 }
 
 HUMAINE_INTERPRETATION = {
-"Positive and lively": ("Support for the subject", "willing to stand up for it"),
-"Positive thoughts": ("Support for the subject", ""),
-"Negative and forceful": ("Nonsupport for the subject", "willing to stand up for it"),
-"Negative and passive": ("Nonsupport for the subject", "thinking it is negligible"),
-"Negative and not in control": ("Nonsupport for the subject", "incapable of taking action"),
-"Negative thoughts": ("Nonsupport for the subject", ""),
-"Reactive": ("","Willing to get involved")
+"Positive and lively": ("support for the subject", "willing to stand up for it"),
+"Positive thoughts": ("support for the subject", ""),
+"Negative and forceful": ("lack of support for the subject", "willing to stand up for it"),
+"Negative and passive": ("lack of support  for the subject", "thinking it is negligible"),
+"Negative and not in control": ("lack of support  for the subject", "incapable of taking action"),
+"Negative thoughts": ("lack of support  for the subject", ""),
+"Reactive": ("","willing to get involved")
 }
 
 def load_higher_emotions(file=''):
@@ -95,13 +95,13 @@ def create_basic_template(higher_emotions):
     for cluster_number, higher_emotion in higher_emotions.items():
         humaine_value = HUMAINE_EARL_MAP[higher_emotion]
         kind_value = KIND_MAP[higher_emotion]
-        
+
         if HUMAINE_INTERPRETATION[humaine_value][0] == "":
             perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1]
         elif HUMAINE_INTERPRETATION[humaine_value][1] == "":
-            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + " part."
+            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + "."
         else:
-            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + " part. They are " + HUMAINE_INTERPRETATION[humaine_value][1]
+            perspective_initial_explanation_dict[cluster_number] = "This group focuses on the " + HUMAINE_INTERPRETATION[humaine_value][0] +  ", in particular the " + KIND_INTERPRETATION[kind_value] + ". They are " + HUMAINE_INTERPRETATION[humaine_value][1]
 
     return perspective_initial_explanation_dict
 
@@ -112,6 +112,6 @@ def perspective_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/brexit/higher_emotions.json")
+    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/coronavirus/higher_emotions.json")
     initial_text = create_basic_template(higher_emotions)
-    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/brexit/initial_perspective.json")
+    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/coronavirus/initial_perspective.json")

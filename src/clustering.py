@@ -11,7 +11,7 @@ def make_unique(original_list):
 
 def load_tweets(file=''):
     tweets = []
-    # with open(file, 'r') as f:
+    
     with open(file, "r") as file:
         tweets = json.load(file)
 
@@ -102,14 +102,14 @@ def clustered_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("./resources/emotions_brexit.json")
+    tweets = load_tweets("./resources/emotions_collected/emotions_coronavirus.json")
 
     divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
     divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)
-    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/clustered_tweets.json")
+    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/coronavirus/clustered_tweets.json")
 
     divisive_hierarhical_centroids = create_centroids(divisive_hierarhical_clustered_tweets)
-    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/brexit/centroids_of_tweets.json")
+    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/coronavirus/centroids_of_tweets.json")
 
     # kmeans_clusters = kmeans_clustering(tweets)
     # kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)

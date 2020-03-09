@@ -96,5 +96,5 @@ function constructURL() {
     return 'subject/topic=' + subjectTitle;
 }
 
-var subjects = ["Brexit", "Sub11", "Sub2"];
+var subjects = ["Brexit", "US Democratic debate", "Corona Virus"];
 autocomplete(document.getElementById("subjectFill"), subjects);
