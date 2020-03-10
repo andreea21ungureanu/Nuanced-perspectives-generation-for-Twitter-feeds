@@ -13,15 +13,21 @@ def load_higher_emotion_centroids(file=''):
     return higher_emotion_centroids
 
 def set_data(higher_emotion_centroids):
-    radar_data = {'group': [],
-                    'Guilt': [],
-                    'Delight': [],
-                    'Pride': [],
-                    'Despair': [],
-                    'Disappointment': [],
-                    'Envy': [],
-                    'Alarm': [],
-                    'Outrage': []
+    radar_data = {"group": [],
+                    "Aggressiveness": [],
+                    "Frozenness": [],
+                    "Pessimism": [],
+                    "Optimism": [],
+                    "Anxiety": [],
+                    "Envy": [],
+                    "Pride": [],
+                    "Outrage": [],
+                    "Despair": [],
+                    "Delight": [],
+                    "Guilt": [],
+                    "Awe": [],
+                    "Disapproval": [],
+                    "Confusion": []
                     }
 
     for cluster_id, higher_emotion_dict in higher_emotion_centroids.items():
@@ -53,7 +59,7 @@ def make_spider(radar_data, row, title, color):
     # Draw ylabels
     ax.set_rlabel_position(0)
     plt.yticks([20,40,60,80,100,120,140,160,180], ["20","40","60","80","100","120","140"], color="grey", size=10)
-    plt.ylim(0,200)
+    plt.ylim(0,150)
     
     # Ind1
     values=radar_data.loc[row].drop('group').values.flatten().tolist()
@@ -67,7 +73,7 @@ def make_spider(radar_data, row, title, color):
 
     
 if __name__ == '__main__':
-    higher_emotion_centroids = load_higher_emotion_centroids("./FlaskApp/perspectives_app/static/json/brexit/higher_emotions_centroids_of_tweets.json")
+    higher_emotion_centroids = load_higher_emotion_centroids("./FlaskApp/perspectives_app/static/json/demdebate/higher_emotions_centroids_of_tweets.json")
     plot_data = set_data(higher_emotion_centroids)
     
     # ------- PART 2: Apply to all individuals
@@ -79,10 +85,13 @@ if __name__ == '__main__':
     my_palette = plt.cm.get_cmap("Set2", plot_data.index.stop)
     
     # Loop to plot
-    for row in range(0, plot_data.index.stop-1):
+    # for row in range(0, plot_data.index.stop-1):
+    row = 0
+    while row < plot_data.index.stop-1:
         print(row)
         make_spider(plot_data, row=row, title="", color=my_palette(row))
-        plt.savefig('./FlaskApp/perspectives_app/static/images/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
+        plt.savefig('./FlaskApp/perspectives_app/static/images/demdebate/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
         plt.clf()
+        row += 1
     plt.show()
     
