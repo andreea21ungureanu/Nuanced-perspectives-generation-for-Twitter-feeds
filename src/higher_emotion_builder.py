@@ -1,6 +1,7 @@
 import json
 import os
 
+#TODO: ("Sad", "Happy"): "Bittersweetness",
 SECOND_TYPE_EMOTIONS = {("Excited", "Angry"): "Aggressiveness",
                         ("Excited", "Sad"): "Pessimism",
                         ("Excited", "Happy"): "Optimism",
@@ -10,7 +11,6 @@ SECOND_TYPE_EMOTIONS = {("Excited", "Angry"): "Aggressiveness",
                         ("Angry", "Happy"): "Pride",
                         ("Angry", "Surprise"): "Outrage",
                         ("Angry", "Fear"): "Frozenness",
-                        ("Sad", "Happy"): "Bittersweetness",
                         ("Sad", "Surprise"): "Disapproval",
                         ("Sad", "Fear"): "Despair",
                         ("Happy", "Surprise"): "Delight",

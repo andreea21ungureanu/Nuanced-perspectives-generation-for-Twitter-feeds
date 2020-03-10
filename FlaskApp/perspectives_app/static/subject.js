@@ -2,8 +2,9 @@ const clusterToHigherEmotion = new Map();
 const clusterToRawEmotions = new Map();
 const clusterToTweets = new Map();
 const clusterToPerspective = new Map();
-let tweetHtml;
+const clusterToExtraPerspective = new Map();
 
+let tweetHtml;
 let jsonDirectory = "";
 let imagesDirectory = "";
 
@@ -15,7 +16,8 @@ function allDataLoaded() {
         clusterToRawEmotions.size > 0 && 
         clusterToTweets.size > 0 && 
         tweetHtml != null &&
-        clusterToPerspective.size > 0;
+        clusterToPerspective.size > 0 &&
+        clusterToExtraPerspective.size > 0;
 }
 
 // Parse the URL parameter replated to the topic
@@ -53,6 +55,7 @@ function chooseSubject() {
     centroids_of_tweets_file = jsonDirectory + "/centroids_of_tweets.json";
     higher_emotions_file = jsonDirectory + "/higher_emotions.json";
     initial_perpective_file = jsonDirectory + "/initial_perspective.json";
+    extra_perpective_file = jsonDirectory + "/extra_perspective.json";
 }
 
 function setContainerHeight() {
@@ -100,8 +103,12 @@ function addPerspectivesHTML() {
                 clusterImg.src = imagesDirectory + clusterIdx + ".png";
 
                 // Find the p element and fill in the initial perspective text
-                const clusterIntialPerspective = clusterHtml.getElementsByClassName("persp-prose")[0];
+                const clusterIntialPerspective = clusterHtml.getElementsByClassName("persp-initial")[0];
                 clusterIntialPerspective.innerText = clusterToPerspective.get(clusterIdx);
+
+                // Find the p element and fill in the extra perspective text
+                const clusterExtraPerspective = clusterHtml.getElementsByClassName("persp-extra")[0];
+                clusterExtraPerspective.innerText = clusterToExtraPerspective.get(clusterIdx);
 
                 // Find the p element and set it to the tweets text
                 const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
@@ -171,6 +178,18 @@ function loadJsonResources() {
 
         for ([clusterIdx, perspective] of Object.entries(json)) {    
             clusterToPerspective.set(clusterIdx, perspective);
+        }
+
+        if (allDataLoaded()) {
+            addPerspectivesHTML();
+        }
+    });
+
+    fetch(extra_perpective_file).then((response) => response.json())
+    .then((json) => {
+
+        for ([clusterIdx, perspective] of Object.entries(json)) {    
+            clusterToExtraPerspective.set(clusterIdx, perspective);
         }
 
         if (allDataLoaded()) {

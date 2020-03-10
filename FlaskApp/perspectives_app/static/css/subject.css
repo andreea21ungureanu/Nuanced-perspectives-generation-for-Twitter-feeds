@@ -26,12 +26,12 @@
     align-items: center;
 }
 
-.persp-prose {
+.persp-initial {
     text-align: justify;
 }
 
 .persp-sub-header {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .radar-chart {
@@ -43,3 +43,7 @@
     overflow: auto;
 }
 
+h3 { 
+    font-size: 1.17em; 
+    margin: .83em 0 
+}
