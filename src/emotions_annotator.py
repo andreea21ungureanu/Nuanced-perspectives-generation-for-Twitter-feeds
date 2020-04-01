@@ -13,11 +13,29 @@ class EmotionsAnnotator:
 
         paralleldots.set_api_key(self.PARALLEL_DOTS_API_KEY)
     
+    '''
+    Removes duplicates from a list
+
+    :param original_list: the list containing duplicates
+    :type original_list: JSON file
+
+    :return: a JSON list containing unique elements
+    :rtype: JSON file
+    '''
     def make_unique(self, original_list):
         unique_list = []
         [unique_list.append(obj) for obj in original_list if obj not in unique_list]
         return unique_list
 
+    '''
+    Converts the emotion data from the Parallel Dots API into a python dictionary 
+
+    :param tweets: the twitter data from the API
+    :type tweets: Twitter API object
+
+    :return: a list of dictionaries containing the tweets annotated with their emotions
+    :rtype: list of dictionaries
+    '''
     def annotate(self, tweets):
         annotated_tweets = []
         counter = 0

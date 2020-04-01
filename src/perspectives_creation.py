@@ -47,9 +47,10 @@ KIND_MAP = {
 "Disapproval": "Event-related",
 "Confusion": "Event-related"
 }
+
 KIND_INTERPRETATION = {
 "Future appraisal": "appraisal of the future impact of the subject",
-"Self appraisal": "appraisal of the each invdividual's impact in the group on the subject",
+"Self appraisal": "appraisal of the each individual's impact in the group on the subject",
 "Event-related": "events taking place as part of this subject",
 "Related to object properties": "instances composing the subject",
 "Social": "Social aspects of the subject"
@@ -90,23 +91,23 @@ HUMAINE_INTERPRETATION = {
 
 DESCRIPTION_MAP = {
 "Excited": "",
-"Angry": "Correlated to physical pain inflicted by an attacker or psychological pain caused by thoughts about real or imagined harm done by another. The behaviour motivated by it refer to fighting or other forms of aggressive behaviour.",
+"Angry": "Correlated to physical agony dispensed by an aggressor or mental torment brought about by contemplations about genuine or envisioned mischief done by another. The behaviour motivated by it refers to fighting or different types of forceful conduct.",
 "Sad": "",
-"Happy": "Correlated to successful performance of genetically predetermined life sustaining and propagating behaviours but ultimately the moment when hopes are realised and success achieved. The behaviour is motivated by Life sustaining and propagating behaviours and the achievement of objectives.",
+"Happy": "Correlated to the successful performance of life-sustaining and propagating habits naturally programmed but eventually the time when hopes are recognised and successfully accomplished. The behaviour is motivated by propagating behaviours and the fulfilment of goals.",
 "Bored": "",
-"Surprise": "Correlated to mismatch between experience expected and experience that occurs. The behaviour is motivated by attention, laughter or behavioural immobility depending on the degree of mismatch.",
-"Fear": "Correlated to expectation of a negative outcome. The behaviours are consistent with a negative outcome.",
+"Surprise": "Correlated to discrepancy among predicted perception and events that arise. The behaviour is motivated by exposure, amusement or mental exhaustion based on the level of mismatch.",
+"Fear": "Correlated to the expectation of a negative outcome. The behaviours are consistent with a negative result.",
 "Aggressiveness": "",
 "Pessimism": "",
 "Optimism": "",
 "Anxiety": "",
-"Envy": "Correlated to resenting another’s success, coveting their possessions or the attention they receive, or guarding and hoarding own possessions. Behaviour motivated by selfishness.",
-"Pride": "Correlated to pleasant thoughts that derive from the execution of behaviours that are in accordance with personal beliefs and values. Behaviours consistent with personal beliefs and ideas about ‘right’ and ‘wrong’ Behaviours designed to enhance feelings of self-satisfaction.",
+"Envy": "Correlated to envy the progress of another, to covet their belongings or the recognition they get, or to protect and store own belongings. Behaviour motivated by selfishness.",
+"Pride": "Correlated to pleasant thoughts arising from the conduct of actions that adhere to moral beliefs and principles. Behaviours are consistent with social views about 'right' and 'false' theories. Behaviours designed to boost thoughts of self-indulgence.",
 "Outrage": "",
-"Despair": "Correlated to the expectation of a negative outcome. The behaviours are consistent with a negative outcome.",
+"Despair": "Correlated to the awaiting of disappointing results. The behaviours are associated with a negative outcome.",
 "Delight": "",
-"Guilt": "Correlated to painful thoughts about real or imagined public failure to meet social standards and/or selfcriticism that derives from failure to behave in accordance with personal beliefs and values. Behaviours consistent with personal beliefs and ideas about ‘right’ and ‘wrong’.",
-"Awe": "Correlated to novel stimulation of moderate or low intensity and no mismatch with expectations. Behaviour motivated by orienting reflex, moderate behavioural arousal, exploration.",
+"Guilt": "Correlated to stressful emotions regarding a true or perceived inability of the society to follow moral expectations and/or self-criticism arising from an inability to conform with personal beliefs and principles. Behaviour aligned with 'right' and 'false' moral values and theories.",
+"Awe": "Correlated to novel stimulation of high or low intensity and no contradictions in beliefs. Motivated actions through automatic awareness, mild behavioural anticipation, discovery.",
 "Disapproval": "",
 "Confusion": ""
 }
@@ -118,6 +119,15 @@ def load_higher_emotions(file=''):
         higher_emotions = json.load(file)
     return higher_emotions
 
+'''
+Defines the template for the initial perspective
+
+:param higher_emotions: the higher emotions list characterising each cluster
+:type higher_emotions: JSON file
+
+:return: the text of the perspective
+:rtype: JSON file
+'''
 def create_basic_template(higher_emotions):
     perspective_initial_explanation_dict = {}
 
@@ -134,6 +144,15 @@ def create_basic_template(higher_emotions):
 
     return perspective_initial_explanation_dict
 
+'''
+Defines the template for the extra perspective 
+
+:param higher_emotions: the higher emotions list characterising each cluster
+:type higher_emotions: JSON file
+
+:return: the text of the extra perspective
+:rtype: JSON file
+'''
 def create_extra_template(higher_emotions):
     perspective_extra_explanation_dict = {}
 
@@ -148,25 +167,37 @@ def create_extra_template(higher_emotions):
     
     return perspective_extra_explanation_dict
 
-# Get a list of keys from dictionary which has the given value
+'''
+Retrieves the keys from a dictionary given a value
+
+:param dictOfElements: dictionary containing objects
+:type dictOfElements: dictionary object
+
+:param valueToFind: the value for which we want to retieve the keys
+:type valueToFind: string
+
+:return: list of keys associated to the given value
+:rtype: list
+'''
 def getKeysByValue(dictOfElements, valueToFind):
     listOfKeys = list()
     listOfItems = dictOfElements.items()
 
-    for item  in listOfItems:
+    for item in listOfItems:
         if item[1] == valueToFind:
             listOfKeys.append(item[0])
-    return  listOfKeys
 
-def perspective_file_creation(tweets, file=''):
-    # Dump to a file
-    
+    if listOfKeys == []:
+        return valueToFind
+    return listOfKeys
+
+def perspective_file_creation(tweets, file=''): 
     with open(file, "w") as file:
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/demdebate/higher_emotions.json")
+    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions.json")
     initial_text = create_basic_template(higher_emotions)
     extra_text = create_extra_template(higher_emotions)
-    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/demdebate/initial_perspective.json")
-    perspective_file_creation(extra_text, "./FlaskApp/perspectives_app/static/json/demdebate/extra_perspective.json")
+    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/uklockdown/initial_perspective.json")
+    perspective_file_creation(extra_text, "./FlaskApp/perspectives_app/static/json/uklockdown/extra_perspective.json")

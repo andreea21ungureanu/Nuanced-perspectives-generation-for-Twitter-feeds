@@ -4,6 +4,15 @@ import os
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 
+'''
+Removes duplicates from a list
+
+:param original_list: the list containing duplicates
+:type original_list: JSON file
+
+:return: a JSON list containing unique elements
+:rtype: JSON file
+'''
 def make_unique(original_list):
     unique_list = []
     [unique_list.append(obj) for obj in original_list if obj not in unique_list]
@@ -17,6 +26,15 @@ def load_tweets(file=''):
 
     return make_unique(tweets)
 
+'''
+Creates NP arrays for the the set of the emotions of a tweet
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:return: the np vectors of emotions for all the tweets
+:rtype: np vector
+'''
 def create_np_emotions_array(tweets):
     vectors = np.empty((0, 7))
 
@@ -37,6 +55,18 @@ def create_np_emotions_array(tweets):
 
     return vectors
 
+'''
+Adds the cluster number for each tweet
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param clusters: the clusters given by the clustering algorithm
+:type clusters: clusters object given by the clustering algorithm
+
+:return: the tweets alongside with their cluster number
+:rtype: list of dictionaries
+'''
 def create_clustering_result_vector(tweets, clusters):
     # Annotate each tweet with the cluster id
     result = []
@@ -51,6 +81,18 @@ def create_clustering_result_vector(tweets, clusters):
 
     return result
 
+'''
+Computes the divisive hierarhical clustering technique on the given dataset. 
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param nr_of_clusters: the number of clusters to be computed by the algoritm
+:type nr_of_clusters: integer
+
+:return: clusters object given by the clustering algorithm
+:rtype: clusters object given by the clustering algorithm
+'''
 def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
     vectors = create_np_emotions_array(tweets)
 
@@ -59,6 +101,19 @@ def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
 
     return divisive_hierarhical_clusters
 
+
+'''
+Computes the divisive hierarhical clustering technique on the given dataset. 
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param nr_of_clusters: the number of clusters to be computed by the algoritm
+:type nr_of_clusters: integer
+
+:return: clusters object given by the clustering algorithm
+:rtype: clusters object given by the clustering algorithm
+'''
 def kmeans_clustering(tweets, nr_of_clusters=5):
     vectors = create_np_emotions_array(tweets)
 
@@ -67,6 +122,15 @@ def kmeans_clustering(tweets, nr_of_clusters=5):
 
     return kmeans_clusters
 
+'''
+Computes the emotions for the central value in a cluster
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:return: a dictionary containing the clusters mapped to the central point's emotions
+:rtype: dictionary
+'''
 def create_centroids(tweets):
     centroids_dict = {}
     cluster_memeber_count = {}
@@ -102,14 +166,14 @@ def clustered_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("./resources/emotions_collected/emotions_coronavirus.json")
+    tweets = load_tweets("./resources/emotions_collected/emotions_uk_lockdown.json")
 
     divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
     divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)
-    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/coronavirus/clustered_tweets.json")
+    clustered_file_creation(divisive_hierarhical_clustered_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/clustered_tweets.json")
 
     divisive_hierarhical_centroids = create_centroids(divisive_hierarhical_clustered_tweets)
-    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/coronavirus/centroids_of_tweets.json")
+    clustered_file_creation(divisive_hierarhical_centroids, "./FlaskApp/perspectives_app/static/json/uklockdown/centroids_of_tweets.json")
 
     # kmeans_clusters = kmeans_clustering(tweets)
     # kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
