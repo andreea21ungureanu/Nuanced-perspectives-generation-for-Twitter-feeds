@@ -47,3 +47,9 @@ h3 {
     font-size: 1.17em; 
     margin: .83em 0 
 }
+
+svg {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+}
