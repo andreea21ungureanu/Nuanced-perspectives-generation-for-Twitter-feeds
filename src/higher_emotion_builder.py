@@ -1,24 +1,20 @@
+import copy
 import json
 import operator
 import os
 
-from clustering import divisive_hierarhical_clustering, create_clustering_result_vector, create_centroids
+from clustering import create_centroids
 
 #TODO: ("Sad", "Happy"): "Bittersweetness",
-SECOND_TYPE_EMOTIONS = {("Excited", "Angry"): "Aggressiveness",
-                        ("Excited", "Sad"): "Pessimism",
-                        ("Excited", "Happy"): "Optimism",
-                        ("Excited", "Surprise"): "Confusion",
-                        ("Excited", "Fear"): "Anxiety",
-                        ("Angry", "Sad"): "Envy",
-                        ("Angry", "Happy"): "Pride",
-                        ("Angry", "Surprise"): "Outrage",
-                        ("Angry", "Fear"): "Frozenness",
-                        ("Sad", "Surprise"): "Disapproval",
-                        ("Sad", "Fear"): "Despair",
-                        ("Happy", "Surprise"): "Delight",
-                        ("Happy", "Fear"): "Guilt",
-                        ("Surprise", "Fear"): "Awe"
+SECOND_TYPE_EMOTIONS = {("Excitement", "Anger"): "Aggressiveness",
+                        ("Excitement", "Sadness"): "Pessimism",
+                        ("Excitement", "Happiness"): "Optimism",
+                        ("Excitement", "Fear"): "Anxiety",
+                        ("Anger", "Sadness"): "Envy",
+                        ("Anger", "Happiness"): "Pride",
+                        ("Anger", "Fear"): "Frozenness",
+                        ("Sadness", "Fear"): "Despair",
+                        ("Happiness", "Fear"): "Guilt"
                         }
 
 def load_clusters(file=''):
@@ -185,39 +181,123 @@ def higher_emotion_centroids(clusters):
 
     return higher_emotions_clusters_dict
 
-# def create_unique_clusters(tweets_to_cluster):
-#     counter = 10
-
-#     divisive_clustering = divisive_hierarhical_clustering(tweets, counter)
-#     clusters_centroids = create_centroids(create_clustering_result_vector(tweets, divisive_clustering))
-#     print(clusters_centroids)
-#     clustered_tweets = interpret_centroids(clusters_centroids)
-
-#     # check for unique values 
-#     flag = False
-#     while flag == False:
-#         counter += 1
-#         divisive_clustering = divisive_hierarhical_clustering(tweets, counter)
-#         clusters_centroids = create_centroids(create_clustering_result_vector(tweets, divisive_clustering))
-#         clustered_tweets = interpret_centroids(clusters_centroids)
-
-#         flag = len(clustered_tweets) != len(set(clustered_tweets.values())) 
+def flip_dictionary(higher_emotions_dict):
+    flipped_dict = {} 
     
-#     return clustered_tweets
+    for cluster_number, higher_emotion in higher_emotions_dict.items(): 
+        if higher_emotion not in flipped_dict: 
+            flipped_dict[higher_emotion] = [cluster_number] 
+        else: 
+            flipped_dict[higher_emotion].append(cluster_number) 
+    
+    return flipped_dict
+
+def form_dominant_emotion_dict(flipped_dict, clusters):
+    final_higher_emotions_dict ={}
+
+    for emotion, list_of_cluster_nr in flipped_dict.items():
+        if len(list_of_cluster_nr) > 1:
+            maxx = 0
+            max_cluster_nr = 0
+            for cluster_nr in list_of_cluster_nr: 
+                higest_basic_emotion = max_two_emotions(clusters[cluster_nr])[2]
+
+                if higest_basic_emotion > maxx:
+                    maxx = higest_basic_emotion
+                    max_cluster_nr = cluster_nr
+            
+            final_higher_emotions_dict[max_cluster_nr] = emotion
+        else:
+            final_higher_emotions_dict[list_of_cluster_nr[0]] = emotion
+    
+    return final_higher_emotions_dict
+
+def relabel_tweets(tweets, final_higher_emotions_dict, flipped_dict):
+    copy_tweets = copy.deepcopy(tweets)
+    for tweet in copy_tweets:
+        found_flag = False
+        for cluster, emotion in final_higher_emotions_dict.items():
+            if tweet['cluster'] == int(cluster):
+                found_flag = True
+        
+        if found_flag == False:
+            tweet_dominant_emotion = ''
+            for emotion, list_of_cluster_nr in flipped_dict.items():
+                for cluster_nr in list_of_cluster_nr: 
+                    # print(tweet['cluster'])
+                    if tweet['cluster'] == int(cluster_nr):
+                        tweet_dominant_emotion = emotion
+
+            for cluster_nr, emotion in final_higher_emotions_dict.items():
+                if emotion == tweet_dominant_emotion:
+                    tweet['cluster'] = int(cluster_nr)
+    return copy_tweets
+
+def relabel_cluster_numbers(final_higher_emotions_dict):
+    counter = 0
+    temp_dict = {}
+    from_old_to_new_val_dict = {}
+    for cluster_nr, emotion in final_higher_emotions_dict.items():
+        temp_dict[counter] = final_higher_emotions_dict[cluster_nr]
+        from_old_to_new_val_dict[counter] = int(cluster_nr)
+        counter += 1
+    
+    return temp_dict, from_old_to_new_val_dict
+
+def create_final_clusters(higher_emotions_dict, clusters, tweets):
+    
+    # Flip dictionary so that each value forms a list of the keys it is mapped to
+    flipped_dict = flip_dictionary(higher_emotions_dict)
+    # print(flipped_dict)
+
+    # Choose the max cluster_nr from the list of cluster numbers
+    # and with that form the final dictionary
+    final_higher_emotions_dict = form_dominant_emotion_dict(flipped_dict, clusters)
+
+    # Re-label the tweets with the new clusters they should belong to
+    relabelled_tweets = relabel_tweets(tweets, final_higher_emotions_dict, flipped_dict)
+
+    # Re-label the cluster numbers with ascending consecutive numbers 
+    dict_from_new_to_old = relabel_cluster_numbers(final_higher_emotions_dict)[1]
+    final_higher_emotions_dict = relabel_cluster_numbers(final_higher_emotions_dict)[0]
+    # print(dict_from_new_to_old)
+    # Do the same re-labelling of the cluster numbers with ascending consecutive numbers but for tweets
+    for tweet in relabelled_tweets:
+        for new_val, old_val in dict_from_new_to_old.items():
+            if tweet['cluster'] == old_val:
+                tweet['cluster'] = new_val
+
+    # print(relabelled_tweets)
+    return final_higher_emotions_dict, relabelled_tweets
+
+def cluster_numbers(final_higher_emotions_dict):
+    clusters_nr_dict = {}
+    cluster_list = []
+    for cluster_nr, emotion in final_higher_emotions_dict.items():
+        cluster_list.append(cluster_nr)
+    
+    clusters_nr_dict["clusters"] = cluster_list
+    return clusters_nr_dict
 
 
-def clusters_file_creation(tweets, file=''):
+def file_creation(tweets, file=''):
     with open(file, "w") as file:
         file.write(json.dumps(tweets))
 
 
 if __name__ == '__main__':
+    tweets = load_clusters("./FlaskApp/perspectives_app/static/json/uklockdown/clustered_tweets.json")
     centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/uklockdown/centroids_of_tweets.json")
 
-    tweets = load_clusters("./resources/emotions_collected/emotions_uk_lockdown.json")
-    clustered_tweets = create_unique_clusters(tweets)
+    clustered_tweets = interpret_centroids(centroids_of_tweets)
+    final_higher_emotions = create_final_clusters(clustered_tweets,centroids_of_tweets, tweets)[0]
+    relabelled_tweets = create_final_clusters(clustered_tweets,centroids_of_tweets, tweets)[1]
 
-    higher_emotion_clustered_tweets = higher_emotion_centroids(centroids_of_tweets)
-    
-    clusters_file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions_centroids_of_tweets.json")
-    clusters_file_creation(clustered_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions.json")
+    relabelled_centroids_of_tweets = create_centroids(relabelled_tweets)
+    higher_emotion_clustered_tweets = higher_emotion_centroids(relabelled_centroids_of_tweets)
+    cluster_numbers = cluster_numbers(final_higher_emotions)
+
+    file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions_centroids_of_tweets.json")
+    file_creation(final_higher_emotions, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions.json")
+    file_creation(relabelled_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/relabelled_clustered_tweets.json")
+    file_creation(cluster_numbers, "./FlaskApp/perspectives_app/static/json/uklockdown/clusters.json")

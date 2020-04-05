@@ -89,6 +89,8 @@ function getTopic() {
         topic = "demdebate";
     else if (topic == "Corona Virus")
         topic = "coronavirus";
+    else if (topic == "UK Lockdown")
+    topic = "uklockdown";
 
     document.getElementById("sub-header").innerText = `#${topic}`;
     return topic;
@@ -114,7 +116,7 @@ async function addPerspectivesHTML(topic) {
     const perspectiveHtmlPromise = fetch("/static/html/perspective.html").then((r) => r.text())
     const tweetHtmlPromise = fetch(`/static/html/tweets.html`).then((r) => r.text());
     const clustersPromise = fetch(`/static/json/${topic}/clusters.json`).then((r) => r.json());
-    const clusteredTweetsPromise = fetch(`/static/json/${topic}/clustered_tweets.json`).then((r) => r.json()).then(splitTweetsIntoClusters);
+    const clusteredTweetsPromise = fetch(`/static/json/${topic}/relabelled_clustered_tweets.json`).then((r) => r.json()).then(splitTweetsIntoClusters);
     const higherEmotionsPromise = fetch(`/static/json/${topic}/higher_emotions.json`).then((r) => r.json());
     const clusterCentroidsPromise = fetch(`/static/json/${topic}/centroids_of_tweets.json`).then((r) => r.json());
     const initialPerspectivePromise = fetch(`/static/json/${topic}/initial_perspective.json`).then((r) => r.json());

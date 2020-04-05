@@ -26,6 +26,26 @@ def load_tweets(file=''):
 
     return make_unique(tweets)
 
+def rename_emotions(tweet):
+    renamed_emotions = {}
+    emotions = tweet['emotions']
+    
+    for emotion in emotions:
+        if emotion == 'Excited':
+            renamed_emotions['Excitement'] = emotions['Excited']
+        if emotion == 'Angry':
+            renamed_emotions['Anger'] = emotions['Angry']
+        if emotion == 'Sad':
+            renamed_emotions['Sadness'] = emotions['Sad']
+        if emotion == 'Happy':
+            renamed_emotions['Happiness'] = emotions['Happy']
+        if emotion == 'Fear':
+            renamed_emotions['Fear'] = emotions['Fear']
+
+    tweet['emotions'] = renamed_emotions
+
+    return tweet
+
 '''
 Creates NP arrays for the the set of the emotions of a tweet
 
@@ -36,20 +56,18 @@ Creates NP arrays for the the set of the emotions of a tweet
 :rtype: np vector
 '''
 def create_np_emotions_array(tweets):
-    vectors = np.empty((0, 7))
+    vectors = np.empty((0, 5))
 
     # Add all the vectors to our matrix
     for tweet in tweets:
-        emotions = tweet['emotions']
-        emotions["Surprise"] = 1 - emotions['Bored']
-
-        vector = np.array([[emotions['Excited'],
-                            emotions['Angry'],
-                            emotions['Sad'],
-                            emotions['Happy'],
-                            emotions['Bored'],
-                            emotions['Fear'],
-                            emotions['Surprise']]])
+        renamed_emotions = {}
+        emotions = rename_emotions(tweet)['emotions']
+        
+        vector = np.array([[emotions['Excitement'],
+                            emotions['Anger'],
+                            emotions['Sadness'],
+                            emotions['Happiness'],
+                            emotions['Fear']]])
         
         vectors = np.append(vectors, vector, axis=0)
 
@@ -93,7 +111,7 @@ Computes the divisive hierarhical clustering technique on the given dataset.
 :return: clusters object given by the clustering algorithm
 :rtype: clusters object given by the clustering algorithm
 '''
-def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
+def divisive_hierarhical_clustering(tweets, nr_of_clusters=10):
     vectors = create_np_emotions_array(tweets)
 
     # Cluster the vectors using Agglomerative clustering
