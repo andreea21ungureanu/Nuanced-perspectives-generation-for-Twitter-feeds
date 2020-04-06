@@ -3,6 +3,9 @@ import json
 import operator
 import os
 
+import enchant
+from nltk.tokenize import RegexpTokenizer
+
 from clustering import create_centroids
 
 #TODO: ("Sad", "Happy"): "Bittersweetness",
@@ -82,7 +85,7 @@ def compute_threshold(cluster_dict):
     for emotion, value in cluster_dict.items():
         cluster_total_sum += value
     
-    return (cluster_total_sum/7)*2
+    return (cluster_total_sum/5)*2
 
 '''
 Decide whether to use the higher emotion or the highest basic emotion into creating
@@ -284,10 +287,28 @@ def file_creation(tweets, file=''):
     with open(file, "w") as file:
         file.write(json.dumps(tweets))
 
+def sanitise_tweets(tweets):
+    # Sanitize tweets in order to get rid of the ones in different languages or containing no words in english
+    print("\nTime to sanitize these tweets! We only want the wholesome content.")
+    dictionary = enchant.Dict("en_GB")
+    tokenizer = RegexpTokenizer('\w+|\$[\d\.]+|\S+')
+    for tweet in tweets:
+        tokenised_tweet = tokenizer.tokenize(tweet)
+        counter = 0
+        for token in tokenised_tweet:
+            if dictionary.check(token):
+                counter += 1;
+            
+        if counter <= len(tokenised_tweet)/2:
+            tweets.remove(tweet)
+    
+    return tweets
+
+
 
 if __name__ == '__main__':
-    tweets = load_clusters("./FlaskApp/perspectives_app/static/json/uklockdown/clustered_tweets.json")
-    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/uklockdown/centroids_of_tweets.json")
+    tweets = load_clusters("./FlaskApp/perspectives_app/static/json/brexit/clustered_tweets.json")
+    centroids_of_tweets = load_clusters("./FlaskApp/perspectives_app/static/json/brexit/centroids_of_tweets.json")
 
     clustered_tweets = interpret_centroids(centroids_of_tweets)
     final_higher_emotions = create_final_clusters(clustered_tweets,centroids_of_tweets, tweets)[0]
@@ -297,7 +318,8 @@ if __name__ == '__main__':
     higher_emotion_clustered_tweets = higher_emotion_centroids(relabelled_centroids_of_tweets)
     cluster_numbers = cluster_numbers(final_higher_emotions)
 
-    file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions_centroids_of_tweets.json")
-    file_creation(final_higher_emotions, "./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions.json")
-    file_creation(relabelled_tweets, "./FlaskApp/perspectives_app/static/json/uklockdown/relabelled_clustered_tweets.json")
-    file_creation(cluster_numbers, "./FlaskApp/perspectives_app/static/json/uklockdown/clusters.json")
+    file_creation(higher_emotion_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/higher_emotions_centroids_of_tweets.json")
+    file_creation(final_higher_emotions, "./FlaskApp/perspectives_app/static/json/brexit/higher_emotions.json")
+    file_creation(relabelled_tweets, "./FlaskApp/perspectives_app/static/json/brexit/relabelled_clustered_tweets.json")
+    file_creation(cluster_numbers, "./FlaskApp/perspectives_app/static/json/brexit/clusters.json")
+    file_creation(relabelled_centroids_of_tweets, "./FlaskApp/perspectives_app/static/json/brexit/relabelled_centroids_of_tweets.json")

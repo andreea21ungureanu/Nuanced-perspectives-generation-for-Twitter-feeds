@@ -169,8 +169,8 @@ def perspective_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/uklockdown/higher_emotions.json")
+    higher_emotions = load_higher_emotions("./FlaskApp/perspectives_app/static/json/brexit/higher_emotions.json")
     initial_text = create_basic_template(higher_emotions)
     extra_text = create_extra_template(higher_emotions)
-    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/uklockdown/initial_perspective.json")
-    perspective_file_creation(extra_text, "./FlaskApp/perspectives_app/static/json/uklockdown/extra_perspective.json")
+    perspective_file_creation(initial_text, "./FlaskApp/perspectives_app/static/json/brexit/initial_perspective.json")
+    perspective_file_creation(extra_text, "./FlaskApp/perspectives_app/static/json/brexit/extra_perspective.json")

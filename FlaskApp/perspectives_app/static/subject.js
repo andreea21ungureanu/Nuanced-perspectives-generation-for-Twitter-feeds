@@ -19,7 +19,9 @@ async function setPerspectiveSubHeader(perspectiveElement, clusterCentroidsPromi
 
 async function setPerspectiveImage(perspectiveElement, topic, clusterIdx) {
     const clusterImg = perspectiveElement.getElementsByClassName("radar-chart")[0];
-    clusterImg.src = `/static/images/${topic}/plot_${clusterIdx}.png`;
+    const clusterEmoji = perspectiveElement.getElementsByClassName("emoji-cloud")[0];
+    clusterImg.src = `/static/images/${topic}/radarChart/plot_${clusterIdx}.png`;
+    clusterEmoji.src = `/static/images/${topic}/emojiCloud/cluster_${clusterIdx}.svg`;
 }
 
 async function setPerspectivePrimaryDescription(perspectiveElement, initialPerspectivePromise, clusterIdx) {                         
@@ -136,6 +138,17 @@ async function addPerspectivesHTML(topic) {
         setPerspectivePrimaryDescription(perspectiveElement, initialPerspectivePromise, clusterIdx);
         setPerspectiveSecondaryDescription(perspectiveElement, extraPerspectivePromise, clusterIdx);
         setPerspectiveTweetList(perspectiveElement, clusteredTweetsPromise, tweetHtmlPromise, clusterIdx);
+
+        const button = perspectiveElement.getElementsByClassName("showhide")[0];
+        button.addEventListener('click', () => {
+            const radarChart = perspectiveElement.getElementsByClassName('radar-chart')[0];
+            const emojiCloud = perspectiveElement.getElementsByClassName('emoji-cloud')[0];
+
+            radarChart.style.display = radarChart.style.display == '' ? 'none' : '';
+            emojiCloud.style.display = emojiCloud.style.display == '' ? 'none' : '';
+            button.innerText = button.innerText == 'Display Emoji Cloud' ? 'Display Radar Chart' : 'Display Emoji Cloud';
+        })
+
     }
 }
 
