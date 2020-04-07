@@ -13,15 +13,16 @@ def load_higher_emotion_centroids(file=''):
     return higher_emotion_centroids
 
 def set_data(higher_emotion_centroids):
-    radar_data = {'group': [],
-                    'Guilt': [],
-                    'Delight': [],
-                    'Pride': [],
-                    'Despair': [],
-                    'Disappointment': [],
-                    'Envy': [],
-                    'Alarm': [],
-                    'Outrage': []
+    radar_data = {"group": [],
+                    "Aggressiveness": [],
+                    "Frozenness": [],
+                    "Pessimism": [],
+                    "Optimism": [],
+                    "Anxiety": [],
+                    "Envy": [],
+                    "Pride": [],
+                    "Despair": [],
+                    "Guilt": []
                     }
 
     for cluster_id, higher_emotion_dict in higher_emotion_centroids.items():
@@ -31,7 +32,7 @@ def set_data(higher_emotion_centroids):
     
     return pd.DataFrame(radar_data)
 
-def make_spider(radar_data, row, title, color):
+def make_spider(radar_data, row, color):
     # number of variable
     categories=list(radar_data)[1:]
     N = len(categories)
@@ -41,7 +42,7 @@ def make_spider(radar_data, row, title, color):
     angles += angles[:1]
     
     # Initialise the spider plot
-    ax = plt.subplot(2,2,row+1, polar=True)
+    ax = plt.subplot(3,3,row+1, polar=True)
     
     # If you want the first axis to be on top:
     ax.set_theta_offset(pi / 2)
@@ -52,8 +53,9 @@ def make_spider(radar_data, row, title, color):
     
     # Draw ylabels
     ax.set_rlabel_position(0)
-    plt.yticks([20,40,60,80,100,120,140,160,180], ["20","40","60","80","100","120","140"], color="grey", size=10)
-    plt.ylim(0,200)
+    # plt.yticks([20,40,60,80,100,120,140,160,180], ["20","40","60","80","100","120","140"], color="grey", size=10)
+    plt.yticks([0,100,150,200,250], ["0","100","150","200","250"], color="grey", size=10)
+    plt.ylim(0,300)
     
     # Ind1
     values=radar_data.loc[row].drop('group').values.flatten().tolist()
@@ -61,14 +63,12 @@ def make_spider(radar_data, row, title, color):
     ax.plot(angles, values, color=color, linewidth=2, linestyle='solid')
     ax.fill(angles, values, color=color, alpha=0.4)
     
-    # Add a title
-    plt.title(title, size=11, color=color, y=1.1)
-    
 
     
 if __name__ == '__main__':
     higher_emotion_centroids = load_higher_emotion_centroids("./FlaskApp/perspectives_app/static/json/brexit/higher_emotions_centroids_of_tweets.json")
     plot_data = set_data(higher_emotion_centroids)
+    print(plot_data)
     
     # ------- PART 2: Apply to all individuals
     # initialize the figure
@@ -78,11 +78,10 @@ if __name__ == '__main__':
     # Create a color palette:
     my_palette = plt.cm.get_cmap("Set2", plot_data.index.stop)
     
-    # Loop to plot
-    for row in range(0, plot_data.index.stop-1):
-        print(row)
-        make_spider(plot_data, row=row, title="", color=my_palette(row))
-        plt.savefig('./FlaskApp/perspectives_app/static/images/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
+    for row in range(0, len(plot_data.index)):
+        make_spider(plot_data, row=row, color=my_palette(row))
+        plt.savefig('./FlaskApp/perspectives_app/static/images/brexit/radarChart/plot_'+plot_data['group'][row] + '.png', bbox_inches='tight')
         plt.clf()
+
     plt.show()
     

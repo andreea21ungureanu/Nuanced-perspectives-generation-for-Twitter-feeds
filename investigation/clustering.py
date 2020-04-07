@@ -1,10 +1,10 @@
 import json
 from sklearn import metrics
 import os
+import sys
 
-from src.clustering import create_np_emotions_array
-from src.clustering import divisive_hierarhical_clustering
-from src.clustering import kmeans_clustering
+sys.path.append('../src')
+from clustering import *
 
 def load_tweets(file=''):
     tweets = []
@@ -36,6 +36,6 @@ def validate_clusters(tweets):
 
 
 if __name__ == '__main__':
-    tweets = load_tweets("./resources/emotions.json")
+    tweets = load_tweets("./resources/emotions_collected/emotions_coronavirus.json")
     validate_clusters(tweets)
 

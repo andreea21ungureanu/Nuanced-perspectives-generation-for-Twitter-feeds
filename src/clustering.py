@@ -4,6 +4,15 @@ import os
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import KMeans
 
+'''
+Removes duplicates from a list
+
+:param original_list: the list containing duplicates
+:type original_list: JSON file
+
+:return: a JSON list containing unique elements
+:rtype: JSON file
+'''
 def make_unique(original_list):
     unique_list = []
     [unique_list.append(obj) for obj in original_list if obj not in unique_list]
@@ -11,29 +20,71 @@ def make_unique(original_list):
 
 def load_tweets(file=''):
     tweets = []
-    # with open(file, 'r') as f:
+    
     with open(file, "r") as file:
         tweets = json.load(file)
 
     return make_unique(tweets)
 
+def rename_emotions(tweet):
+    renamed_emotions = {}
+    emotions = tweet['emotions']
+    
+    for emotion in emotions:
+        if emotion == 'Excited':
+            renamed_emotions['Excitement'] = emotions['Excited']
+        if emotion == 'Angry':
+            renamed_emotions['Anger'] = emotions['Angry']
+        if emotion == 'Sad':
+            renamed_emotions['Sadness'] = emotions['Sad']
+        if emotion == 'Happy':
+            renamed_emotions['Happiness'] = emotions['Happy']
+        if emotion == 'Fear':
+            renamed_emotions['Fear'] = emotions['Fear']
+
+    tweet['emotions'] = renamed_emotions
+
+    return tweet
+
+'''
+Creates NP arrays for the the set of the emotions of a tweet
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:return: the np vectors of emotions for all the tweets
+:rtype: np vector
+'''
 def create_np_emotions_array(tweets):
-    vectors = np.empty((0, 6))
+    vectors = np.empty((0, 5))
 
     # Add all the vectors to our matrix
     for tweet in tweets:
-        emotions = tweet['emotions']
-        vector = np.array([[emotions['Excited'],
-                            emotions['Angry'],
-                            emotions['Sad'],
-                            emotions['Happy'],
-                            emotions['Bored'],
+        renamed_emotions = {}
+        emotions = rename_emotions(tweet)['emotions']
+        
+        vector = np.array([[emotions['Excitement'],
+                            emotions['Anger'],
+                            emotions['Sadness'],
+                            emotions['Happiness'],
                             emotions['Fear']]])
         
         vectors = np.append(vectors, vector, axis=0)
 
     return vectors
 
+'''
+Adds the cluster number for each tweet
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param clusters: the clusters given by the clustering algorithm
+:type clusters: clusters object given by the clustering algorithm
+
+:return: the tweets alongside with their cluster number
+:rtype: list of dictionaries
+'''
 def create_clustering_result_vector(tweets, clusters):
     # Annotate each tweet with the cluster id
     result = []
@@ -48,7 +99,19 @@ def create_clustering_result_vector(tweets, clusters):
 
     return result
 
-def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
+'''
+Computes the divisive hierarhical clustering technique on the given dataset. 
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param nr_of_clusters: the number of clusters to be computed by the algoritm
+:type nr_of_clusters: integer
+
+:return: clusters object given by the clustering algorithm
+:rtype: clusters object given by the clustering algorithm
+'''
+def divisive_hierarhical_clustering(tweets, nr_of_clusters=10):
     vectors = create_np_emotions_array(tweets)
 
     # Cluster the vectors using Agglomerative clustering
@@ -56,6 +119,19 @@ def divisive_hierarhical_clustering(tweets, nr_of_clusters=5):
 
     return divisive_hierarhical_clusters
 
+
+'''
+Computes the divisive hierarhical clustering technique on the given dataset. 
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:param nr_of_clusters: the number of clusters to be computed by the algoritm
+:type nr_of_clusters: integer
+
+:return: clusters object given by the clustering algorithm
+:rtype: clusters object given by the clustering algorithm
+'''
 def kmeans_clustering(tweets, nr_of_clusters=5):
     vectors = create_np_emotions_array(tweets)
 
@@ -64,6 +140,15 @@ def kmeans_clustering(tweets, nr_of_clusters=5):
 
     return kmeans_clusters
 
+'''
+Computes the emotions for the central value in a cluster
+
+:param tweets: the list of tweets with their associated emotions
+:type tweets: list of dictionaries
+
+:return: a dictionary containing the clusters mapped to the central point's emotions
+:rtype: dictionary
+'''
 def create_centroids(tweets):
     centroids_dict = {}
     cluster_memeber_count = {}
@@ -90,6 +175,7 @@ def create_centroids(tweets):
         for em, value in emotion.items():
             value = value/cluster_memeber_count[key]
     
+    print(centroids_dict)
     return centroids_dict
 
 def clustered_file_creation(tweets, file=''):
@@ -99,7 +185,7 @@ def clustered_file_creation(tweets, file=''):
         file.write(json.dumps(tweets))
 
 if __name__ == '__main__':
-    tweets = load_tweets("./resources/emotions_brexit.json")
+    tweets = load_tweets("./resources/emotions_collected/emotions_brexit.json")
 
     divisive_hierarhical_clusters = divisive_hierarhical_clustering(tweets)
     divisive_hierarhical_clustered_tweets = create_clustering_result_vector(tweets, divisive_hierarhical_clusters)

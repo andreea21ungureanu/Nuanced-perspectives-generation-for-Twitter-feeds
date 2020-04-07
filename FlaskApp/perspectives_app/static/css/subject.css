@@ -26,15 +26,21 @@
     align-items: center;
 }
 
-.persp-prose {
+.persp-initial {
     text-align: justify;
 }
 
 .persp-sub-header {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .radar-chart {
+    width: 300px;
+    height: 300px;
+    inline-size: fit-content;
+}
+
+.emoji-cloud {
     width: 300px;
     height: 300px;
 }
@@ -43,3 +49,13 @@
     overflow: auto;
 }
 
+h3 { 
+    font-size: 1.17em; 
+    margin: .83em 0 
+}
+
+svg {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+}

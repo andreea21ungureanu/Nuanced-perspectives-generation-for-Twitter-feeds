@@ -11,6 +11,14 @@ class TopicListener(tweepy.StreamListener):
         
         super(TopicListener, self).__init__()
 
+    '''
+    Extracts just the tweet text from the API response
+
+    :param self: TopicListener object 
+    :type self: TopicListener object 
+
+    :param status: 
+    '''
     def on_status(self, status):
         full_tweet_text = self.get_status_text(status)
         if (not full_tweet_text is None):
@@ -22,6 +30,12 @@ class TopicListener(tweepy.StreamListener):
 
         return True
 
+    '''
+    Extracts the tweets from the API call
+
+    :return: the extracted tweets
+    :rtype: JSON object
+    '''
     def get_tweets(self):
         return self.tweets
 

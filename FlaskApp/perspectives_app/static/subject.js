@@ -1,17 +1,70 @@
-const clusterToHigherEmotion = new Map();
-const clusterToRawEmotions = new Map();
-const clusterToTweets = new Map();
-let tweetHtml;
+async function getPerspectiveElement(perspectiveHtmlPromise) {
+    const perspectiveElement = document.createElement("div");    
+    perspectiveElement.innerHTML += await perspectiveHtmlPromise;    
+    return perspectiveElement;
+}
 
-let jsonDirectory = "";
-let imagesDirectory = "";
-let clustered_tweets_file = "";
+async function setPerspectiveHeader(perspectiveElement, higherEmotionsPromise, clusterIdx) {                         
+    const perspectiveHeader = perspectiveElement.getElementsByClassName("persp-header")[0];
+    perspectiveHeader.innerText = (await higherEmotionsPromise)[clusterIdx];
+}
 
+async function setPerspectiveSubHeader(perspectiveElement, clusterCentroidsPromise, clusterIdx) {                         
+    const perspectiveSubHeader = perspectiveElement.getElementsByClassName("persp-sub-header")[0];
+    const emotionScores = (await clusterCentroidsPromise)[clusterIdx];
+    const sortedEmotions = Object.keys(emotionScores).sort(
+        (emotionA, emotionB) => emotionScores[emotionB] - emotionScores[emotionA]);
+    perspectiveSubHeader.innerText = sortedEmotions.slice(0, 2).join(" | ");
+}
 
-const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+async function setPerspectiveImage(perspectiveElement, topic, clusterIdx) {
+    const clusterImg = perspectiveElement.getElementsByClassName("radar-chart")[0];
+    const clusterEmoji = perspectiveElement.getElementsByClassName("emoji-cloud")[0];
+    clusterImg.src = `/static/images/${topic}/radarChart/plot_${clusterIdx}.png`;
+    clusterEmoji.src = `/static/images/${topic}/emojiCloud/cluster_${clusterIdx}.svg`;
+}
 
-function allDataLoaded() {
-    return clusterToHigherEmotion.size > 0 && clusterToRawEmotions.size > 0 && clusterToTweets.size > 0 && tweetHtml != null;
+async function setPerspectivePrimaryDescription(perspectiveElement, initialPerspectivePromise, clusterIdx) {                         
+    const perspectivePrimaryDescription = perspectiveElement.getElementsByClassName("persp-initial")[0];
+    perspectivePrimaryDescription.innerText = (await initialPerspectivePromise)[clusterIdx];
+}
+
+async function setPerspectiveSecondaryDescription(perspectiveElement, extraPerspectivePromise, clusterIdx) {                         
+    const perspectiveSecondaryDescription = perspectiveElement.getElementsByClassName("persp-extra")[0];
+    perspectiveSecondaryDescription.innerText = (await extraPerspectivePromise)[clusterIdx];
+}
+
+async function setPerspectiveTweetList(perspectiveElement, clusteredTweetsPromise, tweetHtmlPromise, clusterIdx) {                         
+    const perspectiveTweetList = perspectiveElement.getElementsByClassName("tweet-list")[0];
+    for (const tweet of (await clusteredTweetsPromise).get(clusterIdx)) {
+        
+        const tweetContainer = document.createElement("li");
+        perspectiveTweetList.appendChild(tweetContainer);
+
+        tweetContainer.innerHTML += await tweetHtmlPromise;
+        tweetText = tweetContainer.getElementsByClassName("tweet-text")[0];
+
+        // If tweet text contains a link, extract it
+        const urlRegex =/(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        let urlContent = tweet.tweet.match(urlRegex);
+        if (urlContent != null) {
+            const breakElement = document.createElement("br");
+            for (const url of urlContent) {
+                tweet.tweet = tweet.tweet.replace(url, "");
+                const linkElement = document.createElement("a");
+                linkElement.href = url;
+                linkElement.innerText = url;
+                tweetContainer.appendChild(breakElement);
+                tweetContainer.appendChild(linkElement);
+            }                    
+        }
+        tweetText.innerText = tweet.tweet;   
+    }
+}
+
+function setContainerHeight() {
+    const subjectContainer = document.getElementsByClassName("subject-container")[0];
+    subjectContainer.style.height = window.innerHeight + "px";
 }
 
 // Parse the URL parameter replated to the topic
@@ -23,135 +76,88 @@ function getParameterByName(name, url) {
     // Retrieve just the query string and remove additional information
     var regex = new RegExp(name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-    results[2] = results[2].replace("?", "");
-
+        
     // Return the query string or null
     if (!results) return null;
     if (!results[2]) return '';
+    results[2] = results[2].replace("?", "");
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// Choose information that should be displayed on the page given the query string of the URL
-function chooseSubject() {
+function getTopic() {
     let topic = getParameterByName("topic");
-    const subject_header = document.getElementsByClassName("subject-header")[0];
+ 
+    if (topic == "US Democratic debate")
+        topic = "demdebate";
+    else if (topic == "Corona Virus")
+        topic = "coronavirus";
+    else if (topic == "UK Lockdown")
+    topic = "uklockdown";
 
-    subject_header.innerText = "#" + topic;
-    jsonDirectory = "/static/json/" + topic;
-    imagesDirectory = "/static/images/" + topic + "/plot_";
-    clustered_tweets_file = jsonDirectory + "/clustered_tweets.json";
-    centroids_of_tweets_file = jsonDirectory + "/centroids_of_tweets.json";
-    higher_emotions_file = jsonDirectory + "/higher_emotions.json";
+    document.getElementById("sub-header").innerText = `#${topic}`;
+    return topic;
 }
 
-function setContainerHeight() {
-    const subjectContainer = document.getElementsByClassName("subject-container")[0];
-    subjectContainer.style.height = window.innerHeight + "px";
-}
-
-function imagify(text) {
-    return text.replace(urlRegex, (url) => {
-        return '<img src="' + url + '"></img>';
-    });
-}
-
-function addPerspectivesHTML() {
-    fetch("/static/html/perspective.html").then((response) => response.text())
-        .then((text) => {
-            // Change the subject name depending on the chosen subject on the home page
-
-            // Find the perspective div by id
-            const perspective_html = text;
-            const persp_container = document.getElementById("perspectives");
-                
-            // Iterate over the clusters (keys in one of the maps)
-            for (clusterIdx of clusterToHigherEmotion.keys()) {
+function splitTweetsIntoClusters(tweet_list) {
     
-                // Creating an element and adding the html string to it to parse into a html
-                // object. This lets us query to find the specific elements such as the header.
-                const clusterHtml = document.createElement("div");
-                persp_container.appendChild(clusterHtml);
-                clusterHtml.innerHTML += perspective_html;
+    const clusterToTweets = new Map();
+    
+    for (const tweet of tweet_list) {
+        if (!clusterToTweets.has(tweet.cluster)) {
+            clusterToTweets.set(tweet.cluster, []);
+        }
+        clusterToTweets.get(tweet.cluster).push(tweet);
+    }
 
-                // Find the header element and set it to the clusters higher emotion
-                const clusterHeader = clusterHtml.getElementsByClassName("persp-header")[0];
-                clusterHeader.innerText = clusterToHigherEmotion.get(clusterIdx);
-
-                // Find the sub header element and set it to the clusters top raw emotions
-                const clusterSubHeader = clusterHtml.getElementsByClassName("persp-sub-header")[0];
-                clusterSubHeader.innerText = clusterToRawEmotions.get(clusterIdx)
-                    .slice(0, 2)
-                    .map((entry) => entry[0])
-                    .join(" | ");
-
-                // Find the img element and set it to the radar chart
-                const clusterImg = clusterHtml.getElementsByClassName("radar-chart")[0];
-                clusterImg.src = imagesDirectory + clusterIdx + ".png";
-
-                // Find the p element and set it to the tweets text
-                const tweet_list = clusterHtml.getElementsByClassName("tweet-list")[0];
-                for (const tweet of clusterToTweets.get(clusterIdx)) {
-                    const tweetContainer = document.createElement("li");
-                    tweet_list.appendChild(tweetContainer);
-                    tweetContainer.innerHTML += tweetHtml;
-                    tweetText = tweetContainer.getElementsByClassName("tweet-text")[0];
-                    tweetText.innerText = tweet.tweet.replace(urlRegex, "");
-                }                
-            }
-        });
-
+    return clusterToTweets;
 }
 
-function loadJsonResources() {
-    chooseSubject();
+async function addPerspectivesHTML(topic) {
 
-    fetch("/static/html/tweets.html").then((response) => response.text())
-    .then((text) => {
-        tweetHtml = text;
-    });
+    // Load resources for the given topic
+    const perspectiveHtmlPromise = fetch("/static/html/perspective.html").then((r) => r.text())
+    const tweetHtmlPromise = fetch(`/static/html/tweets.html`).then((r) => r.text());
+    const clustersPromise = fetch(`/static/json/${topic}/clusters.json`).then((r) => r.json());
+    const clusteredTweetsPromise = fetch(`/static/json/${topic}/relabelled_clustered_tweets.json`).then((r) => r.json()).then(splitTweetsIntoClusters);
+    const higherEmotionsPromise = fetch(`/static/json/${topic}/higher_emotions.json`).then((r) => r.json());
+    const clusterCentroidsPromise = fetch(`/static/json/${topic}/centroids_of_tweets.json`).then((r) => r.json());
+    const initialPerspectivePromise = fetch(`/static/json/${topic}/initial_perspective.json`).then((r) => r.json());
+    const extraPerspectivePromise = fetch(`/static/json/${topic}/extra_perspective.json`).then((r) => r.json());
 
-    fetch(higher_emotions_file).then((response) => response.json())
-        .then((json) => {
+    // Find the perspective div by id
+    const perspContainer = document.getElementById("perspectives");
 
-            for ([clusterIdx, dominantEmotion] of Object.entries(json)) {    
-                clusterToHigherEmotion.set(clusterIdx, dominantEmotion);
-            }
+    for (const clusterIdx of (await clustersPromise).clusters) {
+        
+        const perspectiveElement = await getPerspectiveElement(perspectiveHtmlPromise);
+        perspContainer.appendChild(perspectiveElement);
 
-            if (allDataLoaded()) {
-                addPerspectivesHTML();
-            }
-        });
+        setPerspectiveHeader(perspectiveElement, higherEmotionsPromise, clusterIdx);
+        setPerspectiveSubHeader(perspectiveElement, clusterCentroidsPromise, clusterIdx);
+        setPerspectiveImage(perspectiveElement, topic, clusterIdx);
+        setPerspectivePrimaryDescription(perspectiveElement, initialPerspectivePromise, clusterIdx);
+        setPerspectiveSecondaryDescription(perspectiveElement, extraPerspectivePromise, clusterIdx);
+        setPerspectiveTweetList(perspectiveElement, clusteredTweetsPromise, tweetHtmlPromise, clusterIdx);
 
-    fetch(centroids_of_tweets_file).then((response) => response.json())
-        .then((json) => {
+        const button = perspectiveElement.getElementsByClassName("showhide")[0];
+        button.addEventListener('click', () => {
+            const radarChart = perspectiveElement.getElementsByClassName('radar-chart')[0];
+            const emojiCloud = perspectiveElement.getElementsByClassName('emoji-cloud')[0];
 
-            for ([clusterIdx, emotionScores] of Object.entries(json)) {     
-                clusterToRawEmotions.set(clusterIdx, Object.entries(emotionScores).sort((entry1, entry2) => entry2[1] - entry1[1]));
-            }
-            
-            if (allDataLoaded()) {
-                addPerspectivesHTML();
-            } 
-        });
+            radarChart.style.display = radarChart.style.display == '' ? 'none' : '';
+            emojiCloud.style.display = emojiCloud.style.display == '' ? 'none' : '';
+            button.innerText = button.innerText == 'Display Emoji Cloud' ? 'Display Radar Chart' : 'Display Emoji Cloud';
+        })
 
-    fetch(clustered_tweets_file).then((response) => response.json())
-        .then((json) => {
-
-            for (tweet of json) {     
-                const tweetCluster = "" + tweet.cluster;
-                if (!clusterToTweets.has(tweetCluster)) {
-                    clusterToTweets.set(tweetCluster, []);
-                }
-                clusterToTweets.get(tweetCluster).push(tweet);
-            }
-            
-            if (allDataLoaded()) {
-                addPerspectivesHTML();
-            }
-        });
+    }
 }
 
+function onWindowLoaded() {
+    const topic = getTopic();
+    addPerspectivesHTML(topic);
+}
 
 window.addEventListener("resize", setContainerHeight);
 document.addEventListener("DOMContentLoaded", setContainerHeight);
-window.addEventListener('DOMContentLoaded', loadJsonResources);
+window.addEventListener('DOMContentLoaded', onWindowLoaded);
+
