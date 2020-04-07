@@ -92,7 +92,9 @@ function getTopic() {
     else if (topic == "Corona Virus")
         topic = "coronavirus";
     else if (topic == "UK Lockdown")
-    topic = "uklockdown";
+        topic = "uklockdown";
+    else if (topic == "Brexit")
+        topic = "brexit";
 
     document.getElementById("sub-header").innerText = `#${topic}`;
     return topic;
