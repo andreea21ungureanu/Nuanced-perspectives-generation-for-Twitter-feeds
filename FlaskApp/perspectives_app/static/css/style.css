@@ -97,7 +97,7 @@ section {
   font-weight: 500;
   line-height: 0.8;
   text-transform: uppercase;
-  min-width: 170px;
+  min-width: 135px;
   padding: 20px 15px;
 }
 
@@ -595,6 +595,7 @@ section {
 .autocomplete {
   position: relative;
   display: inline-block;
+  width: 250px;
 }
 
 input {
@@ -648,6 +649,10 @@ input[type=submit] {
 .row {
   justify-content: center;
   text-align: center;
+}
+
+#submitButton {
+  height: 50px;
 }
 
 #readMoreButton {
