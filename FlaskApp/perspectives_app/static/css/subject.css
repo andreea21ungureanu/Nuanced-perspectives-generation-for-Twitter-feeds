@@ -1,4 +1,4 @@
-.subject-container{
+.subject-container {
     display: flex;
     flex-direction: column;
 }
@@ -7,19 +7,20 @@
     text-align: center;
     font-size: 25px;
     text-transform: lowercase;
-    margin: 30px 0px 50px 0px;
+    margin: 30px 0 50px;
 }
 
 .persp-container {
-    display:flex;
+    display: flex;
     flex-direction: row;
     overflow: auto;
+    padding: 0px 20px
 }
 
 .persp {
-    display:flex;
+    display: flex;
     max-width: 400px;
-    margin: 0px 30px;
+    min-width: 400px;
     flex-direction: column;
     height: 100%;
     text-align: center;
@@ -35,23 +36,27 @@
 }
 
 .radar-chart {
-    width: 300px;
     height: 300px;
     inline-size: fit-content;
 }
 
 .emoji-cloud {
-    width: 300px;
     height: 300px;
 }
 
 .scrollable {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-h3 { 
-    font-size: 1.17em; 
-    margin: .83em 0 
+.scrollable > * {
+    max-width: 380px;
+    min-width: 380px;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 0.83em 0
 }
 
 svg {

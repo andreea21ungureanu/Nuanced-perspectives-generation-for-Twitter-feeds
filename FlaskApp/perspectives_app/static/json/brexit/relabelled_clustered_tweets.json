@@ -8162,17 +8162,6 @@
         "cluster": 3
     },
     {
-        "tweet": "#Brexit Dies horibilis !\nLe Brexit me rend tr\u00e8s triste !\nEn \u00ab\u00a0union\u00a0\u00bb avec mes amis britanniques !#Europe",
-        "emotions": {
-            "Happiness": 0.0809169513,
-            "Anger": 0.2645480336,
-            "Excitement": 0.0933892535,
-            "Fear": 0.1249312449,
-            "Sadness": 0.4362145167
-        },
-        "cluster": 3
-    },
-    {
         "tweet": "I find the pictures below incredibly moving. We have been taken away from our friends, our allies and a magnificent cause by charlatans, shits,know-nothings and right wing ideologues. Millions of us will never forgive nor forget. Tomorrow at  11pm I light a candle. Please join me",
         "emotions": {
             "Happiness": 0.0998403164,
@@ -11341,17 +11330,6 @@
         "cluster": 4
     },
     {
-        "tweet": "Occupe toi de vrais probl\u00e8mes fdp",
-        "emotions": {
-            "Happiness": 0.0332304735,
-            "Anger": 0.7821871342,
-            "Excitement": 0.0400974522,
-            "Fear": 0.0663251846,
-            "Sadness": 0.0695991357
-        },
-        "cluster": 4
-    },
-    {
         "tweet": "Stop stealing Jeremy Corbyn's lines. Especially when you don't mean it, argued against summoning the spirit &amp; courage to accept the result and campaign for a positive vision of a Labour post-Brexit UK. You cost us the election. You don't deserve to be leader.",
         "emotions": {
             "Happiness": 0.1015043652,
@@ -11359,17 +11337,6 @@
             "Excitement": 0.1384230727,
             "Fear": 0.0824315143,
             "Sadness": 0.1347640404
-        },
-        "cluster": 4
-    },
-    {
-        "tweet": "cunt",
-        "emotions": {
-            "Happiness": 0.082004502,
-            "Anger": 0.5187007001,
-            "Excitement": 0.1097963377,
-            "Fear": 0.0632814219,
-            "Sadness": 0.0628867254
         },
         "cluster": 4
     },
@@ -12056,17 +12023,6 @@
         "cluster": 4
     },
     {
-        "tweet": "@redalphababe Moi aussie...for the Tory #Brexiters this was always about removing the control we had over them!\nThey are stealing our Rights...they are stealing the future our young people had...\nLiars\nCheats\nCharlatans all.\n#TheGreatBetrayal\n\nJust look at what we lose\nhttps://t.co/MkWVdwjXvi",
-        "emotions": {
-            "Excitement": 0.0996347826,
-            "Happiness": 0.0471590422,
-            "Sadness": 0.1415472356,
-            "Fear": 0.1073238398,
-            "Anger": 0.5843351605
-        },
-        "cluster": 4
-    },
-    {
         "tweet": "@jameskirkup This is just revisionist nonsense. The Brexit we are being offered is unrecognisable from the Brexit we were promised. Had the ERG not put hard red lines in place a Norway Style deal would have sailed through the commons and met all the requirements of the referendum vote.",
         "emotions": {
             "Excitement": 0.0624522378,
@@ -12166,6 +12122,17 @@
         "cluster": 4
     },
     {
+        "tweet": "Brexiters say \" Don't call us thick or stupid\"\nCool , can you tell us any benefits of brexit , what problems in your life will be solved by leaving the EU ?\n\" fuck off remoaner , we won get over it , 17.4 million , you lost ,that's democracy etc\nConclusion - Thick as pigshit",
+        "emotions": {
+            "Happiness": 0.2537207101,
+            "Anger": 0.2447654985,
+            "Excitement": 0.2202047951,
+            "Fear": 0.1082470689,
+            "Sadness": 0.0888534585
+        },
+        "cluster": 5
+    },
+    {
         "tweet": "@jeremycorbyn Over the last three years, Oh Great Beard, you did nothing to stop the Tories carrying out their neo con wet dream of brexit. You infact enabled them, Oh Red Tory Great Beard.\n\nThe choice was simple, you decided to help the Tories.",
         "emotions": {
             "Happiness": 0.3039100673,
@@ -12232,17 +12199,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Brexiters say \" Don't call us thick or stupid\"\nCool , can you tell us any benefits of brexit , what problems in your life will be solved by leaving the EU ?\n\" fuck off remoaner , we won get over it , 17.4 million , you lost ,that's democracy etc\nConclusion - Thick as pigshit",
-        "emotions": {
-            "Happiness": 0.2537207101,
-            "Anger": 0.2447654985,
-            "Excitement": 0.2202047951,
-            "Fear": 0.1082470689,
-            "Sadness": 0.0888534585
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "The fight for Brexit is not over and now Boris Johnson truly has the opportunity and the majority to shape Brexit in his image. #Brexit #BrexitDay #BorisJohnson\n\nhttps://t.co/Qw6pCz2SMJ",
         "emotions": {
             "Happiness": 0.124379907,
@@ -12298,50 +12254,6 @@
         "cluster": 5
     },
     {
-        "tweet": "profitons du Brexit pour arr\u00eater d'essayer d'importer la drill UK n'importe comment",
-        "emotions": {
-            "Happiness": 0.1270218243,
-            "Anger": 0.3410536979,
-            "Excitement": 0.2133366809,
-            "Fear": 0.1594724686,
-            "Sadness": 0.1237716987
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Ich empfinde Hochachtung f\u00fcr die britische Demokratie, die lebt und darum k\u00e4mpft, sich selbst zu erhalten. Die Briten sind mit ihrer demokratischen Selbstbestimmung so zufrieden, dass sie EU-Gr\u00f6\u00dfenwahn und mangelnde Souver\u00e4nit\u00e4t nur skeptisch macht. Ich sage: zu Recht. #Brexit",
-        "emotions": {
-            "Happiness": 0.1208877429,
-            "Anger": 0.3863096109,
-            "Excitement": 0.2065368832,
-            "Fear": 0.1603091343,
-            "Sadness": 0.1259566288
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Emmanuel Macron sur le #Brexit : \u00abOn pourra voyager, exporter, commercer, p\u00eacher exactement comme avant. Vous ne vous r\u00e9veillerez pas demain matin avec des r\u00e8gles diff\u00e9rentes pour votre quotidien \u00bb https://t.co/b8r5zv6aWm",
-        "emotions": {
-            "Happiness": 0.2517262057,
-            "Anger": 0.2225695229,
-            "Excitement": 0.2694777128,
-            "Fear": 0.1380619554,
-            "Sadness": 0.1181646032
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "living dia hist\u00f3rico x el fucking brexit tomando pechuga y una manzanita en el Tate",
-        "emotions": {
-            "Happiness": 0.1451214215,
-            "Anger": 0.3219230051,
-            "Excitement": 0.2758019069,
-            "Fear": 0.115804612,
-            "Sadness": 0.1134321707
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "Again @SW4Starmer Keir talks about Plymouth \u201cIt also means empowering communities and activists to take action for themselves, like Labour-run Plymouth council has done by setting up dozens of community-owned sustainable energy co-ops.\u201d",
         "emotions": {
             "Happiness": 0.1576085567,
@@ -12364,17 +12276,6 @@
         "cluster": 5
     },
     {
-        "tweet": "\ud83d\udc4f\ud83d\udc4f\ud83d\udc4f Le message de @Nigel_Farage aux peuples europ\u00e9ens : \nL'#UE vous a fait perdre votre souverainet\u00e9 et vous \u00eates gouvern\u00e9s par des gens qui ne sont pas responsables devant vous!\n\"Je veux que le #Brexit lance un d\u00e9bat dans le reste de l'Europe... \" https://t.co/jKTArxMCbK",
-        "emotions": {
-            "Happiness": 0.2976793578,
-            "Anger": 0.1746043803,
-            "Excitement": 0.3331349441,
-            "Fear": 0.1179435409,
-            "Sadness": 0.0766377769
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "#LeaveALightOnForScotland \n\nWe'll be back just as soon as we've disentangled ourselves from the toxic politics of the UK.\n\n#European",
         "emotions": {
             "Happiness": 0.1963193953,
@@ -12393,17 +12294,6 @@
             "Excitement": 0.2921106925,
             "Fear": 0.091292529,
             "Sadness": 0.1223817933
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "\u0130ngiltere ile olan ili\u015fkilerinde bir de\u011fi\u015fiklik olmayaca\u011f\u0131n\u0131, bundan sonra \u0130ngiltere'nin maalesef AB kararlar\u0131na kat\u0131lamayaca\u011f\u0131n\u0131, AB'deki ingiliz vekillerinden bo\u015falan koltuklara Fransa'dan 5 vekilin ge\u00e7ece\u011fini, Fransa'daki \u0130ngilizlere i\u00e7in hi\u00e7bir sorun olmad\u0131\u011f\u0131n\u0131 vs.  a\u00e7\u0131kl\u0131yor",
-        "emotions": {
-            "Happiness": 0.2056119483,
-            "Anger": 0.2252456256,
-            "Excitement": 0.2811698895,
-            "Fear": 0.1620361904,
-            "Sadness": 0.1259363461
         },
         "cluster": 5
     },
@@ -12459,17 +12349,6 @@
             "Excitement": 0.3262762518,
             "Fear": 0.1624903896,
             "Sadness": 0.0539108297
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "\u274c El socialista @DavidSassoli persiste en su error y declara eurodiputada a Clara Ponsat\u00ed en contra de la ley y la jurisprudencia espa\u00f1ola. La arrogancia y la chuler\u00eda de quien no ha aprendido nada del Brexit.\n\n\u2705 Ampliaremos la demanda contra el Parlamento Europeo. https://t.co/gC5LalYFQ8",
-        "emotions": {
-            "Happiness": 0.1761393655,
-            "Anger": 0.3729711317,
-            "Excitement": 0.2308668683,
-            "Fear": 0.1183477221,
-            "Sadness": 0.1016749123
         },
         "cluster": 5
     },
@@ -12595,17 +12474,6 @@
         "cluster": 5
     },
     {
-        "tweet": "https://t.co/wMXF8biU7Y https://t.co/Rbizq5EtUy",
-        "emotions": {
-            "Happiness": 0.205932492,
-            "Anger": 0.2569836823,
-            "Excitement": 0.20501783,
-            "Fear": 0.1261665564,
-            "Sadness": 0.1070390263
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "There's something highly symbolic about the British Conservatives achieving Brexit Day on the same day as the Republican party formalizes its perfect submission to Trump.",
         "emotions": {
             "Happiness": 0.2006379945,
@@ -12646,17 +12514,6 @@
             "Excitement": 0.2541690794,
             "Fear": 0.1410461148,
             "Sadness": 0.140676591
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Die Folgen des #Brexit, insbesondere f\u00fcr Deutschland, nochmal deutlich erkl\u00e4rt:\n#Sperrminorit\u00e4t #Schuldenunion #Haftungsunion https://t.co/VjNOZdQT0L",
-        "emotions": {
-            "Happiness": 0.2369103374,
-            "Anger": 0.2696066623,
-            "Excitement": 0.2568734262,
-            "Fear": 0.1258238815,
-            "Sadness": 0.1107856926
         },
         "cluster": 5
     },
@@ -12771,28 +12628,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Herzliche Gratulation dem Volk von Gro\u00dfbritannien. \nIhr habt es geschafft, trotz aller Tricks und Winkelz\u00fcge, die EU zu verlassen. \nEs ist also nicht unm\u00f6glich! \nDaf\u00fcr meinen h\u00f6chsten Respekt. \nWer folgt als n\u00e4chstes?\nhttps://t.co/zTE4ImJgZL",
-        "emotions": {
-            "Excitement": 0.3049506347,
-            "Happiness": 0.1673191895,
-            "Sadness": 0.1116977989,
-            "Fear": 0.1192258086,
-            "Anger": 0.2968065683
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Adesso vedremo quali effetti devastanti (come no) avr\u00e0 la #BrexitReality \nC'\u00e8 da dire che la #GranBretagna \u00e8 sempre stata lungimirante perch\u00e9 non ha aderito all'euro. Sapevano bene a cosa andavano incontro.\nMentre noi ci siamo fatti fregare da questo sistema.\n#Brexit",
-        "emotions": {
-            "Excitement": 0.2942651583,
-            "Happiness": 0.1907137155,
-            "Sadness": 0.1209753654,
-            "Fear": 0.1508306125,
-            "Anger": 0.2432151483
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "My non comprehensive list of Brexit heroes in no particular order..\n\n1. Nigel Farage\n2. Boris Johnson\n3. Jacob Rees Mogg\n3. Richard Tice\n4. John Redwood\n5. Kate Hoey\n6. Donald Trump\n7. Tim Martin\n8. Ian Duncan Smith\n9. Mark Francois\n10. Priti Patel\n11. Sir Michael Cain.... https://t.co/tbSkI53nYN",
         "emotions": {
             "Excitement": 0.2774704339,
@@ -12800,17 +12635,6 @@
             "Sadness": 0.1402329396,
             "Fear": 0.1369626887,
             "Anger": 0.280231767
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "https://t.co/jyrb5L409R https://t.co/ZOQxmaDojk",
-        "emotions": {
-            "Excitement": 0.20501783,
-            "Happiness": 0.205932492,
-            "Sadness": 0.1070390263,
-            "Fear": 0.1261665564,
-            "Anger": 0.2569836823
         },
         "cluster": 5
     },
@@ -12848,17 +12672,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Le 31 janvier 2020 est une date historique o\u00f9 pour la premi\u00e8re fois un peuple a r\u00e9ussi \u00e0 se lib\u00e9rer de la dictature Union Europ\u00e9enne, si vous n'\u00eates pas convaincu que l'UE est une dictature, visionnez cette vid\u00e9o. #BrexitDay #UPR #Brexit https://t.co/0vV6Q509Ab",
-        "emotions": {
-            "Excitement": 0.2204287225,
-            "Happiness": 0.1598257761,
-            "Sadness": 0.1344878892,
-            "Fear": 0.1509843198,
-            "Anger": 0.3342732924
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "From last week's visit to the European Parliament.\nBrexit: What are we losing?\nOur voice\nOur vote\nOur veto\nOur place at the table.\n#NotGoingAway We will #HoldThemToAccount",
         "emotions": {
             "Excitement": 0.2930536726,
@@ -12881,17 +12694,6 @@
         "cluster": 5
     },
     {
-        "tweet": "#Brexit La France et l\u2019Angleterre sont alli\u00e9s depuis plus d\u2019un si\u00e8cle, \u00e0 rapprocher du demi-si\u00e8cle de pr\u00e9sence dans l\u2019UE. Il n\u2019y a pas d\u2019adieu, ni d\u2019aurevoir mais un d\u00e9part. La r\u00e9ponse n\u2019est pas \u00ab\u00a0plus d\u2019union\u00a0\u00bb mais plus de d\u00e9mocratie, de souverainet\u00e9 nationale, de libert\u00e9. https://t.co/3wtaEpZcBx",
-        "emotions": {
-            "Excitement": 0.3421234244,
-            "Happiness": 0.2045217486,
-            "Sadness": 0.0906074455,
-            "Fear": 0.1464586785,
-            "Anger": 0.216288703
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "The BBC has been at it all day with anti Brexit bias. Well - fcuk 'em. This is a day to celebrate the democratic will of the British people being done. Our democracy works. Great. The extent of the propaganda drive AGAINST BREXIT is still scary though. #DisestablishTheBiasedBBC",
         "emotions": {
             "Excitement": 0.2402378866,
@@ -12910,17 +12712,6 @@
             "Sadness": 0.1456679715,
             "Fear": 0.1379859355,
             "Anger": 0.192285099
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Ca fait 3 ans qu il y a eu ce signal d alarme. Et c est aujourdhui qu il s inquiete\ud83d\ude44\ud83d\ude44\ud83d\ude44\nTu fais piti\u00e9 Manu. \n\nBrexit EN DIRECT\u00a0: Pour Emmanuel Macron, c\u2019est \u00ab\u00a0un signal d\u2019alarme historique\u00a0\u00bb https://t.co/mXWU51cLVS via @20minutes",
-        "emotions": {
-            "Excitement": 0.2085091504,
-            "Happiness": 0.163572031,
-            "Sadness": 0.1549098706,
-            "Fear": 0.1489110574,
-            "Anger": 0.3240978905
         },
         "cluster": 5
     },
@@ -12969,28 +12760,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Apr\u00e8s le #BrexitDay verrons - nous le #Frexit https://t.co/lDDQBtKOx8",
-        "emotions": {
-            "Excitement": 0.2514850009,
-            "Happiness": 0.2757133379,
-            "Sadness": 0.110953108,
-            "Fear": 0.1062724404,
-            "Anger": 0.2104151916
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Els liberals europeus acabaran proposant a Albert Rivera com a jefazo de la UE!",
-        "emotions": {
-            "Excitement": 0.2316579619,
-            "Happiness": 0.1930769878,
-            "Sadness": 0.0903318222,
-            "Fear": 0.1289801944,
-            "Anger": 0.3559530337
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "We live in a disintegrating world \u2013 and that only makes it a more dangerous place | Patrick Cockburn https://t.co/xay0e3rYnA",
         "emotions": {
             "Excitement": 0.363094287,
@@ -13035,17 +12804,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Les eurob\u00e9ats pr\u00e9disaient que le #Brexit m\u00e8nerait au chaos ! Mais en r\u00e9alit\u00e9, le Brexit r\u00e9v\u00e8le l'effondrement de l'Union europ\u00e9enne : soit on la remplace par une Europe des Nations libres et des projets concrets, soit les peuples s'en iront les uns apr\u00e8s les autres ! #BrexitDay https://t.co/vMgrzyumeU",
-        "emotions": {
-            "Excitement": 0.2583490062,
-            "Happiness": 0.1553921797,
-            "Sadness": 0.1296833544,
-            "Fear": 0.1534619936,
-            "Anger": 0.3031134661
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "Liberals getting salty when the left don't do their job for them. Why couldn't the centre make a strong case for the EU? The man gave you the chance at a second referendum and you all still said voting Labour was voting for Brexit. The People's Vote campaign was a joke.",
         "emotions": {
             "Excitement": 0.3055720903,
@@ -13053,17 +12811,6 @@
             "Sadness": 0.14718325,
             "Fear": 0.116475971,
             "Anger": 0.2476817192
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Oggi la Brexit diventa realt\u00e0. UK ha fatto la sua scelta, peccato. Ma adesso l\u2019Europa che fa? Sveglia! Serve una nuova visione per UE oppure Brexit sar\u00e0 l\u2019inizio della fine #WakeUp https://t.co/poGN4gojcC",
-        "emotions": {
-            "Excitement": 0.2796693721,
-            "Happiness": 0.2429283748,
-            "Sadness": 0.0748461989,
-            "Fear": 0.1555242904,
-            "Anger": 0.2470317638
         },
         "cluster": 5
     },
@@ -13101,28 +12848,6 @@
         "cluster": 5
     },
     {
-        "tweet": "@AldoSterone111 Les anti brexit vont chanter :  \u201cgod save the Queen/ we mean it man/ and there\u2019s no future/in England\u2019s dreaming\u201d but nevermind the bollocks  \ud83d\ude0e\ud83e\udd18\ud83c\udffb\ud83d\ude09",
-        "emotions": {
-            "Excitement": 0.2676947055,
-            "Happiness": 0.2705318831,
-            "Sadness": 0.0882829224,
-            "Fear": 0.1015436786,
-            "Anger": 0.164492663
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Ensi y\u00f6n\u00e4 Suomi saa 27-vuotiaan vihre\u00e4n Brexit-mepin: Alviina Alamets\u00e4 aikoo avata tubekanavan, ettei poliittista tubea hallitsisi vain yksi puolue https://t.co/zrMedoNQh3 https://t.co/maeWwiOqyh",
-        "emotions": {
-            "Excitement": 0.2630321073,
-            "Happiness": 0.2560980208,
-            "Sadness": 0.1266784316,
-            "Fear": 0.1371216163,
-            "Anger": 0.217069824
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "Even Brexit can\u2019t escape from @KevlinHenney - that\u2019s the main story on the @Telegraph front page right now https://t.co/JLro2M7T3P",
         "emotions": {
             "Excitement": 0.2682343472,
@@ -13134,28 +12859,6 @@
         "cluster": 5
     },
     {
-        "tweet": "\ud83d\udcf7 #Instantan\u00e9 : le drapeau britannique, en train d'\u00eatre retir\u00e9, devant le Parlement europ\u00e9en \u00e0 Strasbourg #Brexit #AFP https://t.co/asjkCESRC7",
-        "emotions": {
-            "Excitement": 0.287597627,
-            "Happiness": 0.2528348224,
-            "Sadness": 0.1055855915,
-            "Fear": 0.1683234262,
-            "Anger": 0.185658533
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "L'insegnamento pi\u00f9 importante che dobbiamo prendere dagli #Inglesi \u00e8 che ha vinto la #Democrazia!\nHa vinto il Popolo, \u00e8 stato ascoltato il volere del Popolo contro l'Establishment #Eurocrate.\nUscire dall'#UE e dall'#Euro si pu\u00f2, accettare il volere del Popolo \u00e8 possibile.\n#Brexit https://t.co/JS7vICyK3z",
-        "emotions": {
-            "Excitement": 0.2504344498,
-            "Happiness": 0.2138437349,
-            "Sadness": 0.0882363717,
-            "Fear": 0.1516970216,
-            "Anger": 0.295788422
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "I am and will always be European \ud83c\uddea\ud83c\uddfa\ud83c\uddea\ud83c\uddfa\n\nBrexit is an unmitigated disaster for the UK. I will hold Boris Johnson &amp; his reckless government to account and I will keep standing up for our values - cooperation, internationalism, solidarity and work to stay close to our #EU friends\ud83c\uddea\ud83c\uddfa\ud83d\udc94 https://t.co/psjbXYmut6",
         "emotions": {
             "Excitement": 0.2713844568,
@@ -13163,17 +12866,6 @@
             "Sadness": 0.08196279,
             "Fear": 0.1011190809,
             "Anger": 0.315014394
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Ce n\u2019est qu\u2019un au revoir...\n\n\ud83d\udc49\ud83c\udffc the scaffold is already up in the hemicycle in the European Parliament to take down the Union Jack\n\n\ud83d\udc49\ud83c\udffc bought a \u2018Brexit special\u2019 Belgian newspaper for the political scrap book\n\n\ud83d\udc49\ud83c\udffc and collected my framed certificate of thanks for my service\n\n\ud83d\ude22\ud83d\udc9a\u270c\ufe0f https://t.co/PrCkCz6Com",
-        "emotions": {
-            "Excitement": 0.2692300559,
-            "Happiness": 0.1901236102,
-            "Sadness": 0.1360720919,
-            "Fear": 0.1410157367,
-            "Anger": 0.209416355
         },
         "cluster": 5
     },
@@ -13200,28 +12892,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Nathalie #Loiseau regrette la \u00abb\u00eatise\u00bb du #Brexit : \u00abLe peuple peut se tromper\u00bb \ud83e\udd14 Je suis d\u2019accord \ud83d\udc4d La preuve en France le peuple s\u2019est tromp\u00e9 il a \u00e9lu #Macron \ud83d\ude09 https://t.co/uouRVC2fkx",
-        "emotions": {
-            "Excitement": 0.3010477664,
-            "Happiness": 0.2422992315,
-            "Sadness": 0.0954400092,
-            "Fear": 0.138629747,
-            "Anger": 0.2225832459
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "La couverture-choc d\u2019un grand hebdomadaire polonais sur la censure qui s\u00e9vit en France, Allemagne et Su\u00e8de #Frexit #Brexit  https://t.co/X13oUOuQNP via @delitdimages",
-        "emotions": {
-            "Excitement": 0.3044546493,
-            "Happiness": 0.2920030454,
-            "Sadness": 0.0687045707,
-            "Fear": 0.1415884616,
-            "Anger": 0.193249273
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "In the words of a hero, Dunkirk veteran Colin Ashford\n\n\"We need a salute of 21 guns to celebrate Brexit, don't we?\"\n\nWhat a great idea!\n\n#BrexitDay https://t.co/cAop2er0y8",
         "emotions": {
             "Excitement": 0.2499714208,
@@ -13229,17 +12899,6 @@
             "Sadness": 0.0866673092,
             "Fear": 0.1392799555,
             "Anger": 0.3067506999
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Wow. Un message d'adieu \u00e0  l'\ud83c\uddea\ud83c\uddfa de la part de quelques v\u00e9t\u00e9rans \ud83c\uddec\ud83c\udde7 de la 2e Guerre Mondiale, projet\u00e9 ce matin sur les falaises blanches de Douvres.... (avec s/t angl)\n\nOn dit toujours que les vieux voulaient le Brexit\n\nLes tr\u00e8s vieux, non .... https://t.co/4vhwo4EBus",
-        "emotions": {
-            "Excitement": 0.2493165245,
-            "Happiness": 0.2099533645,
-            "Sadness": 0.1049419099,
-            "Fear": 0.1280490373,
-            "Anger": 0.282534181
         },
         "cluster": 5
     },
@@ -13310,39 +12969,6 @@
         "cluster": 5
     },
     {
-        "tweet": "#NathalieLoiseau regrette la \u00abb\u00eatise\u00bb du #Brexit : \n\u00abLe peuple peut se tromper\u00bb dit-elle\n\nelle a tout \u00e0 fait raison\n\nquand on observe le chaos en France, on se dit que oui :\n\"le peuple\" peut parfois se tromper : exemple l'\u00e9lection de #Macron et sa clique de d\u00e9put\u00e9s playmobil\ud83d\ude09",
-        "emotions": {
-            "Excitement": 0.2671610553,
-            "Happiness": 0.2372361342,
-            "Sadness": 0.0937782185,
-            "Fear": 0.1437141965,
-            "Anger": 0.2581103956
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Depuis ce matin, le sujet majeur du #Brexit, d'apr\u00e8s ce que je glane par-ci par-l\u00e0, c'est QUI, de la Grande-Bretagne ou des Europ\u00e9ens, va piller le plus la Mer du Nord par la p\u00eache, et qui va vider la Manche de ses poissons ? Vu que UK sort des quotas europ\u00e9ens ;(( cc @Bloom_FR",
-        "emotions": {
-            "Excitement": 0.1853322444,
-            "Happiness": 0.1696586517,
-            "Sadness": 0.1097965945,
-            "Fear": 0.1569298874,
-            "Anger": 0.3105566347
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Es una desgracia el Brexit.Porque los conservadores brit\u00e1nicos eran una fuerza valios\u00edsima para los partidarios de esa reforma de la UE hacia su objeto y esp\u00edritu originarios de la alianza de naciones, no de un superestado socialista y controlador, no un superprogre Gran Hermano.",
-        "emotions": {
-            "Excitement": 0.2785837693,
-            "Happiness": 0.2402145298,
-            "Sadness": 0.1036801496,
-            "Fear": 0.1147414177,
-            "Anger": 0.2627801337
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "It is a reality that the form of the Brexit the U.K. has at 11pm tonight owes much to the intransigence of the Remainers especially those who were calling for a people\u2019s vote...",
         "emotions": {
             "Excitement": 0.2666843876,
@@ -13376,17 +13002,6 @@
         "cluster": 5
     },
     {
-        "tweet": "Macron: El brexit es una se\u00f1al de advertencia hist\u00f3rica para Europa https://t.co/pDvXaOXO58",
-        "emotions": {
-            "Excitement": 0.2969780701,
-            "Happiness": 0.2062924968,
-            "Sadness": 0.1272874647,
-            "Fear": 0.1467114713,
-            "Anger": 0.1811529683
-        },
-        "cluster": 5
-    },
-    {
         "tweet": "@GFan1969 She has got to be full of drugs to behave like that.....Or Carstairs day release #Brexit #LetsGo",
         "emotions": {
             "Excitement": 0.2307228056,
@@ -13394,28 +13009,6 @@
             "Sadness": 0.0933834124,
             "Fear": 0.1699383907,
             "Anger": 0.2862690411
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "\u00ab Je suis satisfait que le choix du peuple britannique soit enfin entendu et respect\u00e9. Alors qu'on nous annon\u00e7ait la catastrophe, l'\u00e9conomie britannique se porte tr\u00e8s bien. C'est une claque pour cette Union europ\u00e9enne ! \u00bb #Brexit #BourdinDirect https://t.co/riXFpWDULg",
-        "emotions": {
-            "Excitement": 0.2956197705,
-            "Happiness": 0.226755993,
-            "Sadness": 0.0849781138,
-            "Fear": 0.1321148151,
-            "Anger": 0.2605313076
-        },
-        "cluster": 5
-    },
-    {
-        "tweet": "Vandr\u00e6\u00f0alegt fyrir m\u00edna menn Breta a\u00f0 Brexit mi\u00f0ist vi\u00f0 mi\u00f0n\u00e6tti \u00ed  Brussel, ekki \u00ed Lund\u00fanum.",
-        "emotions": {
-            "Excitement": 0.2830592136,
-            "Happiness": 0.2697058617,
-            "Sadness": 0.1095988218,
-            "Fear": 0.1475117988,
-            "Anger": 0.1901243041
         },
         "cluster": 5
     },

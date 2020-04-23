@@ -148,7 +148,11 @@ async function addPerspectivesHTML(topic) {
 
             radarChart.style.display = radarChart.style.display == '' ? 'none' : '';
             emojiCloud.style.display = emojiCloud.style.display == '' ? 'none' : '';
-            button.innerText = button.innerText == 'Display Emoji Cloud' ? 'Display Radar Chart' : 'Display Emoji Cloud';
+            //button.innerText = button.innerText == 'Display Emoji Cloud' ? 'Display Radar Chart' : 'Display Emoji Cloud';
+            if (button.innerText == 'DISPLAY EMOJI CLOUD')
+                button.innerText = 'DISPLAY RADAR CHART';
+            else if (button.innerText == 'DISPLAY RADAR CHART')
+                button.innerText = 'DISPLAY EMOJI CLOUD';
         })
 
     }

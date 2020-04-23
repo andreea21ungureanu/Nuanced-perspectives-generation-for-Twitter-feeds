@@ -1,8 +1,8 @@
 import json
 import numpy as np
 import os
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering, KMeans, DBSCAN 
+
 
 '''
 Removes duplicates from a list
@@ -60,9 +60,7 @@ def create_np_emotions_array(tweets):
 
     # Add all the vectors to our matrix
     for tweet in tweets:
-        renamed_emotions = {}
         emotions = rename_emotions(tweet)['emotions']
-        
         vector = np.array([[emotions['Excitement'],
                             emotions['Anger'],
                             emotions['Sadness'],
@@ -132,7 +130,7 @@ Computes the divisive hierarhical clustering technique on the given dataset.
 :return: clusters object given by the clustering algorithm
 :rtype: clusters object given by the clustering algorithm
 '''
-def kmeans_clustering(tweets, nr_of_clusters=5):
+def kmeans_clustering(tweets, nr_of_clusters=10):
     vectors = create_np_emotions_array(tweets)
 
     # Cluster using Kmeans
@@ -175,7 +173,6 @@ def create_centroids(tweets):
         for em, value in emotion.items():
             value = value/cluster_memeber_count[key]
     
-    print(centroids_dict)
     return centroids_dict
 
 def clustered_file_creation(tweets, file=''):
@@ -198,6 +195,7 @@ if __name__ == '__main__':
     # kmeans_clustered_tweets = create_clustering_result_vector(tweets, kmeans_clusters)
     # clustered_file_creation(kmeans_clustered_tweets, "./FlaskApp/perspectives_app/static/json/brexit/kmeans_clustered_tweets.json")
 
+    
 
     
     
