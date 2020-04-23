@@ -31,7 +31,7 @@ def create_np_emotions_array_copy(tweets):
 
     return vectors
 
-def create_np_emotions_array_kmeans(tweets):
+def create_np_old_emotions_array(tweets):
     vectors = np.empty((0, 5))
 
     # Add all the vectors to our matrix
@@ -72,7 +72,6 @@ def recompute_clusters_from_divisive(tweets):
     return tweets_in_clusters
 
 def validate_clusters(tweets):
-
     # Instantiate the vectors used for clustering
     vectors = create_np_emotions_array_copy(tweets)
 
@@ -85,7 +84,7 @@ def validate_clusters(tweets):
     return divisive_hierarhical_score
 
 def investigate_kmeans(tweets):
-    vectors = create_np_emotions_array_kmeans(tweets)
+    vectors = create_np_old_emotions_array(tweets)
 
     # Instantiate clustering methods
     kmeans_clustering_v = kmeans_clustering(tweets)
@@ -96,11 +95,10 @@ def investigate_kmeans(tweets):
     return kmeans_score
 
 def investigate_DBSCAN(tweets):
-    vectors = create_np_emotions_array_kmeans(tweets)
+    vectors = create_np_old_emotions_array(tweets)
 
     # Instantiate clustering methods
     DBSCAN_clustering_v = dbscan_clustering(tweets)
-    print(DBSCAN_clustering_v)
 
     DBSCAN_score = metrics.silhouette_score(vectors, DBSCAN_clustering_v)
 
@@ -109,5 +107,5 @@ def investigate_DBSCAN(tweets):
 if __name__ == '__main__':
     # tweets = load_tweets("./FlaskApp/perspectives_app/static/json/uklockdown/relabelled_clustered_tweets.json")
     tweets = load_tweets("./resources/emotions_collected/emotions_coronavirus.json")
-    # print(investigate_kmeans(tweets))
+
     print(investigate_DBSCAN(tweets))
